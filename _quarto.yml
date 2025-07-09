@@ -3,7 +3,7 @@ project:
 
 book:
   title: "ds-quickref"
-  author: "Dmitriiy Bolotovs"
+  author: "Dmitriiy Bolotov"
   date: "7/9/2025"
   chapters:
     - index.qmd
