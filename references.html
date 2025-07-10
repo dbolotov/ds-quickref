@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ds-quickref - References</title>
+<title>DS QuickRef - References</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,7 +30,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="prev">
+<link href="./glossary.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -88,6 +69,7 @@ div.csl-indent {
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -114,7 +96,7 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">ds-quickref</a> 
+      <a href="./">DS QuickRef</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -127,19 +109,19 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">About</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="./common_issues.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Common Issues in Data Science</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  <a href="./glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossary</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -154,7 +136,15 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts">Concepts</a></li>
+  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools">Tools</a></li>
+  <li><a href="#resources-used-to-make-this-guide" id="toc-resources-used-to-make-this-guide" class="nav-link" data-scroll-target="#resources-used-to-make-this-guide">Resources used to make this guide</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -178,10 +168,57 @@ div.csl-indent {
 </header>
 
 
+<p>A collection of useful resources and tools.</p>
+<section id="concepts" class="level3">
+<h3 class="anchored" data-anchor-id="concepts">Concepts</h3>
+<section id="explainability" class="level4">
+<h4 class="anchored" data-anchor-id="explainability">Explainability</h4>
+<ul>
+<li><a href="https://christophm.github.io/interpretable-ml-book/">Interpretable Machine Learning</a>: A practical overview of techniques for making ML models more transparent, including SHAP, LIME, and model-specific tools.</li>
+<li><a href="https://shap.readthedocs.io/en/latest/">SHAP Documentation</a>: Official docs for SHAP (SHapley Additive exPlanations), a method to interpret the output of machine learning models.</li>
+</ul>
+</section>
+<section id="visualization" class="level4">
+<h4 class="anchored" data-anchor-id="visualization">Visualization</h4>
+<ul>
+<li><a href="https://idl.uw.edu/visualization-curriculum/intro.html">UW Interactive Data Lab Curriculum</a>: Visualization using Vega-Lite and Altair.</li>
+<li><a href="https://clauswilke.com/dataviz/">Fundamentals of Data Visualization</a>: Principles and examples of clear, effective visual communication.</li>
+</ul>
+</section>
+<section id="time-series" class="level4">
+<h4 class="anchored" data-anchor-id="time-series">Time Series</h4>
+<ul>
+<li><a href="https://otexts.com/fpp2/">Forecasting: Principles and Practice</a>: Covers forecasting techniques like exponential smoothing and ARIMA, with examples in R.</li>
+</ul>
+</section>
+<section id="data-imputation" class="level4">
+<h4 class="anchored" data-anchor-id="data-imputation">Data Imputation</h4>
+<ul>
+<li><a href="https://stefvanbuuren.name/fimd/">Flexible Imputation of Missing Data</a>: Methods to handle missing data, with emphasis on multiple imputation.</li>
+</ul>
+</section>
+<section id="fraud-detection" class="level4">
+<h4 class="anchored" data-anchor-id="fraud-detection">Fraud Detection</h4>
+<ul>
+<li><a href="https://fraud-detection-handbook.github.io/fraud-detection-handbook/Foreword.html">Fraud Detection Handbook</a>: Applied techniques for detecting fraud in highly imbalanced, real-world datasets. Includes examples and code.</li>
+</ul>
+</section>
+</section>
+<section id="tools" class="level3">
+<h3 class="anchored" data-anchor-id="tools">Tools</h3>
+<ul>
+<li><a href="https://github.com/sdv-dev/SDV">SDV</a> - Python library for creating tabular synthetic data.</li>
+</ul>
+</section>
+<section id="resources-used-to-make-this-guide" class="level3">
+<h3 class="anchored" data-anchor-id="resources-used-to-make-this-guide">Resources used to make this guide</h3>
+<ul>
+<li><a href="https://quarto.org/">Quarto</a>: Publishing system. Supports notebooks, markdown, citations, and publishing to HTML and PDF.</li>
+<li><a href="https://bootswatch.com/">bootswatch</a>: Collection of free themes for Bootstrap-based sites (used to style this book).</li>
+</ul>
 
 
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -573,8 +610,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span>
+      <a href="./glossary.html" class="pagination-link" aria-label="Glossary">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Glossary</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
