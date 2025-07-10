@@ -1,5 +1,14 @@
-# Preface {.unnumbered}
+# About {.unnumbered}
 
-This is a Quarto book.
+This book is a quick-reference guide for data science, machine learning, and related topics. It’s written for students and working professionals who want a practical summary of key ideas, workflows, and tools.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+This guide focuses on quick definitions, examples, short reminders, and curated links. It’s meant to be used when:
+
+- You’ve already learned a concept and need a quick refresher.
+- You’re working on a project and want to check best practices.
+- You forgot which metrics apply to a specific ML task.
+- You want a shortcut to useful external resources.
+
+This guide is a work in progress and will grow over time as I add new topics and improve existing ones.
+
+The field is wide, and no two data scientists use the exact same approach or tools. This guide reflects a generalist perspective, based on real-world use cases and common patterns.

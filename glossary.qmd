@@ -1,0 +1,13 @@
+# Glossary {.unnumbered}
+- Explainability
+- Oversampling
+- Overfitting and Underfitting
+- Data leakage
+- Features
+- Reinforcement learning
+- Supervised learning
+- Unsupervised learning
+- Descriptive statistics
+- Deep learning
+- Distribution
+- Probability

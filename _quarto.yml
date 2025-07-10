@@ -2,20 +2,21 @@ project:
   type: book
 
 book:
-  title: "ds-quickref"
+  title: "DS QuickRef"
+  subtitle: "A practical reference for machine learning, data science, and modeling workflows"
   author: "Dmitriy Bolotov"
-  date: "7/9/2025"
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - common_issues.qmd
+    - glossary.qmd
     - references.qmd
 
 format:
   html:
     theme:
-      - cosmo
+      - lumen
       - brand
     toc: true
+    css: styles.css
 
 
