@@ -4,29 +4,18 @@ A collection of useful resources and tools.
 
 ### Concepts
 
-#### Explainability
+::: {.table-small}
 
-- [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/): A practical overview of techniques for making ML models more transparent, including SHAP, LIME, and model-specific tools.
-- [SHAP Documentation](https://shap.readthedocs.io/en/latest/): Official docs for SHAP (SHapley Additive exPlanations), a method to interpret the output of machine learning models.
+| Category          | Resource | Description |
+|------------------|----------|-------------|
+| Explainability | [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/) | A practical overview of techniques for making ML models more transparent, including SHAP. |
+| Visualization | [UW Interactive Data Lab Curriculum](https://idl.uw.edu/visualization-curriculum/intro.html) | Book on statistical visualization using Vega-Lite and Altair. |
+| Visualization | [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) | Principles and examples of clear, effective visual communication. |
+| Time Series | [Forecasting: Principles and Practice](https://otexts.com/fpp2/) | Covers forecasting techniques like exponential smoothing and ARIMA, with examples in R. |
+| Data Imputation | [Flexible Imputation of Missing Data](https://stefvanbuuren.name/fimd/) | Methods to handle missing data, with emphasis on multiple imputation. |
+| Fraud Detection | [Fraud Detection Handbook](https://fraud-detection-handbook.github.io/fraud-detection-handbook/Foreword.html) | Applied techniques for detecting fraud in highly imbalanced datasets. Covers using a fraud data simulator. |
 
-#### Visualization
-
-- [UW Interactive Data Lab Curriculum](https://idl.uw.edu/visualization-curriculum/intro.html): Visualization using Vega-Lite and Altair.
-- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/): Principles and examples of clear, effective visual communication.
-
-#### Time Series
-
-- [Forecasting: Principles and Practice](https://otexts.com/fpp2/): Covers forecasting techniques like exponential smoothing and ARIMA, with examples in R.
-
-#### Data Imputation
-
-- [Flexible Imputation of Missing Data](https://stefvanbuuren.name/fimd/): Methods to handle missing data, with emphasis on multiple imputation.
-
-#### Fraud Detection
-
-- [Fraud Detection Handbook](https://fraud-detection-handbook.github.io/fraud-detection-handbook/Foreword.html): Applied techniques for detecting fraud in highly imbalanced, real-world datasets. Includes examples and code.
-
-
+:::
 
 ### Tools
 - [SDV](https://github.com/sdv-dev/SDV) - Python library for creating tabular synthetic data.
@@ -35,3 +24,6 @@ A collection of useful resources and tools.
 
 - [Quarto](https://quarto.org/): Publishing system. Supports notebooks, markdown, citations, and publishing to HTML and PDF.
 - [bootswatch](https://bootswatch.com/): Collection of free themes for Bootstrap-based sites (used to style this book).
+
+
+
