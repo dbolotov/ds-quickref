@@ -1,0 +1,5 @@
+# Workflows Index {.unnumbered}
+
+This section includes end-to-end Jupyter Notebooks with examples of common data science workflows.
+
+- [Supervised learning (classification)](supervised_learning) - Scikit-learn-based workflow; training a random forest with preprocessing and grid search on the penguins dataset.

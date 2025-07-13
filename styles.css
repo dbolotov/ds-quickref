@@ -25,3 +25,27 @@ table tr:nth-child(even) {
 .table-small {
   font-size: 0.9em;
 }
+
+/* styles.css */
+
+:root {
+  --bs-font-sans-serif: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --bs-body-font-size: 1rem;
+  --bs-body-line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+/* Code blocks */
+pre code {
+  font-size: 0.9rem;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  padding: 0.75em;
+  border-radius: 6px;
+}

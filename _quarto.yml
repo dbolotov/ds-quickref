@@ -7,16 +7,22 @@ book:
   author: "Dmitriy Bolotov"
   chapters:
     - index.qmd
+    - part: "Workflows"
+      chapters:
+        - workflows/index.qmd
+        - workflows/supervised_learning.ipynb
     - common_issues.qmd
+
     - glossary.qmd
     - references.qmd
 
 format:
   html:
     theme:
-      - lumen
+      - flatly
       - brand
     toc: true
     css: styles.css
 
-
+execute:
+  enabled: true
