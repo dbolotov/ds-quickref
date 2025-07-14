@@ -28,11 +28,11 @@ jobs:
           pip install jupyter scikit-learn pandas numpy seaborn
           pip install git+https://github.com/dbolotov/minieda.git
 
-      - name: Render Book
+      - name: Render Site
         run: quarto render
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_book
+          publish_dir: ./_site
