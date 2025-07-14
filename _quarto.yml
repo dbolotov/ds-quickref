@@ -37,6 +37,7 @@ language:
 
 format:
   html:
+    link-external-newwindow: true
     theme:
       - materia
       - brand
