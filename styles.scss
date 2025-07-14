@@ -48,6 +48,11 @@ tr:nth-child(even) {
   font-size: 0.80rem; 
 }
 
+/* set minimum width on first column in small table*/
+.small-table td:first-child {
+  min-width: 70px;
+}
+
 /* Code blocks */
 pre code {
   font-size: $font-size-small;

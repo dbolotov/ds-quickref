@@ -4,7 +4,7 @@ A collection of useful resources and tools.
 
 ### Online Books
 
-::: {.table-small}
+::: {.small-table}
 
 | Category          | Resource | Description |
 |------------------|----------|-------------|
@@ -23,7 +23,7 @@ A collection of useful resources and tools.
 
 ### Resources used to make this guide
 
-- [Quarto](https://quarto.org/): Publishing system. Supports notebooks, markdown, citations, and publishing to HTML and PDF.
-- [bootswatch](https://bootswatch.com/): Collection of free themes for Bootstrap-based sites (used to style this book).
+- [Quarto](https://quarto.org/): Extensive publishing system. Supports jupyter notebooks and markdown.
+- [bootswatch](https://bootswatch.com/): Collection of free themes for Bootstrap-based sites.
 
 
