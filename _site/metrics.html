@@ -174,7 +174,6 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#related-terms" id="toc-related-terms" class="nav-link" data-scroll-target="#related-terms">Related terms</a></li>
   <li><a href="#classification" id="toc-classification" class="nav-link" data-scroll-target="#classification">Classification</a></li>
-  <li><a href="#accuracy" id="toc-accuracy" class="nav-link" data-scroll-target="#accuracy">Accuracy</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -188,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="data-science-and-machine-learning-metrics" class="level1 unnumbered">
 <h1 class="unnumbered">Data Science and Machine Learning Metrics</h1>
-<p>This page is a quick reference for common metrics across tasks like classification, regression, and clustering. Each entry includes a definition, when to use it, and links to Wikipedia and relevant scikit-learn doc. This list is not meant to be exhaustive.</p>
+<p>This page is a quick reference for common metrics across tasks like classification, regression, and clustering. Each entry includes a definition, when to use it, and links to an explanation (mostly from Wikipedia) and the relevant scikit-learn doc. This list is not meant to be exhaustive.</p>
 <section id="what-are-metrics" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-metrics">What Are Metrics?</h2>
 <p>A <strong>metric</strong> is a number that measures model performance, or how well predictions match actual outcomes.</p>
@@ -207,34 +206,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="classification" class="level3">
 <h3 class="anchored" data-anchor-id="classification">Classification</h3>
-</section>
-<section id="accuracy" class="level3">
-<h3 class="anchored" data-anchor-id="accuracy">Accuracy</h3>
 <section id="regression" class="level4">
 <h4 class="anchored" data-anchor-id="regression">Regression</h4>
-<div class="small-table">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Metric</th>
-<th>sklearn</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://en.wikipedia.org/wiki/Mean_squared_error">MSE</a></td>
-<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html">link</a></td>
-<td><strong>Mean Squared Error</strong>. Average squared difference between predictions and true values. Penalizes larger errors more; sensitive to outliers. Not in original units.</td>
-</tr>
-<tr class="even">
-<td><a href="https://en.wikipedia.org/wiki/Root-mean-square_deviation">RMSE</a></td>
-<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.root_mean_squared_error.html">link</a></td>
-<td><strong>Root Mean Squared Error</strong>. Same as MSE but in the original unit scale; easier to interpret. Still sensitive to outliers.</td>
-</tr>
-</tbody>
-</table>
-</div>
 <div class="small-table">
 <table class="caption-top table">
 <thead>
@@ -271,7 +244,7 @@ ul.task-list li input[type="checkbox"] {
 <td><strong>Adjusted R²</strong>. Like R² but penalizes for additional predictors. Helps avoid overfitting. Must be computed manually.</td>
 </tr>
 <tr class="even">
-<td><a href="https://en.wikipedia.org/wiki/Mean_squared_logarithmic_error">MSLE</a></td>
+<td><a href="https://permetrics.readthedocs.io/en/latest/pages/regression/MSLE.html">MSLE</a></td>
 <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html">link</a></td>
 <td><strong>Mean Squared Log Error</strong>. MSE on log-transformed targets. Good for targets spanning orders of magnitude.</td>
 </tr>
