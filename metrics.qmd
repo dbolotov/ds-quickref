@@ -2,7 +2,7 @@
 
 This page is a quick reference for common metrics across tasks like classification, regression, and clustering. Each entry includes a definition, when to use it, and links to an explanation (mostly from Wikipedia) and the relevant scikit-learn doc. This list is not meant to be exhaustive.
 
-## What Are Metrics?
+### Metrics explained
 
 A **metric** is a number that measures model performance, or how well predictions match actual outcomes.
 
@@ -10,29 +10,46 @@ A **metric** is a number that measures model performance, or how well prediction
 - In **unsupervised learning**, they assess structure or similarity (e.g. silhouette score).
 - During training, metrics guide choices like model selection and early stopping.
 
-### Related terms
+#### Related terms
 
 - **Loss function**: What the model *optimizes* during training.
 - **Metric**: What you *monitor* to evaluate results.
 - **Error metric**: Often used in regression to describe prediction error.
 
 
+### Metrics tables
 
-### Classification
+#### Classification
+
+::: {.small-table}
+
+| Metric | Code | Details |
+|--------|------|---------|
+| [Accuracy](https://en.wikipedia.org/wiki/Accuracy_and_precision) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) | **Accuracy**. Proportion of correct predictions to total predictions. Simple and intuitive. Can be very misleading for imbalanced classes. |
+| [Precision](https://en.wikipedia.org/wiki/Precision_and_recall) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html) | **Precision**. True Positives / (True Positives + False Positives). How many predicted positives are correct. |
+| [Recall](https://en.wikipedia.org/wiki/Precision_and_recall) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html) | **Recall**. True Positives / (True Positives + False Negatives). How many actual positives were captured. |
+| [F1](https://en.wikipedia.org/wiki/F-score) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html) | **F1 Score**. Harmonic mean of precision and recall. Good for imbalanced classes. |
+| [ROC AUC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | **ROC AUC**. Area under the ROC curve. Evaluates ranking performance across thresholds. |
+| [PR AUC](https://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html) | **PR AUC**. Area under the Precision-Recall curve. Better than ROC AUC for rare positives. |
+| [Log Loss](https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_loss_function_and_log_loss) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html) | **Logarithmic Loss**. Penalizes confident wrong predictions. Common in probabilistic classifiers. |
+| [Balanced Acc](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html) | **Balanced Accuracy**. Mean recall across classes. Helps with imbalanced classes. |
+| [MCC](https://en.wikipedia.org/wiki/Matthews_correlation_coefficient) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html) | **Matthews Correlation Coefficient** Balanced score even for class imbalance. Based on confusion matrix. |
+
+:::
 
 #### Regression
 
 ::: {.small-table}
 
-| Metric | sklearn | Details |
+| Metric    | Code | Details |
 |--------|---------|---------|
-| [MSE](https://en.wikipedia.org/wiki/Mean_squared_error) | [link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html) | **Mean Squared Error**. Average squared difference between predictions and true values. Penalizes larger errors more; sensitive to outliers. Not in original units. |
-| [RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation) | [link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.root_mean_squared_error.html) | **Root Mean Squared Error**. Same as MSE but in the original unit scale; easier to interpret. Still sensitive to outliers. |
-| [MAE](https://en.wikipedia.org/wiki/Mean_absolute_error) | [link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html) | **Mean Absolute Error**. Average absolute difference between predictions and actual values. More robust to outliers than MSE. |
-| [R²](https://en.wikipedia.org/wiki/Coefficient_of_determination) | [link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html) | **Coefficient of Determination**. Measures proportion of variance explained by the model. Can be negative. |
-| [Adjusted R²](https://en.wikipedia.org/wiki/Coefficient_of_determination#Adjusted_R2) | *(not built-in)* | **Adjusted R²**. Like R² but penalizes for additional predictors. Helps avoid overfitting. Must be computed manually. |
-| [MSLE](https://permetrics.readthedocs.io/en/latest/pages/regression/MSLE.html) | [link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html) | **Mean Squared Log Error**. MSE on log-transformed targets. Good for targets spanning orders of magnitude. |
-| [MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) | [link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_percentage_error.html) | **Mean Absolute Percentage Error**. Average of absolute percentage errors. Can blow up if targets are near zero. |
-| [SMAPE](https://en.wikipedia.org/wiki/Symmetric_mean_absolute_percentage_error) | *(not built-in)* | **Symmetric MAPE**. Like MAPE but less sensitive to small denominators. Often used in time series. Must implement manually. |
+| [MSE](https://en.wikipedia.org/wiki/Mean_squared_error) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html) | **Mean Squared Error**. Average squared difference between predictions and true values. Penalizes larger errors more; sensitive to outliers. Not in original units. |
+| [RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.root_mean_squared_error.html) | **Root Mean Squared Error**. Same as MSE but in the original unit scale; easier to interpret. Still sensitive to outliers. |
+| [MAE](https://en.wikipedia.org/wiki/Mean_absolute_error) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html) | **Mean Absolute Error**. Average absolute difference between predictions and actual values. More robust to outliers than MSE. |
+| [R²](https://en.wikipedia.org/wiki/Coefficient_of_determination) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html) | **Coefficient of Determination**. Measures proportion of variance explained by the model. Can be negative. |
+| [Adj R²](https://en.wikipedia.org/wiki/Coefficient_of_determination#Adjusted_R2) |  | **Adjusted R²**. Like R² but penalizes for additional predictors. Helps avoid overfitting. Must be computed manually. |
+| [MSLE](https://permetrics.readthedocs.io/en/latest/pages/regression/MSLE.html) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html) | **Mean Squared Log Error**. MSE on log-transformed targets. Good for targets spanning orders of magnitude. |
+| [MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_percentage_error.html) | **Mean Absolute Percentage Error**. Average of absolute percentage errors. Can blow up if targets are near zero. |
+| [SMAPE](https://en.wikipedia.org/wiki/Symmetric_mean_absolute_percentage_error) |  | **Symmetric MAPE**. Like MAPE but less sensitive to small denominators. Often used in time series. Must implement manually. |
 
 :::
