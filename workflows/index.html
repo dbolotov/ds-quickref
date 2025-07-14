@@ -65,9 +65,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../styles.scss">
 </head>
 
 <body class="nav-sidebar floating">
@@ -135,8 +135,14 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Metrics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../common_problems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Common Problems in DS</span></a>
+ <span class="menu-text">Common DS Problems</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -574,4 +580,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
