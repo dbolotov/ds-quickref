@@ -1,5 +1,5 @@
 # Workflows Index {.unnumbered}
 
-This section includes end-to-end Jupyter Notebooks with examples of common data science workflows.
+This section contains end-to-end Jupyter Notebooks with examples of common data science workflows.
 
-- [Supervised learning (classification)](supervised_learning) - Training a random forest classifier with scikit-learn preprocessing and grid search on the penguins dataset.
+- [Classification with Tabular Data](classification_tabular) - Training a random forest classifier with scikit-learn preprocessing and grid search on the Palmer penguins dataset.

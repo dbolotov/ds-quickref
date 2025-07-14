@@ -18,7 +18,7 @@ website:
       - section: "Workflows"
         contents:
           - workflows/index.qmd
-          - workflows/supervised_learning.ipynb
+          - workflows/classification_tabular.ipynb
       
       - text: "Metrics"
         href: metrics.qmd
