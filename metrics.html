@@ -169,11 +169,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#data-science-and-machine-learning-metrics" id="toc-data-science-and-machine-learning-metrics" class="nav-link active" data-scroll-target="#data-science-and-machine-learning-metrics">Data Science and Machine Learning Metrics</a>
   <ul class="collapse">
-  <li><a href="#what-are-metrics" id="toc-what-are-metrics" class="nav-link" data-scroll-target="#what-are-metrics">What Are Metrics?</a>
-  <ul class="collapse">
-  <li><a href="#related-terms" id="toc-related-terms" class="nav-link" data-scroll-target="#related-terms">Related terms</a></li>
-  <li><a href="#classification" id="toc-classification" class="nav-link" data-scroll-target="#classification">Classification</a></li>
-  </ul></li>
+  <li><a href="#metrics-explained" id="toc-metrics-explained" class="nav-link" data-scroll-target="#metrics-explained">Metrics explained</a></li>
+  <li><a href="#metrics-tables" id="toc-metrics-tables" class="nav-link" data-scroll-target="#metrics-tables">Metrics tables</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -187,24 +184,86 @@ ul.task-list li input[type="checkbox"] {
 <section id="data-science-and-machine-learning-metrics" class="level1 unnumbered">
 <h1 class="unnumbered">Data Science and Machine Learning Metrics</h1>
 <p>This page is a quick reference for common metrics across tasks like classification, regression, and clustering. Each entry includes a definition, when to use it, and links to an explanation (mostly from Wikipedia) and the relevant scikit-learn doc. This list is not meant to be exhaustive.</p>
-<section id="what-are-metrics" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-metrics">What Are Metrics?</h2>
+<section id="metrics-explained" class="level3">
+<h3 class="anchored" data-anchor-id="metrics-explained">Metrics explained</h3>
 <p>A <strong>metric</strong> is a number that measures model performance, or how well predictions match actual outcomes.</p>
 <ul>
 <li>In <strong>supervised learning</strong>, metrics evaluate prediction quality (e.g.&nbsp;RMSE, F1).</li>
 <li>In <strong>unsupervised learning</strong>, they assess structure or similarity (e.g.&nbsp;silhouette score).</li>
 <li>During training, metrics guide choices like model selection and early stopping.</li>
 </ul>
-<section id="related-terms" class="level3">
-<h3 class="anchored" data-anchor-id="related-terms">Related terms</h3>
+<section id="related-terms" class="level4">
+<h4 class="anchored" data-anchor-id="related-terms">Related terms</h4>
 <ul>
 <li><strong>Loss function</strong>: What the model <em>optimizes</em> during training.</li>
 <li><strong>Metric</strong>: What you <em>monitor</em> to evaluate results.</li>
 <li><strong>Error metric</strong>: Often used in regression to describe prediction error.</li>
 </ul>
 </section>
-<section id="classification" class="level3">
-<h3 class="anchored" data-anchor-id="classification">Classification</h3>
+</section>
+<section id="metrics-tables" class="level3">
+<h3 class="anchored" data-anchor-id="metrics-tables">Metrics tables</h3>
+<section id="classification" class="level4">
+<h4 class="anchored" data-anchor-id="classification">Classification</h4>
+<div class="small-table">
+<table class="table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Code</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Accuracy_and_precision">Accuracy</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html">skl</a></td>
+<td><strong>Accuracy</strong>. Proportion of correct predictions to total predictions. Simple and intuitive. Can be very misleading for imbalanced classes.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/Precision_and_recall">Precision</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html">skl</a></td>
+<td><strong>Precision</strong>. True Positives / (True Positives + False Positives). How many predicted positives are correct.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Precision_and_recall">Recall</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html">skl</a></td>
+<td><strong>Recall</strong>. True Positives / (True Positives + False Negatives). How many actual positives were captured.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/F-score">F1</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html">skl</a></td>
+<td><strong>F1 Score</strong>. Harmonic mean of precision and recall. Good for imbalanced classes.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">ROC AUC</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html">skl</a></td>
+<td><strong>ROC AUC</strong>. Area under the ROC curve. Evaluates ranking performance across thresholds.</td>
+</tr>
+<tr class="even">
+<td><a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html">PR AUC</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html">skl</a></td>
+<td><strong>PR AUC</strong>. Area under the Precision-Recall curve. Better than ROC AUC for rare positives.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_loss_function_and_log_loss">Log Loss</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html">skl</a></td>
+<td><strong>Logarithmic Loss</strong>. Penalizes confident wrong predictions. Common in probabilistic classifiers.</td>
+</tr>
+<tr class="even">
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html">Balanced Acc</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html">skl</a></td>
+<td><strong>Balanced Accuracy</strong>. Mean recall across classes. Helps with imbalanced classes.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Matthews_correlation_coefficient">MCC</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html">skl</a></td>
+<td><strong>Matthews Correlation Coefficient</strong> Balanced score even for class imbalance. Based on confusion matrix.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="regression" class="level4">
 <h4 class="anchored" data-anchor-id="regression">Regression</h4>
 <div class="small-table">
@@ -212,49 +271,49 @@ ul.task-list li input[type="checkbox"] {
 <thead>
 <tr class="header">
 <th>Metric</th>
-<th>sklearn</th>
+<th>Code</th>
 <th>Details</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><a href="https://en.wikipedia.org/wiki/Mean_squared_error">MSE</a></td>
-<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html">link</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html">skl</a></td>
 <td><strong>Mean Squared Error</strong>. Average squared difference between predictions and true values. Penalizes larger errors more; sensitive to outliers. Not in original units.</td>
 </tr>
 <tr class="even">
 <td><a href="https://en.wikipedia.org/wiki/Root-mean-square_deviation">RMSE</a></td>
-<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.root_mean_squared_error.html">link</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.root_mean_squared_error.html">skl</a></td>
 <td><strong>Root Mean Squared Error</strong>. Same as MSE but in the original unit scale; easier to interpret. Still sensitive to outliers.</td>
 </tr>
 <tr class="odd">
 <td><a href="https://en.wikipedia.org/wiki/Mean_absolute_error">MAE</a></td>
-<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html">link</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html">skl</a></td>
 <td><strong>Mean Absolute Error</strong>. Average absolute difference between predictions and actual values. More robust to outliers than MSE.</td>
 </tr>
 <tr class="even">
 <td><a href="https://en.wikipedia.org/wiki/Coefficient_of_determination">R²</a></td>
-<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html">link</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html">skl</a></td>
 <td><strong>Coefficient of Determination</strong>. Measures proportion of variance explained by the model. Can be negative.</td>
 </tr>
 <tr class="odd">
-<td><a href="https://en.wikipedia.org/wiki/Coefficient_of_determination#Adjusted_R2">Adjusted R²</a></td>
-<td><em>(not built-in)</em></td>
+<td><a href="https://en.wikipedia.org/wiki/Coefficient_of_determination#Adjusted_R2">Adj R²</a></td>
+<td></td>
 <td><strong>Adjusted R²</strong>. Like R² but penalizes for additional predictors. Helps avoid overfitting. Must be computed manually.</td>
 </tr>
 <tr class="even">
 <td><a href="https://permetrics.readthedocs.io/en/latest/pages/regression/MSLE.html">MSLE</a></td>
-<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html">link</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html">skl</a></td>
 <td><strong>Mean Squared Log Error</strong>. MSE on log-transformed targets. Good for targets spanning orders of magnitude.</td>
 </tr>
 <tr class="odd">
 <td><a href="https://en.wikipedia.org/wiki/Mean_absolute_percentage_error">MAPE</a></td>
-<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_percentage_error.html">link</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_percentage_error.html">skl</a></td>
 <td><strong>Mean Absolute Percentage Error</strong>. Average of absolute percentage errors. Can blow up if targets are near zero.</td>
 </tr>
 <tr class="even">
 <td><a href="https://en.wikipedia.org/wiki/Symmetric_mean_absolute_percentage_error">SMAPE</a></td>
-<td><em>(not built-in)</em></td>
+<td></td>
 <td><strong>Symmetric MAPE</strong>. Like MAPE but less sensitive to small denominators. Often used in time series. Must implement manually.</td>
 </tr>
 </tbody>
@@ -262,7 +321,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
-</section>
 </section>
 </section>
 </section>
