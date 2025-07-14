@@ -19,8 +19,11 @@ website:
         contents:
           - workflows/index.qmd
           - workflows/supervised_learning.ipynb
+      
+      - text: "Metrics"
+        href: metrics.qmd
 
-      - text: "Common Problems in DS"
+      - text: "Common DS Problems"
         href: common_problems.qmd
 
       - text: "Glossary"
@@ -37,8 +40,8 @@ format:
     theme:
       - materia
       - brand
+      - styles.scss
     toc: true
-    css: styles.scss
     font:
       sans: "Segoe UI"
     fontsize: 1rem
@@ -48,6 +51,7 @@ format:
       body-width: 800px
       margin-width: 300px
       gutter-width: 2rem
+    smooth-scroll: true
 
 execute:
   enabled: true

@@ -1,6 +1,6 @@
 /* Variables */
 $font-size-base: 0.95rem;
-$font-size-small: 0.9rem;
+$font-size-small: 0.65rem;
 $table-border-color: #ddd;
 $table-zebra-color: #f9f9f9;
 $table-header-bg: #f0f4f8;
@@ -8,7 +8,7 @@ $table-header-text: #333;
 $code-bg: #f8f9fa;
 $code-border: #e0e0e0;
 $sidebar-bg: #f9f9f9;
-$sidebar-border: #006dcd;
+$sidebar-border: #ccc;
 $sidebar-text: #111;
 $sidebar-active-bg: #d1e3f0;
 
@@ -25,11 +25,17 @@ table {
 //   padding: 8px;
 // }
 
-th {
-  background-color: #f8f9fa;
-  border-bottom: 2px solid #dee2e6;
-  padding: 0.75em;
-  text-align: left;
+// th {
+//   background-color: #f8f9fa;
+//   border-bottom: 2px solid #dee2e6;
+//   padding: 0.75em;
+//   text-align: left;
+// }
+
+tr:first-child th {
+  background-color: $table-header-bg;
+  color: $table-header-text;
+  font-weight: 600;
 }
 
 td {
@@ -41,23 +47,15 @@ td {
 
 /* Striped tables */
 tr:nth-child(even) {
-  background-color: #f8f9fa;
-}
-
-tr:first-child th {
-  background-color: $table-header-bg;
-  color: $table-header-text;
-  font-weight: 600;
-}
-
-tr:nth-child(even) {
   background-color: $table-zebra-color;
 }
 
-&.table-small {
-  font-size: $font-size-small;
-}
 
+
+
+.small-table {
+  font-size: 0.85rem; 
+}
 
 /* Code blocks */
 pre code {
@@ -71,7 +69,8 @@ pre code {
 /* Sidebar */
 .sidebar-navigation {
   background-color: $sidebar-bg;
-  border-right: 1px solid $sidebar-border;
+  // border-right: 1px solid $sidebar-border;
+  border-right: 1px solid #ccc;
 
   // Optional: enhance the border
 //   border-right: 2px solid #9a0000;
@@ -93,6 +92,10 @@ pre code {
   }
 }
 
+// .sidebar-navigation {
+//   border-right: 1px solid #ccc;
+// }
+
 /* Logo and header spacing */
 .sidebar-title {
   margin-bottom: 1rem;
@@ -107,6 +110,3 @@ pre code {
 //   border-right: 1px solid #ccc
 // }
 
-.sidebar-navigation {
-  border-right: 1px solid #ccc;
-}
