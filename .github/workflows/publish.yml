@@ -25,7 +25,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install jupyter plotly scikit-learn pandas numpy
+          pip install jupyter scikit-learn pandas numpy seaborn
 
       - name: Render Book
         run: quarto render
