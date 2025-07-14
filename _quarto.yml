@@ -1,28 +1,53 @@
 project:
-  type: book
+  type: website
 
-book:
+website:
   title: "DS QuickRef"
-  subtitle: "A practical reference for machine learning, data science, and modeling workflows"
-  author: "Dmitriy Bolotov"
-  chapters:
-    - index.qmd
-    - part: "Workflows"
-      chapters:
-        - workflows/index.qmd
-        - workflows/supervised_learning.ipynb
-    - common_issues.qmd
+  search: 
+    location: sidebar
+    type: textbox
+  sidebar:
+    style: "floating"
+    search: true
+    logo: dsqr_logo.png
+    logo-alt: "DS QuickRef"
+    contents:
+      - text: "Introduction"
+        href: index.qmd
 
-    - glossary.qmd
-    - references.qmd
+      - section: "Workflows"
+        contents:
+          - workflows/index.qmd
+          - workflows/supervised_learning.ipynb
+
+      - text: "Common Problems in DS"
+        href: common_problems.qmd
+
+      - text: "Glossary"
+        href: glossary.qmd
+
+      - text: "References"
+        href: references.qmd
+
+language: 
+  search-text-placeholder: Search
 
 format:
   html:
     theme:
-      - flatly
+      - materia
       - brand
     toc: true
-    css: styles.css
+    css: styles.scss
+    font:
+      sans: "Segoe UI"
+    fontsize: 1rem
+    line-height: 1.6
+    grid:
+      sidebar-width: 400px
+      body-width: 800px
+      margin-width: 300px
+      gutter-width: 2rem
 
 execute:
   enabled: true

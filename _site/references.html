@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dmitriy Bolotov">
 
-<title>DS QuickRef</title>
+<title>references – DS QuickRef</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./workflows/index.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -41,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c27fdc8e5b00b532d2d5a75ada188648.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d95841a0a8ae3f55fe9977b1bdc22c33.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -54,7 +52,6 @@ ul.task-list li input[type="checkbox"] {
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -63,7 +60,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
+    "search-text-placeholder": "Search",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -71,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.scss">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -83,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">About</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -97,9 +94,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">DS QuickRef</a> 
-    </div>
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./dsqr_logo.png" alt="DS QuickRef" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -110,8 +107,8 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">About</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -132,15 +129,15 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflows/supervised_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Supervised Learning</span></span></a>
+ <span class="menu-text">Supervised Learning</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./common_issues.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Common Issues in Data Science</span></a>
+  <a href="./common_problems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Common Problems in DS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -151,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -162,56 +159,88 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link active" data-scroll-target="#references">References</a>
+  <ul class="collapse">
+  <li><a href="#online-books" id="toc-online-books" class="nav-link" data-scroll-target="#online-books">Online Books</a></li>
+  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools">Tools</a></li>
+  <li><a href="#resources-used-to-make-this-guide" id="toc-resources-used-to-make-this-guide" class="nav-link" data-scroll-target="#resources-used-to-make-this-guide">Resources used to make this guide</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">DS QuickRef</h1>
-<p class="subtitle lead">A practical reference for machine learning, data science, and modeling workflows</p>
+
+
+
+<section id="references" class="level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<p>A collection of useful resources and tools.</p>
+<section id="online-books" class="level3">
+<h3 class="anchored" data-anchor-id="online-books">Online Books</h3>
+<div class="table-small">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Category</th>
+<th>Resource</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Explainability</td>
+<td><a href="https://christophm.github.io/interpretable-ml-book/">Interpretable Machine Learning</a></td>
+<td>A practical overview of techniques for making ML models more transparent, including SHAP.</td>
+</tr>
+<tr class="even">
+<td>Visualization</td>
+<td><a href="https://idl.uw.edu/visualization-curriculum/intro.html">UW Interactive Data Lab Curriculum</a></td>
+<td>Book on statistical visualization using Vega-Lite and Altair.</td>
+</tr>
+<tr class="odd">
+<td>Visualization</td>
+<td><a href="https://clauswilke.com/dataviz/">Fundamentals of Data Visualization</a></td>
+<td>Principles and examples of clear, effective visual communication.</td>
+</tr>
+<tr class="even">
+<td>Time Series</td>
+<td><a href="https://otexts.com/fpp2/">Forecasting: Principles and Practice</a></td>
+<td>Covers forecasting techniques like exponential smoothing and ARIMA, with examples in R.</td>
+</tr>
+<tr class="odd">
+<td>Data Imputation</td>
+<td><a href="https://stefvanbuuren.name/fimd/">Flexible Imputation of Missing Data</a></td>
+<td>Methods to handle missing data, with emphasis on multiple imputation.</td>
+</tr>
+<tr class="even">
+<td>Fraud Detection</td>
+<td><a href="https://fraud-detection-handbook.github.io/fraud-detection-handbook/Foreword.html">Fraud Detection Handbook</a></td>
+<td>Applied techniques for detecting fraud in highly imbalanced datasets. Covers using a fraud data simulator.</td>
+</tr>
+</tbody>
+</table>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dmitriy Bolotov </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="about" class="level1 unnumbered">
-<h1 class="unnumbered">About</h1>
-<p>This book is a quick-reference guide for data science, machine learning, and related topics. It’s written for students and working professionals who want a practical summary of key ideas, workflows, and tools.</p>
-<p>This guide focuses on quick definitions, examples, short reminders, and curated links. It’s meant to be used when:</p>
+</section>
+<section id="tools" class="level3">
+<h3 class="anchored" data-anchor-id="tools">Tools</h3>
 <ul>
-<li>You’ve already learned a concept and need a quick refresher.</li>
-<li>You’re working on a project and want to check best practices.</li>
-<li>You forgot which metrics apply to a specific ML task.</li>
-<li>You want a shortcut to useful external resources.</li>
+<li><a href="https://github.com/sdv-dev/SDV">SDV</a> - Python library for creating tabular synthetic data.</li>
 </ul>
-<p>This guide is a work in progress and will grow over time as I add new topics and improve existing ones.</p>
-<p>The field is wide, and no two data scientists use the exact same approach or tools. This guide reflects a generalist perspective, based on real-world use cases and common patterns.</p>
+</section>
+<section id="resources-used-to-make-this-guide" class="level3">
+<h3 class="anchored" data-anchor-id="resources-used-to-make-this-guide">Resources used to make this guide</h3>
+<ul>
+<li><a href="https://quarto.org/">Quarto</a>: Publishing system. Supports notebooks, markdown, citations, and publishing to HTML and PDF.</li>
+<li><a href="https://bootswatch.com/">bootswatch</a>: Collection of free themes for Bootstrap-based sites (used to style this book).</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -614,15 +643,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./workflows/index.html" class="pagination-link" aria-label="Workflows Index">
-        <span class="nav-page-text">Workflows Index</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

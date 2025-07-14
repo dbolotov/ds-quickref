@@ -1,4 +1,4 @@
-# Common Issues in Data Science {.unnumbered}
+# Common Problems in Data Science {.unnumbered}
 
 ## Data
 
@@ -12,6 +12,7 @@
 | Data has extreme values, outliers, or anomalies | Use robust statistics, or find such values using outlier/anomaly detection methods. Consider removing examples. |
 | Data may have been faked | Check for duplicate rows, unnatural distributions, and value repetition |
 | Data leakage | Review data sources and pipeline; make sure target isn’t leaking into features |
+
 
 ## Modeling
 

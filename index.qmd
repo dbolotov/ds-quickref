@@ -1,14 +1,14 @@
-# About {.unnumbered}
+# Data Science Quick Reference {.unnumbered}
 
-This book is a quick-reference guide for data science, machine learning, and related topics. It’s written for students and working professionals who want a practical summary of key ideas, workflows, and tools.
+This site is a quick-access resource for data science, machine learning, and related topics, with examples in Python. It's built for students and professionals who want a practical summary of key ideas, workflows, and tools.
 
-This guide focuses on quick definitions, examples, short reminders, and curated links. It’s meant to be used when:
+The content emphasizes short reminders, real-world examples, and curated links. Use it when:
 
-- You’ve already learned a concept and need a quick refresher.
-- You’re working on a project and want to check best practices.
-- You forgot which metrics apply to a specific ML task.
-- You want a shortcut to useful external resources.
+- You need a refresher on a concept you’ve already learned.  
+- You're in the middle of a project and want to check best practices.  
+- You’re deciding which metrics fit a specific ML task.  
+- You're looking for quick access to reliable external resources.  
 
-This guide is a work in progress and will grow over time as I add new topics and improve existing ones.
+It’s a work in progress and will grow over time.
 
-The field is wide, and no two data scientists use the exact same approach or tools. This guide reflects a generalist perspective, based on real-world use cases and common patterns.
+The approach is generalist, reflecting common patterns seen in real-world projects. Tools and methods vary across teams, but this reference focuses on Python, with `pandas` and `scikit-learn` at the core.

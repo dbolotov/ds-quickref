@@ -1,3 +1,4 @@
+/* Table styles */
 table {
   border-collapse: collapse;
   width: 100%;
@@ -10,35 +11,18 @@ th, td {
   padding: 8px;
 }
 
-/* Style first row of table (header row) */
 table tr:first-child th {
-  background-color: #f0f4f8; /* Soft blue-gray */
+  background-color: #f0f4f8;
   color: #333;
   font-weight: 600;
 }
 
-/* Optional: Zebra striping */
 table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
 .table-small {
   font-size: 0.9em;
-}
-
-/* styles.css */
-
-:root {
-  --bs-font-sans-serif: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --bs-body-font-size: 1rem;
-  --bs-body-line-height: 1.6;
-}
-
-/* Headings */
-h1, h2, h3, h4, h5 {
-  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.3px;
 }
 
 /* Code blocks */
@@ -48,4 +32,31 @@ pre code {
   border: 1px solid #e0e0e0;
   padding: 0.75em;
   border-radius: 6px;
+}
+
+/* Sidebar background and link colors */
+.sidebar-navigation {
+  background-color: #f9f9f9;
+  border-right: 1px solid #ddd;
+  font-size: 0.95rem;
+  padding-left: 10rem;
+  padding-right: 1rem;
+}
+
+.sidebar-navigation a {
+  color: #111 !important;
+}
+
+.sidebar-navigation .active {
+  background-color: #d1e3f0 !important;
+}
+
+/* Logo and header spacing */
+.sidebar-title {
+  margin-bottom: 1rem;
+}
+
+.sidebar-logo {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
