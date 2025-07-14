@@ -3,11 +3,15 @@
 - Oversampling
 - Overfitting and Underfitting
 - Data leakage
-- Features
-- Reinforcement learning
-- Supervised learning
-- Unsupervised learning
+    - Examples
+        - Imputing missing values on the entire dataset before splitting into train and test.
+- Train, test, validation sets
+- Features, columns, predictors
+- Types of learning
+    - Supervised learning
+    - Unsupervised learning
+    - Deep learning
+    - Reinforcement learning
 - Descriptive statistics
-- Deep learning
 - Distribution
 - Probability
