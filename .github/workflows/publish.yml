@@ -25,7 +25,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install jupyter scikit-learn pandas numpy seaborn scipy xgboost
+          pip install jupyter scikit-learn pandas numpy seaborn scipy xgboost statsmodels
           pip install git+https://github.com/dbolotov/minieda.git
 
       - name: Render Site
