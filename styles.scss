@@ -16,12 +16,22 @@ $sidebar-active-bg: #f4a281;
 /*-- scss:rules --*/
 
 /* Headings */
-h1 {font-size: 1.6rem;}
 
+$heading-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $heading-font;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  line-height: 1.3;
+  margin-top: 1.4em;
+  margin-bottom: 0.6em;
+  color: #222;
+}
+
+h1 {font-size: 1.8rem;}
 h2 {font-size: 1.4rem;}
-
 h3 {font-size: 1.15rem;}
-
 h4 {font-size: 1rem;}
 
 
@@ -55,7 +65,7 @@ tr:nth-child(even) {
 }
 
 .small-table table {
-  font-size: 0.80rem; 
+  font-size: 0.90rem; 
 }
 
 /* set minimum width on first column in small table*/
@@ -110,3 +120,31 @@ p code {
   margin-bottom: 1rem;
 }
 
+/* Navbar */
+.navbar {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  min-height: 40px;
+  background-color: #1e2a38; //   #1e2a38; // dark blue-gray background
+  // border-bottom: 1px solid #ccc; // optional subtle line
+  box-shadow: none;
+}
+
+.navbar-brand {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  font-size: 1rem;
+}
+
+.navbar-nav > li > a {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+// .navbar a, .navbar-brand, .navbar-nav > li > a {
+//   color: #ffffff !important; // text color
+// }
+
+// .navbar a:hover, .navbar-nav > li > a:hover {
+//   color: #a8d8ff !important; // hover color
+// }

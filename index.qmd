@@ -1,12 +1,13 @@
-# Data Science Quick Reference {.unnumbered}
+# **Data Science Quick Ref** {.unnumbered}
 
-This site is a quick-access resource for data science, machine learning, and related topics, with examples in Python. It's built for students and professionals who want a practical summary of key ideas, workflows, and tools.
+## About
 
-The content emphasizes short reminders, real-world examples, and curated links. Use it when:
+This site is a concise, opinionated reference for practical data science and machine learning. It's built for students and professionals looking for summaries of key ideas, workflows, and tools.
 
-- You need a refresher on a concept you’ve already learned.  
-- You're in the middle of a project and want to check best practices.  
-- You’re deciding which metrics fit a specific ML task.  
-- You're looking for quick access to reliable external resources.  
+All the code examples are in Python, using libraries like `pandas`, `scikit-learn`, and `matplotlib`. They are written to be easy to copy and adapt.
 
-Tools and methods vary across teams, but this reference focuses on Python, with `pandas` and `scikit-learn` at the core.
+This is a work in progress, made by a data scientist who got tired of looking this stuff up every time :)
+
+## Usage
+- Use the left sidebar to browse topics  
+- Use the search bar to find specific terms or methods

@@ -35,6 +35,13 @@ website:
 
       - text: "References"
         href: references.qmd
+  navbar:
+    tools:
+      - icon: github
+        menu:
+          - text: GitHub Repository
+            href:  https://github.com/dbolotov/ds-quickref
+
 
 language: 
   search-text-placeholder: Search

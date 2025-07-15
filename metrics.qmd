@@ -2,7 +2,7 @@
 
 This page is a quick reference for common metrics across tasks like classification, regression, and clustering. Each entry includes a definition, when to use it, and links to an explanation (mostly from Wikipedia) and the relevant scikit-learn doc. This list is not meant to be exhaustive.
 
-### Metrics explained
+## Metrics explained
 
 A **metric** is a number that measures model performance, or how well predictions match actual outcomes.
 
@@ -10,16 +10,16 @@ A **metric** is a number that measures model performance, or how well prediction
 - In **unsupervised learning**, they assess structure or similarity (e.g. silhouette score).
 - During training, metrics guide choices like model selection and early stopping.
 
-#### Related terms
+## Related terms
 
 - **Loss function**: What the model *optimizes* during training.
 - **Metric**: What you *monitor* to evaluate results.
 - **Error metric**: Often used in regression to describe prediction error.
 
 
-### Metrics tables
+## Metrics tables
 
-#### Classification
+### Classification
 
 ::: {.small-table}
 
@@ -37,7 +37,7 @@ A **metric** is a number that measures model performance, or how well prediction
 
 :::
 
-#### Regression
+### Regression
 
 ::: {.small-table}
 
@@ -47,9 +47,9 @@ A **metric** is a number that measures model performance, or how well prediction
 | [RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.root_mean_squared_error.html) | **Root Mean Squared Error**. Same as MSE but in the original unit scale; easier to interpret. Still sensitive to outliers. |
 | [MAE](https://en.wikipedia.org/wiki/Mean_absolute_error) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html) | **Mean Absolute Error**. Average absolute difference between predictions and actual values. More robust to outliers than MSE. |
 | [R²](https://en.wikipedia.org/wiki/Coefficient_of_determination) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html) | **Coefficient of Determination**. Measures proportion of variance explained by the model. Can be negative. |
-| [Adj R²](https://en.wikipedia.org/wiki/Coefficient_of_determination#Adjusted_R2) |  | **Adjusted R²**. Like R² but penalizes for additional predictors. Helps avoid overfitting. Must be computed manually. |
+| [Adj R²](https://en.wikipedia.org/wiki/Coefficient_of_determination#Adjusted_R2) |  | **Adjusted R²**. Like R² but penalizes for additional predictors. Helps avoid overfitting. |
 | [MSLE](https://permetrics.readthedocs.io/en/latest/pages/regression/MSLE.html) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html) | **Mean Squared Log Error**. MSE on log-transformed targets. Good for targets spanning orders of magnitude. |
 | [MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_percentage_error.html) | **Mean Absolute Percentage Error**. Average of absolute percentage errors. Can blow up if targets are near zero. |
-| [SMAPE](https://en.wikipedia.org/wiki/Symmetric_mean_absolute_percentage_error) |  | **Symmetric MAPE**. Like MAPE but less sensitive to small denominators. Often used in time series. Must implement manually. |
+| [SMAPE](https://en.wikipedia.org/wiki/Symmetric_mean_absolute_percentage_error) |  | **Symmetric MAPE**. Like MAPE but less sensitive to small denominators. Often used in time series. |
 
 :::
