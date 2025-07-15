@@ -9,6 +9,4 @@ The content emphasizes short reminders, real-world examples, and curated links. 
 - You’re deciding which metrics fit a specific ML task.  
 - You're looking for quick access to reliable external resources.  
 
-It’s a work in progress and will grow over time.
-
-The approach is generalist, reflecting common patterns seen in real-world projects. Tools and methods vary across teams, but this reference focuses on Python, with `pandas` and `scikit-learn` at the core.
+Tools and methods vary across teams, but this reference focuses on Python, with `pandas` and `scikit-learn` at the core.

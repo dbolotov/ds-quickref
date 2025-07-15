@@ -14,4 +14,7 @@
     - Reinforcement learning
 - Descriptive statistics
 - Distribution
-- Probability
+- Regularization
+    - Ridge
+    - Lasso
+    - In neural networks

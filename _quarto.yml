@@ -17,8 +17,12 @@ website:
 
       - section: "Workflows"
         contents:
-          - workflows/index.qmd
-          - workflows/classification_tabular.ipynb
+          - href: workflows/index.qmd
+            text: Workflows
+          - href: workflows/classification_tabular.ipynb
+            text: Classification
+          - href: workflows/regression_tabular.ipynb
+            text: Regression
       
       - text: "Metrics"
         href: metrics.qmd
