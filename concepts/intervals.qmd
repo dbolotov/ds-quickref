@@ -2,8 +2,6 @@
 title: "Confidence and Prediction Intervals"
 format:
   html:
-    theme: default
-    toc: true
     code-fold: true
     code-summary: "Show code"
 execute:
@@ -69,8 +67,6 @@ In this case:
 ## Visualization
 The example below uses linear regression to show both intervals for a model that predicts rainfall from humidity (from a simulated dataset). The prediction intervals are wider than the confidence intervals.
 ```{python}
-#| label: interval-viz
-
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
