@@ -152,6 +152,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Confidence &amp; Prediction Intervals</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./concepts/regularization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regularization</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -221,36 +227,50 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="glossary" class="level1 unnumbered">
-<h1 class="unnumbered">Glossary</h1>
+<section id="glossary" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="glossary">Glossary</h2>
 <ul>
-<li>Explainability</li>
-<li>Oversampling</li>
-<li>Overfitting and Underfitting</li>
-<li>Data leakage
+<li><p><strong>Oversampling</strong>: A technique to balance class distribution in imbalanced datasets by duplicating examples from the minority class.</p></li>
+<li><p><strong>Overfitting and Underfitting</strong></p>
 <ul>
-<li>Examples
+<li>Overfitting: the model memorizes training data and fails to generalize.<br>
+</li>
+<li>Underfitting: the model is too simple to capture patterns in the data.</li>
+</ul></li>
+<li><p><strong>Data leakage</strong>: When information from outside the training dataset sneaks into the model, leading to overly optimistic performance.</p>
 <ul>
-<li>Imputing missing values on the entire dataset before splitting into train and test.</li>
+<li>Example: Imputing missing values <em>before</em> splitting data into train/test sets.</li>
+</ul></li>
+<li><p><strong>Types of learning</strong></p>
+<ul>
+<li>Supervised learning: learning from labeled data.<br>
+</li>
+<li>Unsupervised learning: finding patterns in unlabeled data.<br>
+</li>
+<li>Deep learning: a subset of ML using multi-layer neural networks.<br>
+</li>
+<li>Reinforcement learning: learning by trial and error to maximize a reward signal.</li>
+</ul></li>
+<li><p><strong>Regularization</strong>: Methods to prevent overfitting by penalizing complexity or limiting model flexibility.</p>
+<ul>
+<li><strong>L1 regularization (Lasso)</strong>: Can shrink some coefficients to zero, effectively removing features. Useful for feature selection.</li>
+<li><strong>L2 regularization (Ridge)</strong>: Shrinks all coefficients toward zero but doesn’t eliminate any. Helps when many features contribute a little.</li>
+</ul></li>
+<li><p><strong>Bias-variance tradeoff</strong>: The balance between underfitting (high bias) and overfitting (high variance). A key concept in model performance tuning.</p></li>
+<li><p><strong>Model bias</strong>: Systematic error that leads a model to consistently make inaccurate predictions in a specific direction. Often caused by overly simple assumptions or biased data.</p>
+<ul>
+<li><strong>Bias-variance tradeoff</strong>: A fundamental concept in modeling. High bias leads to underfitting (model too simple), while high variance leads to overfitting (model too sensitive to training data). Good models strike a balance.</li>
+<li><strong>Model variance</strong>: Error due to the model reacting too strongly to small fluctuations in training data. Leads to poor generalization.</li>
+<li><strong>Sources of bias in data</strong>:
+<ul>
+<li><strong>Label bias</strong>: Training labels are inaccurate or inconsistent.</li>
+<li><strong>Sampling bias</strong>: The dataset isn’t representative of the real-world population.</li>
+<li><strong>Measurement bias</strong>: Inputs are recorded in a flawed or inconsistent way.</li>
 </ul></li>
 </ul></li>
-<li>Train, test, validation sets</li>
-<li>Features, columns, predictors</li>
-<li>Types of learning
-<ul>
-<li>Supervised learning</li>
-<li>Unsupervised learning</li>
-<li>Deep learning</li>
-<li>Reinforcement learning</li>
-</ul></li>
-<li>Descriptive statistics</li>
-<li>Distribution</li>
-<li>Regularization
-<ul>
-<li>Ridge</li>
-<li>Lasso</li>
-<li>In neural networks</li>
-</ul></li>
+<li><p><strong>Bootstrapping</strong>: A resampling method that draws repeated samples (with replacement) from the data to estimate uncertainty, confidence intervals, or test statistics.</p></li>
+<li><p><strong>Confidence intervals</strong>: A range of values, derived from sample data, that likely contains the true population parameter. Often interpreted (loosely) as: “We’re 95% confident the true value lies in this range.”</p></li>
+<li><p><strong>Prediction intervals</strong>: A range that likely contains a <em>future</em> individual prediction, not just the average. Wider than confidence intervals because they include both model and data uncertainty.</p></li>
 </ul>
 
 
