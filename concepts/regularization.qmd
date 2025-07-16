@@ -1,0 +1,52 @@
+---
+title: "Regularization"
+format:
+  html:
+    math: mathjax
+
+---
+
+Regularization is a set of techniques used to prevent overfitting by discouraging models from becoming too complex. It works by adding a penalty to the loss function during training. Regularization helps generalize to new data, reduces model variance, and often improves interpretability.
+
+**L1 Regularization (Lasso):**
+
+- Adds the sum of absolute values of the weights to the loss: $\text{Loss} = \text{MSE} + \lambda \sum_i |w_i|$
+- Encourages sparse models by setting some coefficients to exactly zero
+- Good for feature selection
+
+**L2 Regularization (Ridge):**
+
+- Adds the sum of squared weights to the loss: $\text{Loss} = \text{MSE} + \lambda \sum_i w_i^2$
+- Shrinks all weights but keeps them nonzero
+- Useful when many small/medium-sized coefficients are expected
+
+**Combined: Elastic Net**
+
+- Mix of L1 and L2 penalties
+- Controlled by a mixing parameter (usually called `alpha`)
+- Used when you want both sparsity and stability
+
+## In specific model types
+
+**Neural Networks**
+
+- **Dropout**: randomly disables neurons during training
+- **Weight decay**: adds L2 penalty on network weights
+- **Batch normalization**: stabilizes training and can reduce overfitting indirectly
+- **Early stopping**: monitors validation performance and stops training when improvement stalls.
+
+**Tree-Based Models**
+
+- **XGBoost** supports L1 (alpha) and L2 (lambda) penalties, plus shrinkage (learning rate), tree pruning, and early stopping.
+
+- **Random Forest** uses structural constraints instead:
+  - Bagging and feature subsampling
+  - Max depth / min leaf size as built-in regularizers
+
+## Notes on Terminology
+
+- **L1 norm**: $\|w\|_1 = \sum_i |w_i|$
+- **L2 norm**: $\|w\|_2 = \sqrt{\sum_i w_i^2}$, but usually squared in practice
+
+- "Lasso" stands for Least Absolute Shrinkage and Selection Operator (Tibshirani, 1996).  
+- "Ridge" comes from ridge traces — plots of coefficients vs. penalty strength.

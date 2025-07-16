@@ -21,6 +21,8 @@ website:
             text: "Metrics"
           - href: concepts/intervals.qmd
             text: "Confidence & Prediction Intervals"
+          - href: concepts/regularization.qmd
+            text: "Regularization"
 
       - section: "Workflows"
         contents:
