@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS QuickRef</title>
+<title>DS QuickRef - Confidence and Prediction Intervals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -67,6 +101,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -100,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workflows/index.html">Workflows</a></li><li class="breadcrumb-item"><a href="../workflows/index.html">Workflows Index</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../concepts/metrics.html">Concepts</a></li><li class="breadcrumb-item"><a href="../concepts/intervals.html">Confidence &amp; Prediction Intervals</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -148,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../concepts/intervals.html" class="sidebar-item-text sidebar-link">
+  <a href="../concepts/intervals.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Confidence &amp; Prediction Intervals</span></a>
   </div>
 </li>
@@ -165,7 +228,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../workflows/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../workflows/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workflows Index</span></a>
   </div>
 </li>
@@ -211,23 +274,142 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#workflows-index" id="toc-workflows-index" class="nav-link active" data-scroll-target="#workflows-index">Workflows Index</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../concepts/metrics.html">Concepts</a></li><li class="breadcrumb-item"><a href="../concepts/intervals.html">Confidence &amp; Prediction Intervals</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Confidence and Prediction Intervals</h1>
+</div>
 
 
 
-<section id="workflows-index" class="level1 unnumbered">
-<h1 class="unnumbered">Workflows Index</h1>
-<p>End-to-end Jupyter Notebook templates for common data science tasks. Each example uses a small, built-in dataset.</p>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Machine learning models typically return point predictions, not uncertainty estimates. However, intervals are useful when presenting results or identifying low-confidence cases. Here we discuss two types of intervals:</p>
 <ul>
-<li><a href="classification_tabular">Classification with Tabular Data</a> - Training a random forest classifier with scikit-learn preprocessing and grid search on the Palmer penguins dataset.</li>
-<li><a href="regression_tabular">Regression with Tabular Data</a> - Training different regression models with scikit-learn preprocessing and grid search on the tips dataset.</li>
+<li><strong>Confidence interval</strong>: uncertainty in the estimated mean response for a given input. Range of likely values for the <em>average prediction</em> at a given input.</li>
+<li><strong>Prediction interval</strong>: range for the actual observed value, which includes both model uncertainty and natural variability (Note: “observed value” refers to the real-world outcome that would come from data, not the model’s predicted value).</li>
 </ul>
+<p>These intervals are common in statistical modeling and in time series forecasting, but less so in machine learning because many ML models don’t compute them directly. One workaround is <strong>bootstrapping</strong>, where multiple models are fit on resampled training data, and the spread of predictions is used to estimate uncertainty. In this case, intervals are estimated empirically rather than derived analytically.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="More detail: interval formulas">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+More detail: interval formulas
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For a new input <span class="math inline">\(x_0\)</span>, regression models can estimate two types of intervals:</p>
+<ul>
+<li><strong>Confidence interval</strong>: A range where the <em>mean response</em> <span class="math inline">\(\mathbb{E}[y \mid x_0]\)</span> is expected to fall<br>
+</li>
+<li><strong>Prediction interval</strong>: A range where an <em>individual observed value</em> <span class="math inline">\(y\)</span> might fall</li>
+</ul>
+<p>Both are centered on the model’s predicted value <span class="math inline">\(\hat{y}(x_0)\)</span>, but the prediction interval is wider because it includes both model uncertainty and residual variability.</p>
+<section id="formulas" class="level3">
+<h3 class="anchored" data-anchor-id="formulas">Formulas:</h3>
+<p><span class="math display">\[
+\text{CI:} \quad \hat{y}(x_0) \pm t \cdot SE_{\text{mean}}
+\]</span></p>
+<p><span class="math display">\[
+\text{PI:} \quad \hat{y}(x_0) \pm t \cdot \sqrt{SE_{\text{mean}}^2 + \sigma^2}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\hat{y}(x_0)\)</span> is the model’s point prediction<br>
+</li>
+<li><span class="math inline">\(t\)</span> is the critical value from the <span class="math inline">\(t\)</span>-distribution<br>
+</li>
+<li><span class="math inline">\(SE_{\text{mean}}\)</span> is the standard error of the predicted mean<br>
+</li>
+<li><span class="math inline">\(\sigma^2\)</span> is the variance of the residuals</li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example">Example</h2>
+<p>Suppose we’re building a model to predict daily rainfall (in millimeters) based only on humidity. Let’s say that for the input of <code>{'humidity': 85}</code>, the model returns:</p>
+<pre><code>Predicted rainfall (mm): 3.8  
+95% confidence interval (mm): [3.5, 4.1]  
+95% prediction interval (mm): [1.2, 6.4]</code></pre>
+<p>In this case:</p>
+<ul>
+<li>The <strong>confidence interval</strong> says where the average rainfall would fall across many days with similar humidity.</li>
+<li>The <strong>prediction interval</strong> says where the rainfall for a single day with that humidity might fall, accounting for noise in the data and variation not captured by the model.</li>
+</ul>
+</section>
+<section id="visualization" class="level2">
+<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
+<p>The example below uses linear regression to show both intervals for a model that predicts rainfall from humidity (from a simulated dataset). The prediction intervals are wider than the confidence intervals.</p>
+<div id="a1f445bb" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co"># Simulate data: rainfall increases with humidity with some noise</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>np.random.seed(<span class="dv">1</span>)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>humidity <span class="op">=</span> np.random.uniform(<span class="dv">40</span>, <span class="dv">100</span>, <span class="dv">100</span>)</span>
+<span id="cb2-9"><a href="#cb2-9"></a>rainfall <span class="op">=</span> <span class="fl">0.1</span> <span class="op">*</span> humidity <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">2</span>, size<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># Fit linear model</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>X <span class="op">=</span> sm.add_constant(humidity)</span>
+<span id="cb2-13"><a href="#cb2-13"></a>model <span class="op">=</span> sm.OLS(rainfall, X).fit()</span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># Generate prediction range</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>humidity_pred <span class="op">=</span> np.linspace(<span class="dv">40</span>, <span class="dv">100</span>, <span class="dv">100</span>)</span>
+<span id="cb2-17"><a href="#cb2-17"></a>X_pred <span class="op">=</span> sm.add_constant(humidity_pred)</span>
+<span id="cb2-18"><a href="#cb2-18"></a>preds <span class="op">=</span> model.get_prediction(X_pred).summary_frame(alpha<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb2-19"><a href="#cb2-19"></a></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="co"># Plot</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb2-22"><a href="#cb2-22"></a>plt.scatter(humidity, rainfall, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">"Observed data"</span>)</span>
+<span id="cb2-23"><a href="#cb2-23"></a>plt.plot(humidity_pred, preds[<span class="st">"mean"</span>], color<span class="op">=</span><span class="st">"black"</span>, label<span class="op">=</span><span class="st">"Predicted (mean)"</span>)</span>
+<span id="cb2-24"><a href="#cb2-24"></a>plt.fill_between(humidity_pred, preds[<span class="st">"mean_ci_lower"</span>], preds[<span class="st">"mean_ci_upper"</span>],</span>
+<span id="cb2-25"><a href="#cb2-25"></a>                 color<span class="op">=</span><span class="st">"steelblue"</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">"95% Confidence Interval"</span>)</span>
+<span id="cb2-26"><a href="#cb2-26"></a>plt.fill_between(humidity_pred, preds[<span class="st">"obs_ci_lower"</span>], preds[<span class="st">"obs_ci_upper"</span>],</span>
+<span id="cb2-27"><a href="#cb2-27"></a>                 color<span class="op">=</span><span class="st">"orange"</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">"95% Prediction Interval"</span>)</span>
+<span id="cb2-28"><a href="#cb2-28"></a></span>
+<span id="cb2-29"><a href="#cb2-29"></a>plt.xlabel(<span class="st">"Humidity (%)"</span>)</span>
+<span id="cb2-30"><a href="#cb2-30"></a>plt.ylabel(<span class="st">"Rainfall (mm)"</span>)</span>
+<span id="cb2-31"><a href="#cb2-31"></a>plt.title(<span class="st">"Confidence vs. Prediction Intervals (Predicting Rainfall from Humidity)"</span>)</span>
+<span id="cb2-32"><a href="#cb2-32"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb2-33"><a href="#cb2-33"></a>plt.legend()</span>
+<span id="cb2-34"><a href="#cb2-34"></a>plt.tight_layout()</span>
+<span id="cb2-35"><a href="#cb2-35"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intervals_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
