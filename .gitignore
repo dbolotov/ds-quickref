@@ -1,9 +1,12 @@
 # Quarto
 .quarto/
+_site/
 *.html
 *.pdf
 *.docx
 .DS_Store
+
+*.quarto_ipynb
 
 # Jupyter
 .ipynb_checkpoints/
