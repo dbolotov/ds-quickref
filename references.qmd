@@ -1,6 +1,6 @@
 # References {.unnumbered}
 
-#### Online Books
+## Online Books
 
 ::: {.small-table}
 
@@ -15,11 +15,11 @@
 
 :::
 
-#### Tools
+## Tools
 - [SDV](https://github.com/sdv-dev/SDV) - Python library for creating tabular synthetic data.
 - [permetrics](https://permetrics.readthedocs.io/en/latest/index.html#) - Python library for performance metrics of machine learning models. Documentation site includes quick explanations of each metric.
 
-#### Resources used to make this guide
+## Resources used to make this guide
 
 - [Quarto](https://quarto.org/): Extensive publishing system. Supports jupyter notebooks and markdown.
 - [bootswatch](https://bootswatch.com/): Collection of free themes for Bootstrap-based sites.
