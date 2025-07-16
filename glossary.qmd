@@ -1,20 +1,36 @@
-# Glossary {.unnumbered}
-- Explainability
-- Oversampling
-- Overfitting and Underfitting
-- Data leakage
-    - Examples
-        - Imputing missing values on the entire dataset before splitting into train and test.
-- Train, test, validation sets
-- Features, columns, predictors
-- Types of learning
-    - Supervised learning
-    - Unsupervised learning
-    - Deep learning
-    - Reinforcement learning
-- Descriptive statistics
-- Distribution
-- Regularization
-    - Ridge
-    - Lasso
-    - In neural networks
+## Glossary {.unnumbered}
+
+- **Oversampling**: A technique to balance class distribution in imbalanced datasets by duplicating examples from the minority class.
+
+- **Overfitting and Underfitting**  
+  - Overfitting: the model memorizes training data and fails to generalize.  
+  - Underfitting: the model is too simple to capture patterns in the data.
+
+- **Data leakage**: When information from outside the training dataset sneaks into the model, leading to overly optimistic performance.
+  - Example: Imputing missing values *before* splitting data into train/test sets.
+
+- **Types of learning**  
+  - Supervised learning: learning from labeled data.  
+  - Unsupervised learning: finding patterns in unlabeled data.  
+  - Deep learning: a subset of ML using multi-layer neural networks.  
+  - Reinforcement learning: learning by trial and error to maximize a reward signal.
+
+- **Regularization**: Methods to prevent overfitting by penalizing complexity or limiting model flexibility.
+  - **L1 regularization (Lasso)**: Can shrink some coefficients to zero, effectively removing features. Useful for feature selection.
+  - **L2 regularization (Ridge)**: Shrinks all coefficients toward zero but doesn’t eliminate any. Helps when many features contribute a little.
+
+- **Bias-variance tradeoff**: The balance between underfitting (high bias) and overfitting (high variance). A key concept in model performance tuning.
+
+- **Model bias**: Systematic error that leads a model to consistently make inaccurate predictions in a specific direction. Often caused by overly simple assumptions or biased data.
+    - **Bias-variance tradeoff**: A fundamental concept in modeling. High bias leads to underfitting (model too simple), while high variance leads to overfitting (model too sensitive to training data). Good models strike a balance.
+    - **Model variance**: Error due to the model reacting too strongly to small fluctuations in training data. Leads to poor generalization.
+    - **Sources of bias in data**:
+        - **Label bias**: Training labels are inaccurate or inconsistent.
+        - **Sampling bias**: The dataset isn't representative of the real-world population.
+        - **Measurement bias**: Inputs are recorded in a flawed or inconsistent way.
+
+- **Bootstrapping**: A resampling method that draws repeated samples (with replacement) from the data to estimate uncertainty, confidence intervals, or test statistics.
+
+- **Confidence intervals**: A range of values, derived from sample data, that likely contains the true population parameter. Often interpreted (loosely) as: "We’re 95% confident the true value lies in this range."
+
+- **Prediction intervals**: A range that likely contains a *future* individual prediction, not just the average. Wider than confidence intervals because they include both model and data uncertainty.
