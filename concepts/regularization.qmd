@@ -23,8 +23,7 @@ Regularization is a set of techniques used to prevent overfitting by discouragin
 **Combined: Elastic Net**
 
 - Mix of L1 and L2 penalties
-- Controlled by a mixing parameter (usually called `alpha`)
-- Used when you want both sparsity and stability
+- Used when both sparsity and stability are needed
 
 ## In specific model types
 
