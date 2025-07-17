@@ -4,7 +4,7 @@
 
 This site is a concise, opinionated reference for practical data science and machine learning. It's built for students and professionals looking for summaries of key ideas, workflows, and tools.
 
-All the code examples are in Python, using libraries like `pandas`, `scikit-learn`, and `matplotlib`. They are written to be easy to copy and adapt.
+All code examples are in Python, using libraries like `pandas`, `matplotlib`, `scikit-learn`, and `darts`. They are written to be easy to copy and adapt.
 
 This is a work in progress, made by a data scientist who got tired of looking this stuff frequently :)
 
