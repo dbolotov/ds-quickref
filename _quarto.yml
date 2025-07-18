@@ -32,8 +32,8 @@ website:
             text: Classification
           - href: workflows/regression_tabular.ipynb
             text: Regression
-          - href: workflows/forecasting_ensemble_univariate.ipynb
-            text: Forecasting Ensemble
+          - href: workflows/forecasting_multi_univariate.ipynb
+            text: Forecasting (Multiple Models)
 
       - text: "Common DS Problems"
         href: common_problems.qmd
