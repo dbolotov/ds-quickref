@@ -2,5 +2,6 @@
 
 End-to-end Jupyter Notebook templates for common data science tasks. Each example uses a small, built-in dataset.
 
-- [Classification with Tabular Data](classification_tabular) - Training a random forest classifier with scikit-learn preprocessing and grid search on the Palmer penguins dataset.
-- [Regression with Tabular Data](regression_tabular) - Training different regression models with scikit-learn preprocessing and grid search on the tips dataset.
+- [Classification with Tabular Data](classification_tabular) - Training a random forest classifier with `scikit-learn` preprocessing and grid search on the Palmer penguins dataset.
+- [Regression with Tabular Data](regression_tabular) - Training different regression models with `scikit-learn` preprocessing and grid search on the tips dataset.
+- [Forecasting on Univariate Time Series](forecasting_multi_univariate) - Training different forecasting models with `darts` package on sea ice dataset.
