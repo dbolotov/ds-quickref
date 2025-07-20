@@ -1,7 +1,10 @@
 # Workflows Index {.unnumbered}
 
-End-to-end Jupyter Notebook templates for common data science tasks. Each example uses a small, built-in dataset.
+This section contains end-to-end Jupyter Notebook templates for common data science tasks. Each example uses a built-in dataset and goes through steps like loading and transforming the data, creating models (in `scikit-learn`, `darts`, or other packages), and evaluating results.
 
-- [Classification with Tabular Data](classification_tabular) - Training a random forest classifier with `scikit-learn` preprocessing and grid search on the Palmer penguins dataset.
-- [Regression with Tabular Data](regression_tabular) - Training different regression models with `scikit-learn` preprocessing and grid search on the tips dataset.
-- [Forecasting on Univariate Time Series](forecasting_multi_univariate) - Training different forecasting models with `darts` package on sea ice dataset.
+| Workflow | Description |
+|----------|-------------|
+| [Forecasting with Univariate Time Series](forecasting_multi_univariate.ipynb) | Training several forecasting models with the `darts` package on the sea ice dataset. |
+| [Classification with Tabular Data](classification_tabular.ipynb) | Training a random forest classifier with `scikit-learn` on the Palmer penguins dataset. |
+| [Regression with Tabular Data](regression_tabular.ipynb) | Training several regression models with `scikit-learn` on the tips dataset. |
+

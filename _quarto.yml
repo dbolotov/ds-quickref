@@ -28,12 +28,12 @@ website:
         contents:
           - href: workflows/index.qmd
             text: "Workflows Index"
+          - href: workflows/forecasting_multi_univariate.ipynb
+            text: Forecasting (Multiple Models)
           - href: workflows/classification_tabular.ipynb
             text: Classification
           - href: workflows/regression_tabular.ipynb
             text: Regression
-          - href: workflows/forecasting_multi_univariate.ipynb
-            text: Forecasting (Multiple Models)
 
       - text: "Common DS Problems"
         href: common_problems.qmd
