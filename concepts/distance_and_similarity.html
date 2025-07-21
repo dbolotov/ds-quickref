@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS QuickRef</title>
+<title>DS QuickRef - Distance and Similarity Measures</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">DS QuickRef</span>
     </a>
   </div>
@@ -100,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./glossary.html">Glossary</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../concepts/intervals.html">Concepts</a></li><li class="breadcrumb-item"><a href="../concepts/distance_and_similarity.html">Distance and Similarity</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -114,8 +114,8 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./dsqr_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../dsqr_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -127,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -142,25 +142,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./concepts/intervals.html" class="sidebar-item-text sidebar-link">
+  <a href="../concepts/intervals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Confidence &amp; Prediction Intervals</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./concepts/distance_and_similarity.html" class="sidebar-item-text sidebar-link">
+  <a href="../concepts/distance_and_similarity.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Distance and Similarity</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./concepts/metrics.html" class="sidebar-item-text sidebar-link">
+  <a href="../concepts/metrics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model Metrics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./concepts/regularization.html" class="sidebar-item-text sidebar-link">
+  <a href="../concepts/regularization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Regularization</span></a>
   </div>
 </li>
@@ -177,25 +177,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workflows/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../workflows/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workflows Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workflows/forecasting_multi_univariate.html" class="sidebar-item-text sidebar-link">
+  <a href="../workflows/forecasting_multi_univariate.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Forecasting (Multiple Models)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workflows/classification_tabular.html" class="sidebar-item-text sidebar-link">
+  <a href="../workflows/classification_tabular.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Classification</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workflows/regression_tabular.html" class="sidebar-item-text sidebar-link">
+  <a href="../workflows/regression_tabular.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Regression</span></a>
   </div>
 </li>
@@ -203,19 +203,19 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./common_problems.html" class="sidebar-item-text sidebar-link">
+  <a href="../common_problems.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Common DS Problems</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./glossary.html" class="sidebar-item-text sidebar-link active">
+  <a href="../glossary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Glossary</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -229,61 +229,162 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#glossary" id="toc-glossary" class="nav-link active" data-scroll-target="#glossary">Glossary</a></li>
+  <li><a href="#measures-explained" id="toc-measures-explained" class="nav-link active" data-scroll-target="#measures-explained">Measures explained</a></li>
+  <li><a href="#related-terms" id="toc-related-terms" class="nav-link" data-scroll-target="#related-terms">Related terms</a></li>
+  <li><a href="#distance-measures" id="toc-distance-measures" class="nav-link" data-scroll-target="#distance-measures">Distance Measures</a></li>
+  <li><a href="#similarity-measures" id="toc-similarity-measures" class="nav-link" data-scroll-target="#similarity-measures">Similarity Measures</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../concepts/intervals.html">Concepts</a></li><li class="breadcrumb-item"><a href="../concepts/distance_and_similarity.html">Distance and Similarity</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Distance and Similarity Measures</h1>
+</div>
 
 
 
-<section id="glossary" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="glossary">Glossary</h2>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This page is a quick reference for common distance and similarity measures used in machine learning, clustering, and data matching. Each entry includes a brief description, supported data types, and links to Wikipedia articles and Python implementation. This list is not exhaustive.</p>
+<section id="measures-explained" class="level2">
+<h2 class="anchored" data-anchor-id="measures-explained">Measures explained</h2>
+<p>Distance and similarity quantify how alike or different two objects are. These measures are often used in:</p>
 <ul>
-<li><p><strong>Oversampling</strong>: A technique to balance class distribution in imbalanced datasets by duplicating examples from the minority class.</p></li>
-<li><p><strong>Overfitting and Underfitting</strong></p>
-<ul>
-<li>Overfitting: the model memorizes training data and fails to generalize.<br>
-</li>
-<li>Underfitting: the model is too simple to capture patterns in the data.</li>
-</ul></li>
-<li><p><strong>Data leakage</strong>: When information from outside the training dataset sneaks into the model, leading to overly optimistic performance.</p>
-<ul>
-<li>Example: Imputing missing values <em>before</em> splitting data into train/test sets.</li>
-</ul></li>
-<li><p><strong>Types of learning</strong></p>
-<ul>
-<li>Supervised learning: learning from labeled data.<br>
-</li>
-<li>Unsupervised learning: finding patterns in unlabeled data.<br>
-</li>
-<li>Deep learning: a subset of ML using multi-layer neural networks.<br>
-</li>
-<li>Reinforcement learning: learning by trial and error to maximize a reward signal.</li>
-</ul></li>
-<li><p><strong>Regularization</strong>: Methods to prevent overfitting by penalizing complexity or limiting model flexibility.</p>
-<ul>
-<li><strong>L1 regularization (Lasso)</strong>: Can shrink some coefficients to zero, effectively removing features. Useful for feature selection.</li>
-<li><strong>L2 regularization (Ridge)</strong>: Shrinks all coefficients toward zero but doesn’t eliminate any. Helps when many features contribute a little.</li>
-</ul></li>
-<li><p><strong>Bias-variance tradeoff</strong>: The balance between underfitting (high bias) and overfitting (high variance). A key concept in model performance tuning.</p></li>
-<li><p><strong>Model bias</strong>: Systematic error that leads a model to consistently make inaccurate predictions in a specific direction. Often caused by overly simple assumptions or biased data.</p>
-<ul>
-<li><strong>Bias-variance tradeoff</strong>: A fundamental concept in modeling. High bias leads to underfitting (model too simple), while high variance leads to overfitting (model too sensitive to training data). Good models strike a balance.</li>
-<li><strong>Model variance</strong>: Error due to the model reacting too strongly to small fluctuations in training data. Leads to poor generalization.</li>
-<li><strong>Sources of bias in data</strong>:
-<ul>
-<li><strong>Label bias</strong>: Training labels are inaccurate or inconsistent.</li>
-<li><strong>Sampling bias</strong>: The dataset isn’t representative of the real-world population.</li>
-<li><strong>Measurement bias</strong>: Inputs are recorded in a flawed or inconsistent way.</li>
-</ul></li>
-</ul></li>
-<li><p><strong>Bootstrapping</strong>: A resampling method that draws repeated samples (with replacement) from the data to estimate uncertainty, confidence intervals, or test statistics.</p></li>
-<li><p><strong>Confidence intervals</strong>: A range of values, derived from sample data, that likely contains the true population parameter. Often interpreted (loosely) as: “We’re 95% confident the true value lies in this range.”</p></li>
-<li><p><strong>Prediction intervals</strong>: A range that likely contains a <em>future</em> individual prediction, not just the average. Wider than confidence intervals because they include both model and data uncertainty.</p></li>
+<li>Clustering algorithms (e.g.&nbsp;K-Means, DBSCAN)</li>
+<li>Nearest neighbor search (e.g.&nbsp;KNN)</li>
+<li>Deduplication or record linkage</li>
+<li>String comparison and vector similarity</li>
 </ul>
+<p>A <strong>distance</strong> increases as objects differ more. A <strong>similarity</strong> increases as objects become more alike.</p>
+</section>
+<section id="related-terms" class="level2">
+<h2 class="anchored" data-anchor-id="related-terms">Related terms</h2>
+<ul>
+<li><strong>Metric</strong>: A distance function that satisfies properties like non-negativity and triangle inequality.<br>
+</li>
+<li><strong>Dissimilarity</strong>: Often used interchangeably with distance; not always a proper metric.<br>
+</li>
+<li><strong>Similarity</strong>: Higher values mean greater closeness or match; may not have fixed bounds.</li>
+</ul>
+</section>
+<section id="distance-measures" class="level2">
+<h2 class="anchored" data-anchor-id="distance-measures">Distance Measures</h2>
+<div class="small-table-2">
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Data</th>
+<th>Python</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Canberra_distance">Canberra</a></td>
+<td>num</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html">skl</a>, <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.canberra.html">scipy</a></td>
+<td>Weighted version of Manhattan. More sensitive to small differences when values are near zero.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean</a></td>
+<td>num</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html">skl</a>, <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.euclidean.html">scipy</a></td>
+<td>Straight-line (L2) distance between numeric vectors. Sensitive to scale.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Gower%27s_distance">Gower</a></td>
+<td>mixed</td>
+<td><a href="https://pypi.org/project/gower/">gower</a></td>
+<td>Handles mixed data types by averaging scaled feature-wise dissimilarities.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/Hamming_distance">Hamming</a></td>
+<td>bool, cat, string</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html">skl</a>, <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.hamming.html">scipy</a></td>
+<td>Counts number of differing positions in element-wise comparison. Works on binary vectors and strings of equal length.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein</a></td>
+<td>string</td>
+<td><a href="https://github.com/life4/textdistance">textdistance</a></td>
+<td>Edit distance that counts insertions, deletions, and substitutions. Strings can be different lengths.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/Mahalanobis_distance">Mahalanobis</a></td>
+<td>num</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html">skl</a>, <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.mahalanobis.html">scipy</a></td>
+<td>Accounts for correlation and scale among variables. Useful for multivariate data.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Taxicab_geometry">Manhattan</a></td>
+<td>num</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html">skl</a>, <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cityblock.html">scipy</a></td>
+<td>Sum of absolute differences (L1 norm). Also called city-block distance.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/Euclidean_distance#Squared_Euclidean_distance">Squared Euclidean</a></td>
+<td>num</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html">skl</a>, <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.sqeuclidean.html">scipy</a></td>
+<td>Same as Euclidean but without the square root. Useful for comparing relative closeness, especially in K-Means.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="similarity-measures" class="level2">
+<h2 class="anchored" data-anchor-id="similarity-measures">Similarity Measures</h2>
+<div class="small-table-2">
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Data</th>
+<th>Python</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Cosine_similarity">Cosine Similarity</a></td>
+<td>num</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html">skl</a>, <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cosine.html">scipy</a></td>
+<td>Measures angle (not magnitude) between vectors. Common for text embeddings.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/Sørensen–Dice_coefficient">Dice Coefficient</a></td>
+<td>bool, cat, string</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html">skl</a></td>
+<td>Similar to Jaccard but gives more weight to matches. Used in fuzzy matching and bioinformatics.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard Index</a></td>
+<td>bool, cat</td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html">skl</a>, <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.jaccard.html">scipy</a></td>
+<td>Ratio of intersection to union. Used for comparing binary vectors or sets.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/Simple_matching_coefficient">Simple Matching Coefficient</a></td>
+<td>bool, cat, string</td>
+<td><a href="https://github.com/nicodv/kmodes">kmodes</a></td>
+<td>Proportion of element-wise matches between two equal-length vectors. Treats 0-0 and 1-1 matches equally. Can be used with binary, categorical, or string data when comparing character by character.</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
 </section>
@@ -699,5 +800,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
