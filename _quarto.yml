@@ -17,10 +17,12 @@ website:
         
       - section: "Concepts"
         contents:
-          - href: concepts/metrics.qmd
-            text: "Metrics"
           - href: concepts/intervals.qmd
             text: "Confidence & Prediction Intervals"
+          - href: concepts/distance_and_similarity.qmd
+            text: "Distance and Similarity"
+          - href: concepts/metrics.qmd
+            text: "Model Metrics"
           - href: concepts/regularization.qmd
             text: "Regularization"
 

@@ -1,0 +1,59 @@
+---
+title: "Distance and Similarity Measures"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show code"
+execute:
+  echo: true
+jupyter: python3
+---
+
+This page is a quick reference for common distance and similarity measures used in machine learning, clustering, and data matching. Each entry includes a brief description, supported data types, and links to Wikipedia articles and Python implementation. This list is not exhaustive.
+
+## Measures explained
+
+Distance and similarity quantify how alike or different two objects are. These measures are often used in:
+
+- Clustering algorithms (e.g. K-Means, DBSCAN)
+- Nearest neighbor search (e.g. KNN)
+- Deduplication or record linkage
+- String comparison and vector similarity
+
+A **distance** increases as objects differ more. A **similarity** increases as objects become more alike.
+
+## Related terms
+
+- **Metric**: A distance function that satisfies properties like non-negativity and triangle inequality.  
+- **Dissimilarity**: Often used interchangeably with distance; not always a proper metric.  
+- **Similarity**: Higher values mean greater closeness or match; may not have fixed bounds.
+
+## Distance Measures
+
+::: {.small-table-2}
+
+| Name | Data | Python | Description |
+|------|------|--------|-------------|
+| [Canberra](https://en.wikipedia.org/wiki/Canberra_distance) | num | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html), [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.canberra.html) | Weighted version of Manhattan. More sensitive to small differences when values are near zero. |
+| [Euclidean](https://en.wikipedia.org/wiki/Euclidean_distance) | num | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html), [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.euclidean.html) | Straight-line (L2) distance between numeric vectors. Sensitive to scale. |
+| [Gower](https://en.wikipedia.org/wiki/Gower%27s_distance) | mixed | [gower](https://pypi.org/project/gower/) | Handles mixed data types by averaging scaled feature-wise dissimilarities. |
+| [Hamming](https://en.wikipedia.org/wiki/Hamming_distance) | bool, cat, string | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html), [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.hamming.html) | Counts number of differing positions in element-wise comparison. Works on binary vectors and strings of equal length. |
+| [Levenshtein](https://en.wikipedia.org/wiki/Levenshtein_distance) | string | [textdistance](https://github.com/life4/textdistance) | Edit distance that counts insertions, deletions, and substitutions. Strings can be different lengths. |
+| [Mahalanobis](https://en.wikipedia.org/wiki/Mahalanobis_distance) | num | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html), [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.mahalanobis.html) | Accounts for correlation and scale among variables. Useful for multivariate data. |
+| [Manhattan](https://en.wikipedia.org/wiki/Taxicab_geometry) | num | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html), [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cityblock.html) | Sum of absolute differences (L1 norm). Also called city-block distance. |
+| [Squared Euclidean](https://en.wikipedia.org/wiki/Euclidean_distance#Squared_Euclidean_distance) | num | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html), [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.sqeuclidean.html) | Same as Euclidean but without the square root. Useful for comparing relative closeness, especially in K-Means. |
+
+:::
+
+## Similarity Measures
+
+::: {.small-table-2}
+
+| Name | Data | Python | Description |
+|------|------|--------|-------------|
+| [Cosine Similarity](https://en.wikipedia.org/wiki/Cosine_similarity) | num | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html), [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cosine.html) | Measures angle (not magnitude) between vectors. Common for text embeddings. |
+| [Dice Coefficient](https://en.wikipedia.org/wiki/Sørensen–Dice_coefficient) | bool, cat, string | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html) | Similar to Jaccard but gives more weight to matches. Used in fuzzy matching and bioinformatics. |
+| [Jaccard Index](https://en.wikipedia.org/wiki/Jaccard_index) | bool, cat | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html), [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.jaccard.html) | Ratio of intersection to union. Used for comparing binary vectors or sets. |
+| [Simple Matching Coefficient](https://en.wikipedia.org/wiki/Simple_matching_coefficient) | bool, cat, string | [kmodes](https://github.com/nicodv/kmodes) | Proportion of element-wise matches between two equal-length vectors. Treats 0-0 and 1-1 matches equally. Can be used with binary, categorical, or string data when comparing character by character. |
+
+:::

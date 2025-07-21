@@ -68,10 +68,36 @@ tr:nth-child(even) {
   font-size: 0.90rem; 
 }
 
-/* set minimum width on first column in small table*/
-.small-table td:first-child {
-  min-width: 70px;
+.small-table td {
+  white-space: normal;
 }
+
+.small-table td:first-child {
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  min-width: 80px;
+  max-width: 160px;
+}
+
+.small-table-2 td {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  font-size: 0.90rem;
+}
+
+.small-table-2 td:first-child {
+  white-space: normal;
+  word-break: keep-all;         // Don’t split words like "Mahalanobis"
+  overflow-wrap: break-word;
+  min-width: 100px;
+  max-width: 140px;
+}
+
+
+
+
 
 /* Code blocks */
 pre code {
