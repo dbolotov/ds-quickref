@@ -1,6 +1,8 @@
-# Data Science and Machine Learning Metrics {.unnumbered}
+# Data Science and Machine Learning Model Metrics {.unnumbered}
 
-This page is a quick reference for common metrics across tasks like classification, regression, and clustering. Each entry includes a definition, when to use it, and links to an explanation (mostly from Wikipedia) and the relevant scikit-learn doc. This list is not meant to be exhaustive.
+This page is a quick reference for common model evaluation metrics across tasks like classification, regression, and clustering. Each entry includes a definition, when to use it, and links to an explanation (mostly from Wikipedia) and the relevant scikit-learn doc. This list is not meant to be exhaustive.
+
+Note: This page focuses on *performance metrics*, not *distance/similarity metrics* (see the [Distance and Similarity](../concepts/distance_and_similarity.qmd) page)
 
 ## Metrics explained
 
@@ -23,7 +25,7 @@ A **metric** is a number that measures model performance, or how well prediction
 
 ::: {.small-table}
 
-| Metric | Code | Details |
+| Metric | Python | Details |
 |--------|------|---------|
 | [Accuracy](https://en.wikipedia.org/wiki/Accuracy_and_precision) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) | **Accuracy**. Proportion of correct predictions to total predictions. Simple and intuitive. Can be very misleading for imbalanced classes. |
 | [Precision](https://en.wikipedia.org/wiki/Precision_and_recall) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html) | **Precision**. True Positives / (True Positives + False Positives). How many predicted positives are correct. |
@@ -41,7 +43,7 @@ A **metric** is a number that measures model performance, or how well prediction
 
 ::: {.small-table}
 
-| Metric    | Code | Details |
+| Metric    | Python | Details |
 |--------|---------|---------|
 | [MSE](https://en.wikipedia.org/wiki/Mean_squared_error) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html) | **Mean Squared Error**. Average squared difference between predictions and true values. Penalizes larger errors more; sensitive to outliers. Not in original units. |
 | [RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.root_mean_squared_error.html) | **Root Mean Squared Error**. Same as MSE but in the original unit scale; easier to interpret. Still sensitive to outliers. |
