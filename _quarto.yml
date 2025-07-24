@@ -9,7 +9,7 @@ website:
   sidebar:
     style: "floating"
     search: true
-    logo: dsqr_logo.png
+    logo: images/dsqr_logo.png
     logo-alt: "DS QuickRef"
     contents:
       - text: "Introduction"
