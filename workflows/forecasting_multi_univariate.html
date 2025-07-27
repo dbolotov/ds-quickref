@@ -134,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workflows/index.html">Workflows</a></li><li class="breadcrumb-item"><a href="../workflows/forecasting_multi_univariate.html">Forecasting (Multiple Models)</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workflows/index.html">Workflows</a></li><li class="breadcrumb-item"><a href="../workflows/forecasting_multi_univariate.html">Forecasting with ML</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -224,13 +224,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workflows/forecasting_multi_univariate.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Forecasting (Multiple Models)</span></a>
+ <span class="menu-text">Forecasting with ML</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workflows/classification_tabular.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Classification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workflows/clustering_mixed_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clustering (Mixed Data)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -270,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workflows/index.html">Workflows</a></li><li class="breadcrumb-item"><a href="../workflows/forecasting_multi_univariate.html">Forecasting (Multiple Models)</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workflows/index.html">Workflows</a></li><li class="breadcrumb-item"><a href="../workflows/forecasting_multi_univariate.html">Forecasting with ML</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Forecasting on Univariate Time Series Data</h1>
 </div>
@@ -491,11 +497,11 @@ Training Theta...
 ----- EVALUATION -----
 
                Model      MAE     RMSE  Train Time (s)
-           AutoARIMA 0.325538 0.411305        2.432149
-       LightGBMModel 0.438801 0.531785        0.371405
-ExponentialSmoothing 0.577775 0.667614        0.119398
-               Theta 0.605557 0.756212        0.006214
-           NaiveMean 2.937516 3.581656        0.000882</code></pre>
+           AutoARIMA 0.325538 0.411305        2.415998
+       LightGBMModel 0.438801 0.531785        0.106539
+ExponentialSmoothing 0.577775 0.667614        0.113977
+               Theta 0.605557 0.756212        0.007029
+           NaiveMean 2.937516 3.581656        0.000883</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>

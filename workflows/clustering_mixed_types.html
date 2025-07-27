@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS QuickRef - Confidence and Prediction Intervals</title>
+<title>DS QuickRef - Clustering with Mixed-Type Tabular Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,35 +101,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -163,7 +134,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../concepts/intervals.html">Concepts</a></li><li class="breadcrumb-item"><a href="../concepts/intervals.html">Confidence &amp; Prediction Intervals</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workflows/index.html">Workflows</a></li><li class="breadcrumb-item"><a href="../workflows/clustering_mixed_types.html">Clustering (Mixed Data)</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -205,7 +176,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../concepts/intervals.html" class="sidebar-item-text sidebar-link active">
+  <a href="../concepts/intervals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Confidence &amp; Prediction Intervals</span></a>
   </div>
 </li>
@@ -264,7 +235,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../workflows/clustering_mixed_types.html" class="sidebar-item-text sidebar-link">
+  <a href="../workflows/clustering_mixed_types.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Clustering (Mixed Data)</span></a>
   </div>
 </li>
@@ -304,17 +275,19 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
-  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
+  <li><a href="#import-and-check-data" id="toc-import-and-check-data" class="nav-link active" data-scroll-target="#import-and-check-data">Import and Check Data</a></li>
+  <li><a href="#transform-data" id="toc-transform-data" class="nav-link" data-scroll-target="#transform-data">Transform Data</a></li>
+  <li><a href="#build-models---k-prototypes-dbscan-agglomerativeclustering" id="toc-build-models---k-prototypes-dbscan-agglomerativeclustering" class="nav-link" data-scroll-target="#build-models---k-prototypes-dbscan-agglomerativeclustering">Build Models - K-Prototypes, DBSCAN, AgglomerativeClustering</a></li>
+  <li><a href="#evaluate" id="toc-evaluate" class="nav-link" data-scroll-target="#evaluate">Evaluate</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../concepts/intervals.html">Concepts</a></li><li class="breadcrumb-item"><a href="../concepts/intervals.html">Confidence &amp; Prediction Intervals</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workflows/index.html">Workflows</a></li><li class="breadcrumb-item"><a href="../workflows/clustering_mixed_types.html">Clustering (Mixed Data)</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Confidence and Prediction Intervals</h1>
+<h1 class="title">Clustering with Mixed-Type Tabular Data</h1>
 </div>
 
 
@@ -331,113 +304,229 @@ window.Quarto = {
 </header>
 
 
-<p>Machine learning models typically return point predictions, not uncertainty estimates. However, intervals are useful when presenting results or identifying low-confidence cases. Here we discuss two types of intervals:</p>
+<p>This notebook explores three approaches to clustering datasets with mixed data types.</p>
+<p>Uses the <code>penguins</code> dataset from <strong>seaborn</strong>, and applies different distance strategies and models. Final results are evaluated using <strong>Adjusted Rand Index (ARI)</strong> and <strong>Normalized Mutual Information (NMI)</strong> and the known taget variable (penguin species).</p>
+<p>Clustering mixed-type data (e.g.&nbsp;numeric + categorical) requires special handling of distance metrics. Standard clustering methods like KMeans assume numeric, Euclidean space. Here we use Gower distance or specialized models like <code>k-prototypes</code> that support categorical features directly.</p>
+<p>We use feature standardization for the numeric columns before building the k-prototypes model. We don’t use standardization for the data that is used to create the Gower matrix (as that is handled internally).</p>
+<p>This notebook does the following:</p>
 <ul>
-<li><strong>Confidence interval</strong>: uncertainty in the estimated mean response for a given input. Range of likely values for the <em>average prediction</em> at a given input.</li>
-<li><strong>Prediction interval</strong>: range for the actual observed value, which includes both model uncertainty and natural variability (Note: “observed value” refers to the real-world outcome that would come from data, not the model’s predicted value).</li>
+<li>Prepares the data by dropping rows with NAs and separating numeric and categorical columns<br>
+</li>
+<li>Standardizes numerical values for k-prototypes clustering and creates a Gower matrix for DBSCAN and agglomerative clustering</li>
+<li>Builds three clustering models:
+<ul>
+<li>k-prototypes (from <code>kmodes</code>)<br>
+</li>
+<li>DBSCAN (with Gower distance)<br>
+</li>
+<li>Agglomerative clustering (with Gower distance)<br>
+</li>
+</ul></li>
+<li>Compares results using ARI and NMI scores</li>
 </ul>
-<p>These intervals are common in statistical modeling and in time series forecasting, but less so in machine learning because many ML models don’t compute them directly. One workaround is <strong>bootstrapping</strong>, where multiple models are fit on resampled training data, and the spread of predictions is used to estimate uncertainty. In this case, intervals are estimated empirically rather than derived analytically.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="More detail: interval formulas">
+<div class="callout callout-style-default callout-note callout-titled" title="Note: Using `display` for HTML tables">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-More detail: interval formulas
+Note: Using <code>display</code> for HTML tables
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>For a new input <span class="math inline">\(x_0\)</span>, regression models can estimate two types of intervals:</p>
-<ul>
-<li><strong>Confidence interval</strong>: A range where the <em>mean response</em> <span class="math inline">\(\mathbb{E}[y \mid x_0]\)</span> is expected to fall<br>
-</li>
-<li><strong>Prediction interval</strong>: A range where an <em>individual observed value</em> <span class="math inline">\(y\)</span> might fall</li>
-</ul>
-<p>Both are centered on the model’s predicted value <span class="math inline">\(\hat{y}(x_0)\)</span>, but the prediction interval is wider because it includes both model uncertainty and residual variability.</p>
-<section id="formulas" class="level3">
-<h3 class="anchored" data-anchor-id="formulas">Formulas:</h3>
-<p><span class="math display">\[
-\text{CI:} \quad \hat{y}(x_0) \pm t \cdot SE_{\text{mean}}
-\]</span></p>
-<p><span class="math display">\[
-\text{PI:} \quad \hat{y}(x_0) \pm t \cdot \sqrt{SE_{\text{mean}}^2 + \sigma^2}
-\]</span></p>
-<p>Where:</p>
-<ul>
-<li><span class="math inline">\(\hat{y}(x_0)\)</span> is the model’s point prediction<br>
-</li>
-<li><span class="math inline">\(t\)</span> is the critical value from the <span class="math inline">\(t\)</span>-distribution<br>
-</li>
-<li><span class="math inline">\(SE_{\text{mean}}\)</span> is the standard error of the predicted mean<br>
-</li>
-<li><span class="math inline">\(\sigma^2\)</span> is the variance of the residuals</li>
-</ul>
-</section>
+<p><code>print(summarize(df))</code> and <code>print(df.head())</code> return tables printed in plain text. To get nicer-formatted HTML tables, use the following instead of <code>print()</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb1-2"><a href="#cb1-2"></a>display(df.head())</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># Display summary</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>display(summarize(df))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-<section id="example" class="level2">
-<h2 class="anchored" data-anchor-id="example">Example</h2>
-<p>Suppose we’re building a model to predict daily rainfall (in millimeters) based only on humidity. Let’s say that for the input of <code>{'humidity': 85}</code>, the model returns:</p>
-<pre><code>Predicted rainfall (mm): 3.8  
-95% confidence interval (mm): [3.5, 4.1]  
-95% prediction interval (mm): [1.2, 6.4]</code></pre>
-<p>In this case:</p>
-<ul>
-<li>The <strong>confidence interval</strong> says where the average rainfall would fall across many days with similar humidity.</li>
-<li>The <strong>prediction interval</strong> says where the rainfall for a single day with that humidity might fall, accounting for noise in the data and variation not captured by the model.</li>
-</ul>
-</section>
-<section id="visualization" class="level2">
-<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
-<p>The example below uses linear regression to show both intervals for a model that predicts rainfall from humidity (from a simulated dataset). The prediction intervals are wider than the confidence intervals.</p>
-<div id="3b5a5ebd" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<section id="import-and-check-data" class="level2">
+<h2 class="anchored" data-anchor-id="import-and-check-data">Import and Check Data</h2>
+<div id="c02ca293-fc95-47a1-9cf3-a645d53ccb62" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="im">from</span> minieda <span class="im">import</span> summarize <span class="co"># pip install git+https://github.com/dbolotov/minieda.git</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
 <span id="cb2-5"><a href="#cb2-5"></a></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co"># Simulate data: rainfall increases with humidity with some noise</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>np.random.seed(<span class="dv">1</span>)</span>
-<span id="cb2-8"><a href="#cb2-8"></a>humidity <span class="op">=</span> np.random.uniform(<span class="dv">40</span>, <span class="dv">100</span>, <span class="dv">100</span>)</span>
-<span id="cb2-9"><a href="#cb2-9"></a>rainfall <span class="op">=</span> <span class="fl">0.1</span> <span class="op">*</span> humidity <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">2</span>, size<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb2-10"><a href="#cb2-10"></a></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># Fit linear model</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>X <span class="op">=</span> sm.add_constant(humidity)</span>
-<span id="cb2-13"><a href="#cb2-13"></a>model <span class="op">=</span> sm.OLS(rainfall, X).fit()</span>
-<span id="cb2-14"><a href="#cb2-14"></a></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># Generate prediction range</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a>humidity_pred <span class="op">=</span> np.linspace(<span class="dv">40</span>, <span class="dv">100</span>, <span class="dv">100</span>)</span>
-<span id="cb2-17"><a href="#cb2-17"></a>X_pred <span class="op">=</span> sm.add_constant(humidity_pred)</span>
-<span id="cb2-18"><a href="#cb2-18"></a>preds <span class="op">=</span> model.get_prediction(X_pred).summary_frame(alpha<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="im">from</span> kmodes.kprototypes <span class="im">import</span> KPrototypes</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, LabelEncoder</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="im">import</span> gower</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN, AgglomerativeClustering</span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> adjusted_rand_score,  normalized_mutual_info_score</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a>pd.set_option(<span class="st">"display.width"</span>, <span class="dv">220</span>) <span class="co"># set display width for printed tables</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co"># Load dataset and display first few rows</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>df <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span>
+<span id="cb2-16"><a href="#cb2-16"></a></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="bu">print</span>(<span class="st">"----- First Few Rows of Data -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="bu">print</span>(df.head())</span>
 <span id="cb2-19"><a href="#cb2-19"></a></span>
-<span id="cb2-20"><a href="#cb2-20"></a><span class="co"># Plot</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
-<span id="cb2-22"><a href="#cb2-22"></a>plt.scatter(humidity, rainfall, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">"Observed data"</span>)</span>
-<span id="cb2-23"><a href="#cb2-23"></a>plt.plot(humidity_pred, preds[<span class="st">"mean"</span>], color<span class="op">=</span><span class="st">"black"</span>, label<span class="op">=</span><span class="st">"Predicted (mean)"</span>)</span>
-<span id="cb2-24"><a href="#cb2-24"></a>plt.fill_between(humidity_pred, preds[<span class="st">"mean_ci_lower"</span>], preds[<span class="st">"mean_ci_upper"</span>],</span>
-<span id="cb2-25"><a href="#cb2-25"></a>                 color<span class="op">=</span><span class="st">"steelblue"</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">"95% Confidence Interval"</span>)</span>
-<span id="cb2-26"><a href="#cb2-26"></a>plt.fill_between(humidity_pred, preds[<span class="st">"obs_ci_lower"</span>], preds[<span class="st">"obs_ci_upper"</span>],</span>
-<span id="cb2-27"><a href="#cb2-27"></a>                 color<span class="op">=</span><span class="st">"orange"</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">"95% Prediction Interval"</span>)</span>
-<span id="cb2-28"><a href="#cb2-28"></a></span>
-<span id="cb2-29"><a href="#cb2-29"></a>plt.xlabel(<span class="st">"Humidity (%)"</span>)</span>
-<span id="cb2-30"><a href="#cb2-30"></a>plt.ylabel(<span class="st">"Rainfall (mm)"</span>)</span>
-<span id="cb2-31"><a href="#cb2-31"></a>plt.title(<span class="st">"Confidence vs. Prediction Intervals (Predicting Rainfall from Humidity)"</span>)</span>
-<span id="cb2-32"><a href="#cb2-32"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb2-33"><a href="#cb2-33"></a>plt.legend()</span>
-<span id="cb2-34"><a href="#cb2-34"></a>plt.tight_layout()</span>
-<span id="cb2-35"><a href="#cb2-35"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="intervals_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="co"># Display summary</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Data Summary -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="bu">print</span>(summarize(df))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>----- First Few Rows of Data -----
+
+  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex
+0  Adelie  Torgersen            39.1           18.7              181.0       3750.0    Male
+1  Adelie  Torgersen            39.5           17.4              186.0       3800.0  Female
+2  Adelie  Torgersen            40.3           18.0              195.0       3250.0  Female
+3  Adelie  Torgersen             NaN            NaN                NaN          NaN     NaN
+4  Adelie  Torgersen            36.7           19.3              193.0       3450.0  Female
+
+----- Data Summary -----
+
+                     dtype  count  unique  unique_perc  missing  missing_perc  zero  zero_perc     top freq     mean     std     min     50%     max  skew
+bill_length_mm     float64    342     164        47.67        2          0.58     0        0.0                 43.92    5.46    32.1   44.45    59.6  0.05
+bill_depth_mm      float64    342      80        23.26        2          0.58     0        0.0                 17.15    1.97    13.1    17.3    21.5 -0.14
+flipper_length_mm  float64    342      55        15.99        2          0.58     0        0.0                200.92   14.06   172.0   197.0   231.0  0.35
+body_mass_g        float64    342      94        27.33        2          0.58     0        0.0               4201.75  801.95  2700.0  4050.0  6300.0  0.47
+species             object    344       3         0.87        0          0.00     0        0.0  Adelie  152                                               
+island              object    344       3         0.87        0          0.00     0        0.0  Biscoe  168                                               
+sex                 object    333       2         0.58       11          3.20     0        0.0    Male  168                                               </code></pre>
 </div>
+</div>
+</section>
+<section id="transform-data" class="level2">
+<h2 class="anchored" data-anchor-id="transform-data">Transform Data</h2>
+<div id="7ea0d22a-5e4a-4f6c-b3f5-46999bd70c87" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> gower</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Drop rows with missing values</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>df <span class="op">=</span> df.dropna().reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co"># Define categorical and numeric columns</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>cat_cols <span class="op">=</span> [<span class="st">'island'</span>, <span class="st">'sex'</span>]</span>
+<span id="cb4-9"><a href="#cb4-9"></a>num_cols <span class="op">=</span> [<span class="st">'bill_length_mm'</span>, <span class="st">'bill_depth_mm'</span>, <span class="st">'flipper_length_mm'</span>, <span class="st">'body_mass_g'</span>]</span>
+<span id="cb4-10"><a href="#cb4-10"></a>features <span class="op">=</span> cat_cols <span class="op">+</span> num_cols</span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co"># Make an explicit copy to avoid chained assignment warnings</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>X <span class="op">=</span> df[features].copy()</span>
+<span id="cb4-14"><a href="#cb4-14"></a></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="co"># Ensure categorical columns are strings</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="cf">for</span> col <span class="kw">in</span> cat_cols:</span>
+<span id="cb4-17"><a href="#cb4-17"></a>    X[col] <span class="op">=</span> X[col].astype(<span class="bu">str</span>)</span>
+<span id="cb4-18"><a href="#cb4-18"></a></span>
+<span id="cb4-19"><a href="#cb4-19"></a><span class="co"># For k-prototypes: scale numeric columns</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a>X_kproto <span class="op">=</span> X.copy()</span>
+<span id="cb4-21"><a href="#cb4-21"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb4-22"><a href="#cb4-22"></a>X_kproto[num_cols] <span class="op">=</span> scaler.fit_transform(X_kproto[num_cols])</span>
+<span id="cb4-23"><a href="#cb4-23"></a>X_kproto_matrix <span class="op">=</span> X_kproto.to_numpy()</span>
+<span id="cb4-24"><a href="#cb4-24"></a>categorical_idx <span class="op">=</span> [X_kproto.columns.get_loc(col) <span class="cf">for</span> col <span class="kw">in</span> cat_cols]</span>
+<span id="cb4-25"><a href="#cb4-25"></a></span>
+<span id="cb4-26"><a href="#cb4-26"></a><span class="co"># For Gower distance: create Gower matrix using raw data</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a>gower_matrix <span class="op">=</span> gower.gower_matrix(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="build-models---k-prototypes-dbscan-agglomerativeclustering" class="level2">
+<h2 class="anchored" data-anchor-id="build-models---k-prototypes-dbscan-agglomerativeclustering">Build Models - K-Prototypes, DBSCAN, AgglomerativeClustering</h2>
+<div id="469a882d-8c13-4391-ac56-6e90f70eabbe" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Copy base DataFrame for clustering</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>df_clustered <span class="op">=</span> df.copy()</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Create a results dictionary</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>results <span class="op">=</span> {}</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># K-Prototypes</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>kproto <span class="op">=</span> KPrototypes(n_clusters<span class="op">=</span><span class="dv">3</span>, init<span class="op">=</span><span class="st">'Huang'</span>, verbose<span class="op">=</span><span class="dv">0</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a>kproto_labels <span class="op">=</span> kproto.fit_predict(X_kproto_matrix, categorical<span class="op">=</span>categorical_idx)</span>
+<span id="cb5-10"><a href="#cb5-10"></a>df_clustered[<span class="st">'kproto'</span>] <span class="op">=</span> kproto_labels</span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a>results[<span class="st">'kproto'</span>] <span class="op">=</span> {</span>
+<span id="cb5-13"><a href="#cb5-13"></a>    <span class="st">'ARI'</span>: adjusted_rand_score(df_clustered[<span class="st">"species"</span>], kproto_labels),</span>
+<span id="cb5-14"><a href="#cb5-14"></a>    <span class="st">'NMI'</span>: normalized_mutual_info_score(df_clustered[<span class="st">"species"</span>], kproto_labels)</span>
+<span id="cb5-15"><a href="#cb5-15"></a>}</span>
+<span id="cb5-16"><a href="#cb5-16"></a></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co"># DBSCAN with Gower matrix</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="co"># Optional: tune eps manually</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="co"># for eps in [0.05, 0.1, 0.15, 0.17]:</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a><span class="co">#     model = DBSCAN(eps=eps, min_samples=5, metric='precomputed')</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a><span class="co">#     labels = model.fit_predict(gower_matrix)</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a><span class="co">#     print(f"eps={eps:.2f} → clusters: {len(set(labels)) - (1 if -1 in labels else 0)}, noise: {(labels == -1).sum()}")</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a></span>
+<span id="cb5-25"><a href="#cb5-25"></a>dbscan_model <span class="op">=</span> DBSCAN(eps<span class="op">=</span><span class="fl">0.15</span>, min_samples<span class="op">=</span><span class="dv">5</span>, metric<span class="op">=</span><span class="st">'precomputed'</span>)</span>
+<span id="cb5-26"><a href="#cb5-26"></a>dbscan_labels <span class="op">=</span> dbscan_model.fit_predict(gower_matrix)</span>
+<span id="cb5-27"><a href="#cb5-27"></a>df_clustered[<span class="st">'gower_dbscan'</span>] <span class="op">=</span> dbscan_labels</span>
+<span id="cb5-28"><a href="#cb5-28"></a></span>
+<span id="cb5-29"><a href="#cb5-29"></a>results[<span class="st">'gower_dbscan'</span>] <span class="op">=</span> {</span>
+<span id="cb5-30"><a href="#cb5-30"></a>    <span class="st">'ARI'</span>: adjusted_rand_score(df_clustered[<span class="st">"species"</span>], dbscan_labels),</span>
+<span id="cb5-31"><a href="#cb5-31"></a>    <span class="st">'NMI'</span>: normalized_mutual_info_score(df_clustered[<span class="st">"species"</span>], dbscan_labels)</span>
+<span id="cb5-32"><a href="#cb5-32"></a>}</span>
+<span id="cb5-33"><a href="#cb5-33"></a></span>
+<span id="cb5-34"><a href="#cb5-34"></a><span class="co"># Agglomerative Clustering with Gower</span></span>
+<span id="cb5-35"><a href="#cb5-35"></a>agglo_model <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span><span class="dv">3</span>, metric<span class="op">=</span><span class="st">'precomputed'</span>, linkage<span class="op">=</span><span class="st">'average'</span>)</span>
+<span id="cb5-36"><a href="#cb5-36"></a>agglo_labels <span class="op">=</span> agglo_model.fit_predict(gower_matrix)</span>
+<span id="cb5-37"><a href="#cb5-37"></a>df_clustered[<span class="st">'gower_aggl'</span>] <span class="op">=</span> agglo_labels</span>
+<span id="cb5-38"><a href="#cb5-38"></a></span>
+<span id="cb5-39"><a href="#cb5-39"></a>results[<span class="st">'gower_aggl'</span>] <span class="op">=</span> {</span>
+<span id="cb5-40"><a href="#cb5-40"></a>    <span class="st">'ARI'</span>: adjusted_rand_score(df_clustered[<span class="st">"species"</span>], agglo_labels),</span>
+<span id="cb5-41"><a href="#cb5-41"></a>    <span class="st">'NMI'</span>: normalized_mutual_info_score(df_clustered[<span class="st">"species"</span>], agglo_labels)</span>
+<span id="cb5-42"><a href="#cb5-42"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="evaluate" class="level2">
+<h2 class="anchored" data-anchor-id="evaluate">Evaluate</h2>
+<div id="aa2a5e8f-c4ec-4888-9e10-4613af4a50d9" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Evaluation summary table</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>evaluation_df <span class="op">=</span> pd.DataFrame(results).T</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="bu">print</span>(<span class="st">"----- ARI and NMI Summary -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="bu">print</span>(evaluation_df)</span>
+<span id="cb6-5"><a href="#cb6-5"></a></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co"># Label encode true species values for confusion matrices</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>le <span class="op">=</span> LabelEncoder()</span>
+<span id="cb6-8"><a href="#cb6-8"></a>true_labels <span class="op">=</span> le.fit_transform(df_clustered[<span class="st">"species"</span>])</span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># Print cluster counts and confusion matrices</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Per-Model Cluster Counts -----"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="cf">for</span> model_name <span class="kw">in</span> [<span class="st">'kproto'</span>, <span class="st">'gower_dbscan'</span>, <span class="st">'gower_aggl'</span>]:</span>
+<span id="cb6-13"><a href="#cb6-13"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">----- </span><span class="sc">{</span>model_name<span class="sc">}</span><span class="ss"> -----</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14"></a>    </span>
+<span id="cb6-15"><a href="#cb6-15"></a>    cluster_counts <span class="op">=</span> df_clustered[model_name].value_counts()</span>
+<span id="cb6-16"><a href="#cb6-16"></a>    <span class="bu">print</span>(cluster_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>----- ARI and NMI Summary -----
+
+                   ARI       NMI
+kproto        0.733731  0.739709
+gower_dbscan  0.212538  0.375291
+gower_aggl    0.542704  0.606129
+
+----- Per-Model Cluster Counts -----
+
+----- kproto -----
+
+kproto
+0    124
+2    119
+1     90
+Name: count, dtype: int64
+
+----- gower_dbscan -----
+
+gower_dbscan
+3    83
+2    80
+5    62
+4    61
+1    24
+0    23
+Name: count, dtype: int64
+
+----- gower_aggl -----
+
+gower_aggl
+0    119
+1    107
+2    107
+Name: count, dtype: int64</code></pre>
 </div>
 </div>
 
