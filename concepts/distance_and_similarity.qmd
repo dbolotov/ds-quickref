@@ -1,12 +1,5 @@
 ---
 title: "Distance and Similarity Measures"
-format:
-  html:
-    code-fold: true
-    code-summary: "Show code"
-execute:
-  echo: true
-jupyter: python3
 ---
 
 This page is a quick reference for common distance and similarity measures used in machine learning, clustering, and data matching. Each entry includes a brief description, supported data types, and links to Wikipedia articles and Python implementation. This list is not exhaustive.

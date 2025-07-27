@@ -1,4 +1,6 @@
-# Data Science and Machine Learning Model Metrics {.unnumbered}
+---
+title: "Data Science and Machine Learning Model Metrics"
+---
 
 This page is a quick reference for common model evaluation metrics across tasks like classification, regression, and clustering. Each entry includes a definition, when to use it, and links to an explanation (mostly from Wikipedia) and the relevant scikit-learn doc. This list is not meant to be exhaustive.
 
