@@ -1,0 +1,39 @@
+# **End-to-End Data Science Project Workflow** {.unnumbered}
+
+When you're working on a data science project - data analysis, ML models, LLM experiments, or quick apps - it's helpful to have a clear system for developing, publishing, and sharing your work.
+
+This is the workflow I use to go from local notebooks to hosted apps and public writeups. It works well for both solo projects and professional prototypes, and uses open-source and free tools throughout.
+
+---
+
+**1. Develop (local or remote)**
+
+- [Anaconda](https://www.anaconda.com/) to manage Python environments
+- [JupyterLab](https://jupyter.org/) for notebooks and analysis
+- [VS Code](https://code.visualstudio.com/) for scripts, app and package development; integrates with GitHub for version control
+- [Quarto](https://quarto.org/) for writing reports, websites, and blog-style content (supports Jupyter notebooks for code examples)
+
+---
+
+**2. Publish (code, content, apps)**
+
+**Code & Reports**
+
+- [GitHub](https://github.com/): store code, README files, and notebooks in public and private repositories
+- [GitHub Pages](https://docs.github.com/en/pages): host personal portfolio, Quarto-based websites, and writeups
+- [nbviewer](https://nbviewer.org/): fallback viewer for Jupyter notebooks that won't render on GitHub
+
+**Apps & Demos**
+
+- [Streamlit](https://streamlit.io/): build interactive apps with Python and deploy to streamlit.io
+- [Gradio](https://www.gradio.app/): quickly wrap ML functions into web UIs for demos or prototypes
+- [Hugging Face Spaces](https://huggingface.co/spaces): host public demos (Gradio or Streamlit) with no infrastructure setup
+- Note: free hosting can be slow to wake up after inactivity
+
+---
+
+**3. Share**
+
+- Post projects or insights on LinkedIn (pin key projects to your profile)
+- Write articles about the work on [Medium](https://medium.com/), [Towards Data Science](https://towardsdatascience.com/), or [Substack](https://substack.com/)
+- Link everything back through your GitHub Pages portfolio site

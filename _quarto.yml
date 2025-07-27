@@ -30,6 +30,8 @@ website:
         contents:
           - href: workflows/index.qmd
             text: "Workflows Index"
+          - href: workflows/ds_workflow.qmd
+            text: Data Science Project
           - href: workflows/forecasting_multi_univariate.ipynb
             text: Forecasting (Multiple Models)
           - href: workflows/classification_tabular.ipynb
