@@ -11,7 +11,8 @@
 
 - **Types of learning**  
   - Supervised learning: learning from labeled data.  
-  - Unsupervised learning: finding patterns in unlabeled data.  
+  - Unsupervised learning: finding patterns in unlabeled data.
+  - Semi-supervised learning: learning from a mix of labeled and unlabeled data.
   - Deep learning: a subset of ML using multi-layer neural networks.  
   - Reinforcement learning: learning by trial and error to maximize a reward signal.
 
