@@ -33,9 +33,11 @@ website:
           - href: workflows/ds_workflow.qmd
             text: Data Science Project
           - href: workflows/forecasting_multi_univariate.ipynb
-            text: Forecasting (Multiple Models)
+            text: Forecasting with ML
           - href: workflows/classification_tabular.ipynb
             text: Classification
+          - href: workflows/clustering_mixed_types.ipynb
+            text: Clustering (Mixed Data)
           - href: workflows/regression_tabular.ipynb
             text: Regression
 

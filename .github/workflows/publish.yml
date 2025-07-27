@@ -34,6 +34,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install jupyter scikit-learn pandas numpy seaborn scipy xgboost statsmodels lightgbm statsforecast
+          pip install kmodes gower
           pip install darts[torch]
           pip install git+https://github.com/dbolotov/minieda.git
 

@@ -5,7 +5,7 @@ This section contains end-to-end Jupyter Notebook templates for common data scie
 | Workflow | Description |
 |----------|-------------|
 | [End-to-End Data Science Project](ds_workflow.qmd) | Basic workflow and tools for developing and sharing data science projects. |
-| [Forecasting with Univariate Time Series](forecasting_multi_univariate.ipynb) | Training several forecasting models with the `darts` package on the sea ice dataset. |
+| [Forecasting with ML models](forecasting_multi_univariate.ipynb) | Training several ML models with the `darts` package on the univariate sea ice dataset. |
 | [Classification with Tabular Data](classification_tabular.ipynb) | Training a random forest classifier with `scikit-learn` on the Palmer penguins dataset. |
 | [Regression with Tabular Data](regression_tabular.ipynb) | Training several regression models with `scikit-learn` on the tips dataset. |
 
