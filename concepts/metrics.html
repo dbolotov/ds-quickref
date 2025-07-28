@@ -243,11 +243,24 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#metrics-explained" id="toc-metrics-explained" class="nav-link active" data-scroll-target="#metrics-explained">Metrics explained</a></li>
   <li><a href="#related-terms" id="toc-related-terms" class="nav-link" data-scroll-target="#related-terms">Related terms</a></li>
-  <li><a href="#metrics-tables" id="toc-metrics-tables" class="nav-link" data-scroll-target="#metrics-tables">Metrics tables</a>
+  <li><a href="#classification" id="toc-classification" class="nav-link" data-scroll-target="#classification">Classification</a>
   <ul class="collapse">
-  <li><a href="#classification" id="toc-classification" class="nav-link" data-scroll-target="#classification">Classification</a></li>
-  <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a></li>
+  <li><a href="#binary" id="toc-binary" class="nav-link" data-scroll-target="#binary">Binary</a></li>
+  <li><a href="#multiclass" id="toc-multiclass" class="nav-link" data-scroll-target="#multiclass">Multiclass</a></li>
   </ul></li>
+  <li><a href="#clustering" id="toc-clustering" class="nav-link" data-scroll-target="#clustering">Clustering</a>
+  <ul class="collapse">
+  <li><a href="#external-metrics" id="toc-external-metrics" class="nav-link" data-scroll-target="#external-metrics">External Metrics</a></li>
+  <li><a href="#internal-metrics" id="toc-internal-metrics" class="nav-link" data-scroll-target="#internal-metrics">Internal Metrics</a></li>
+  </ul></li>
+  <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a></li>
+  <li><a href="#time-series-forecasting" id="toc-time-series-forecasting" class="nav-link" data-scroll-target="#time-series-forecasting">Time Series Forecasting</a></li>
+  <li><a href="#anomaly-detection---tabular-data" id="toc-anomaly-detection---tabular-data" class="nav-link" data-scroll-target="#anomaly-detection---tabular-data">Anomaly Detection - Tabular Data</a>
+  <ul class="collapse">
+  <li><a href="#supervised-labels-available" id="toc-supervised-labels-available" class="nav-link" data-scroll-target="#supervised-labels-available">Supervised (labels available)</a></li>
+  <li><a href="#unsupervised-no-labels" id="toc-unsupervised-no-labels" class="nav-link" data-scroll-target="#unsupervised-no-labels">Unsupervised (no labels)</a></li>
+  </ul></li>
+  <li><a href="#anomaly-detection---time-series" id="toc-anomaly-detection---time-series" class="nav-link" data-scroll-target="#anomaly-detection---time-series">Anomaly Detection - Time Series</a></li>
   </ul>
 </nav>
     </div>
@@ -273,7 +286,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This page is a quick reference for common model evaluation metrics across tasks like classification, regression, and clustering. Each entry includes a definition, when to use it, and links to an explanation (mostly from Wikipedia) and the relevant scikit-learn doc. This list is not meant to be exhaustive.</p>
+<p>This page is a quick reference for common model evaluation metrics across tasks like classification, regression, and clustering. Each entry includes a definition, link to an explanation (mostly from Wikipedia) and a relevant Python package doc. This list is not meant to be exhaustive.</p>
 <p>Note: This page focuses on <em>performance metrics</em>, not <em>distance/similarity metrics</em> (see the <a href="../concepts/distance_and_similarity.html">Distance and Similarity</a> page)</p>
 <section id="metrics-explained" class="level2">
 <h2 class="anchored" data-anchor-id="metrics-explained">Metrics explained</h2>
@@ -292,10 +305,10 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Error metric</strong>: Often used in regression to describe prediction error.</li>
 </ul>
 </section>
-<section id="metrics-tables" class="level2">
-<h2 class="anchored" data-anchor-id="metrics-tables">Metrics tables</h2>
-<section id="classification" class="level3">
-<h3 class="anchored" data-anchor-id="classification">Classification</h3>
+<section id="classification" class="level2">
+<h2 class="anchored" data-anchor-id="classification">Classification</h2>
+<section id="binary" class="level3">
+<h3 class="anchored" data-anchor-id="binary">Binary</h3>
 <div class="small-table">
 <table class="table">
 <thead>
@@ -349,14 +362,133 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td><a href="https://en.wikipedia.org/wiki/Matthews_correlation_coefficient">MCC</a></td>
 <td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html">skl</a></td>
-<td><strong>Matthews Correlation Coefficient</strong> Balanced score even for class imbalance. Based on confusion matrix.</td>
+<td><strong>Matthews Correlation Coefficient</strong> Balanced score even for class imbalance.</td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="regression" class="level3">
-<h3 class="anchored" data-anchor-id="regression">Regression</h3>
+<section id="multiclass" class="level3">
+<h3 class="anchored" data-anchor-id="multiclass">Multiclass</h3>
+<p>Many classification metrics (like Precision, Recall, and F1) can be extended to multiclass problems by treating the data as a collection of binary classification tasks, one for each class, and then averaging over the results. Common averaging methods include:</p>
+<ul>
+<li>macro: unweighted average across classes</li>
+<li>micro: aggregates contributions of all classes (useful for class imbalance)</li>
+<li>weighted: like macro, but weighted by class support</li>
+</ul>
+<p>Below are additional metrics or tools commonly used in multiclass settings:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Python</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Precision_and_recall#Top-K_precision">Top-k Accuracy</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.top_k_accuracy_score.html">skl</a></td>
+<td><strong>Top-k Accuracy</strong>. Fraction of times the true label is among the top k predicted classes. Useful when there are many classes or class labels are ambiguous.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/Cohen%27s_kappa">Cohen’s Kappa</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html">skl</a></td>
+<td><strong>Cohen’s Kappa</strong>. Measures agreement between predicted and true labels, adjusted for chance. Range: -1 (complete disagreement) to 1 (perfect agreement).</td>
+</tr>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/F-score#Averaging_across_classes">Averaging Methods</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics">skl</a></td>
+<td><strong>Averaging (macro / micro / weighted)</strong>. Affects how metrics like precision and recall are calculated across multiple classes.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="clustering" class="level2">
+<h2 class="anchored" data-anchor-id="clustering">Clustering</h2>
+<section id="external-metrics" class="level3">
+<h3 class="anchored" data-anchor-id="external-metrics">External Metrics</h3>
+<p>These metrics evaluate how well the clusters match ground truth labels. Used when true labels are available.</p>
+<div class="small-table">
+<table class="table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Python</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Rand_index">ARI</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.adjusted_rand_score.html">skl</a></td>
+<td><strong>Adjusted Rand Index</strong>. Adjusted for chance. Values range from -1 to 1. Use to compare cluster labels with ground truth, even if labels are permuted.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/Mutual_information#Normalized_variants">NMI</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.normalized_mutual_info_score.html">skl</a></td>
+<td><strong>Normalized Mutual Information</strong>. Measures shared information between clusters and labels. Ranges from 0 to 1. Good for imbalanced classes.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Fowlkes%E2%80%93Mallows_index">FMI</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.fowlkes_mallows_score.html">skl</a></td>
+<td><strong>Fowlkes-Mallows Index</strong>. Geometric mean of precision and recall over pairwise cluster assignments. Range is 0 to 1. High when clusters and labels match well.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/Homogeneity_(clustering)">Homogeneity</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.homogeneity_score.html">skl</a></td>
+<td>Score is 1.0 when all clusters contain only members of a single class. Use when you want each cluster to be “pure.”</td>
+</tr>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Completeness_(clustering)">Completeness</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.completeness_score.html">skl</a></td>
+<td>Score is 1.0 when all members of a class are assigned to the same cluster. Use when you want to avoid splitting true classes.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/V-measure">V-measure</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.v_measure_score.html">skl</a></td>
+<td>Harmonic mean of homogeneity and completeness. Range is 0 to 1. Balanced metric for external evaluation.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="internal-metrics" class="level3">
+<h3 class="anchored" data-anchor-id="internal-metrics">Internal Metrics</h3>
+<p>These metrics evaluate clustering structure without using ground truth labels. They rely on intra-cluster cohesion and inter-cluster separation to assess clustering quality.</p>
+<div class="small-table-2">
+<table class="table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Python</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Silhouette_(clustering)">Silhouette</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.silhouette_score.html">skl</a></td>
+<td><strong>Silhouette Score</strong>. Measures how similar points are to their own cluster vs others. Range is -1 to 1. Higher is better.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/Davies%E2%80%93Bouldin_index">Davies–Bouldin</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.davies_bouldin_score.html">skl</a></td>
+<td><strong>Davies–Bouldin Index</strong>. Lower values indicate better clustering. Sensitive to cluster overlap.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Calinski-Harabasz_index">Calinski–Harabasz</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.calinski_harabasz_score.html">skl</a></td>
+<td><strong>Calinski–Harabasz Index</strong>. Ratio of between-cluster dispersion to within-cluster dispersion. Higher is better.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="regression" class="level2">
+<h2 class="anchored" data-anchor-id="regression">Regression</h2>
 <div class="small-table">
 <table class="table">
 <thead>
@@ -390,7 +522,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td><a href="https://en.wikipedia.org/wiki/Coefficient_of_determination#Adjusted_R2">Adj R²</a></td>
 <td></td>
-<td><strong>Adjusted R²</strong>. Like R² but penalizes for additional predictors. Helps avoid overfitting.</td>
+<td><strong>Adjusted R²</strong>. Like R² but penalizes for additional predictors.</td>
 </tr>
 <tr class="even">
 <td><a href="https://permetrics.readthedocs.io/en/latest/pages/regression/MSLE.html">MSLE</a></td>
@@ -410,9 +542,112 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-
-
 </section>
+<section id="time-series-forecasting" class="level2">
+<h2 class="anchored" data-anchor-id="time-series-forecasting">Time Series Forecasting</h2>
+<p>Many standard regression metrics are also commonly used in forecasting, including RMSE, MAE, and MAPE (described above).</p>
+<p>The metrics below are more specific to time series forecasting and help address issues like scale or seasonality.</p>
+<div class="small-table">
+<table class="table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Python</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Mean_absolute_scaled_error">MASE</a></td>
+<td><a href="https://unit8co.github.io/darts/generated_api/darts.metrics.html#darts.metrics.metrics.mase">darts</a>, <a href="https://www.sktime.net/en/stable/api_reference/auto_generated/sktime.performance_metrics.forecasting.MeanAbsoluteScaledError.html">sktime</a></td>
+<td><strong>Mean Absolute Scaled Error</strong>. Scales absolute error using a naive seasonal forecast. Interpretable across datasets. Value of 1.0 means same accuracy as naive baseline.</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/Mean_absolute_percentage_error#Weighted_absolute_percentage_error">WAPE</a></td>
+<td><a href="https://unit8co.github.io/darts/generated_api/darts.metrics.html#darts.metrics.metrics.wape">darts</a></td>
+<td><strong>Weighted Absolute Percentage Error</strong>. Like MAPE but weighted by actual values. Less sensitive to small denominators. Often used in retail and demand forecasting.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="anomaly-detection---tabular-data" class="level2">
+<h2 class="anchored" data-anchor-id="anomaly-detection---tabular-data">Anomaly Detection - Tabular Data</h2>
+<section id="supervised-labels-available" class="level3">
+<h3 class="anchored" data-anchor-id="supervised-labels-available">Supervised (labels available)</h3>
+<p>When labels are available for anomalies, the problem becomes a binary classification task, and a model can be evaluated with some of the same metrics as used for binary classification (covered above): Precision, Recall, F1 Score, ROC AUC, PR AUC.</p>
+<p>Below are additional metrics used in anomaly detection:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Python</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://en.wikipedia.org/wiki/Matthews_correlation_coefficient">MCC</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html">skl</a></td>
+<td><strong>Matthews Correlation Coefficient</strong>. Balanced score even for imbalanced classes. Range: -1 (total disagreement) to 0 (no better than random) to 1 (perfect agreement).</td>
+</tr>
+<tr class="even">
+<td><a href="https://en.wikipedia.org/wiki/Accuracy_and_precision#Balanced_accuracy">Balanced Accuracy</a></td>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html">skl</a></td>
+<td><strong>Balanced Accuracy</strong>. Average of recall for each class.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="unsupervised-no-labels" class="level3">
+<h3 class="anchored" data-anchor-id="unsupervised-no-labels">Unsupervised (no labels)</h3>
+<p>When no ground truth labels are available, you can’t directly compute classification metrics like precision or recall.</p>
+<p>Instead, the focus shifts to methods that evaluate <strong>cluster structure</strong>, <strong>separation</strong>, or <strong>reconstruction error</strong>, depending on the model used. Here are some options:</p>
+<ul>
+<li><strong>Silhouette Score</strong>: Measures how similar each point is to its own cluster vs others. Useful for density-based methods like DBSCAN.</li>
+<li><strong>Reconstruction Error</strong>: Used in autoencoder-based anomaly detection. High reconstruction error may signal an anomaly.</li>
+<li><strong>Distance from Cluster Centers</strong>: In k-means or GMMs, outliers may be far from centroids.</li>
+<li><strong>Top-n Scoring</strong>: Treat top N scored anomalies as flagged items, and assess with human validation or use domain-specific thresholds.</li>
+</ul>
+</section>
+</section>
+<section id="anomaly-detection---time-series" class="level2">
+<h2 class="anchored" data-anchor-id="anomaly-detection---time-series">Anomaly Detection - Time Series</h2>
+<p>In time series anomaly detection, evaluation includes not just individual points, but also how well the method identifies anomalous time windows.</p>
+<p>Some of the metrics used include:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Python</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Precision / Recall / F1 (windowed)</td>
+<td></td>
+<td><strong>Window-based Precision / Recall / F1</strong>. Standard classification metrics applied over labeled anomaly windows instead of pointwise labels. Partial overlap typically counted as correct.</td>
+</tr>
+<tr class="even">
+<td>NAB Score</td>
+<td><a href="https://github.com/numenta/NAB">nab</a></td>
+<td><strong>Numenta Anomaly Benchmark (NAB) Score</strong>. Measures early and accurate detection within labeled windows. Penalizes late and false detections.</td>
+</tr>
+<tr class="odd">
+<td>Time-aware F1</td>
+<td></td>
+<td><strong>Time-aware F1 Score</strong>. Variant of F1 that allows some time tolerance around labeled anomalies. Useful when slight delay is acceptable.</td>
+</tr>
+</tbody>
+</table>
+<p>These metrics typically require:</p>
+<ul>
+<li>A ground truth label set with time ranges of anomalies</li>
+<li>Evaluation logic that accounts for early/late detection, duration, and false positives</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
