@@ -2,7 +2,7 @@
 title: "Data Science and Machine Learning Model Metrics"
 ---
 
-This page is a quick reference for common model evaluation metrics across tasks like classification, regression, and clustering. Each entry includes a definition, when to use it, and links to an explanation (mostly from Wikipedia) and the relevant scikit-learn doc. This list is not meant to be exhaustive.
+This page is a quick reference for common model evaluation metrics across tasks like classification, regression, and clustering. Each entry includes a definition,  link to an explanation (mostly from Wikipedia) and a relevant Python package doc. This list is not meant to be exhaustive.
 
 Note: This page focuses on *performance metrics*, not *distance/similarity metrics* (see the [Distance and Similarity](../concepts/distance_and_similarity.qmd) page)
 
@@ -20,10 +20,8 @@ A **metric** is a number that measures model performance, or how well prediction
 - **Metric**: What you *monitor* to evaluate results.
 - **Error metric**: Often used in regression to describe prediction error.
 
-
-## Metrics tables
-
-### Classification
+## Classification
+### Binary
 
 ::: {.small-table}
 
@@ -37,11 +35,63 @@ A **metric** is a number that measures model performance, or how well prediction
 | [PR AUC](https://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html) | **PR AUC**. Area under the Precision-Recall curve. Better than ROC AUC for rare positives. |
 | [Log Loss](https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_loss_function_and_log_loss) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html) | **Logarithmic Loss**. Penalizes confident wrong predictions. Common in probabilistic classifiers. |
 | [Balanced Acc](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html) | **Balanced Accuracy**. Mean recall across classes. Helps with imbalanced classes. |
-| [MCC](https://en.wikipedia.org/wiki/Matthews_correlation_coefficient) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html) | **Matthews Correlation Coefficient** Balanced score even for class imbalance. Based on confusion matrix. |
+| [MCC](https://en.wikipedia.org/wiki/Matthews_correlation_coefficient) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html) | **Matthews Correlation Coefficient** Balanced score even for class imbalance. |
 
 :::
 
-### Regression
+### Multiclass
+
+Many classification metrics (like Precision, Recall, and F1) can be extended to multiclass problems by treating the data as a collection of binary classification tasks, one for each class, and then averaging over the results. Common averaging methods include:
+
+- macro: unweighted average across classes
+- micro: aggregates contributions of all classes (useful for class imbalance)
+- weighted: like macro, but weighted by class support
+
+Below are additional metrics or tools commonly used in multiclass settings:
+
+| Metric | Python | Details |
+|--------|--------|---------|
+| [Top-k Accuracy](https://en.wikipedia.org/wiki/Precision_and_recall#Top-K_precision) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.top_k_accuracy_score.html) | **Top-k Accuracy**. Fraction of times the true label is among the top k predicted classes. Useful when there are many classes or class labels are ambiguous. |
+| [Cohen’s Kappa](https://en.wikipedia.org/wiki/Cohen%27s_kappa) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html) | **Cohen’s Kappa**. Measures agreement between predicted and true labels, adjusted for chance. Range: -1 (complete disagreement) to 1 (perfect agreement). |
+| [Averaging Methods](https://en.wikipedia.org/wiki/F-score#Averaging_across_classes) | [skl](https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics) | **Averaging (macro / micro / weighted)**. Affects how metrics like precision and recall are calculated across multiple classes. |
+
+## Clustering
+
+### External Metrics
+
+These metrics evaluate how well the clusters match ground truth labels. Used when true labels are available.
+
+::: {.small-table}
+
+| Metric | Python | Details |
+|--------|--------|---------|
+| [ARI](https://en.wikipedia.org/wiki/Rand_index) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.adjusted_rand_score.html) | **Adjusted Rand Index**. Adjusted for chance. Values range from -1 to 1. Use to compare cluster labels with ground truth, even if labels are permuted. |
+| [NMI](https://en.wikipedia.org/wiki/Mutual_information#Normalized_variants) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.normalized_mutual_info_score.html) | **Normalized Mutual Information**. Measures shared information between clusters and labels. Ranges from 0 to 1. Good for imbalanced classes. |
+| [FMI](https://en.wikipedia.org/wiki/Fowlkes%E2%80%93Mallows_index) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.fowlkes_mallows_score.html) | **Fowlkes-Mallows Index**. Geometric mean of precision and recall over pairwise cluster assignments. Range is 0 to 1. High when clusters and labels match well. |
+| [Homogeneity](https://en.wikipedia.org/wiki/Homogeneity_(clustering)) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.homogeneity_score.html) | Score is 1.0 when all clusters contain only members of a single class. Use when you want each cluster to be “pure.” |
+| [Completeness](https://en.wikipedia.org/wiki/Completeness_(clustering)) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.completeness_score.html) | Score is 1.0 when all members of a class are assigned to the same cluster. Use when you want to avoid splitting true classes. |
+| [V-measure](https://en.wikipedia.org/wiki/V-measure) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.v_measure_score.html) | Harmonic mean of homogeneity and completeness. Range is 0 to 1. Balanced metric for external evaluation. |
+
+:::
+
+### Internal Metrics
+
+These metrics evaluate clustering structure without using ground truth labels. They rely on intra-cluster cohesion and inter-cluster separation to assess clustering quality.
+
+::: {.small-table-2}
+
+| Metric | Python | Details |
+|--------|--------|---------|
+| [Silhouette](https://en.wikipedia.org/wiki/Silhouette_(clustering)) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.silhouette_score.html) | **Silhouette Score**. Measures how similar points are to their own cluster vs others. Range is -1 to 1. Higher is better. |
+| [Davies–Bouldin](https://en.wikipedia.org/wiki/Davies%E2%80%93Bouldin_index) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.davies_bouldin_score.html) | **Davies–Bouldin Index**. Lower values indicate better clustering. Sensitive to cluster overlap. |
+| [Calinski–Harabasz](https://en.wikipedia.org/wiki/Calinski-Harabasz_index) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.calinski_harabasz_score.html) | **Calinski–Harabasz Index**. Ratio of between-cluster dispersion to within-cluster dispersion. Higher is better. |
+
+:::
+
+
+
+
+## Regression
 
 ::: {.small-table}
 
@@ -51,9 +101,66 @@ A **metric** is a number that measures model performance, or how well prediction
 | [RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.root_mean_squared_error.html) | **Root Mean Squared Error**. Same as MSE but in the original unit scale; easier to interpret. Still sensitive to outliers. |
 | [MAE](https://en.wikipedia.org/wiki/Mean_absolute_error) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html) | **Mean Absolute Error**. Average absolute difference between predictions and actual values. More robust to outliers than MSE. |
 | [R²](https://en.wikipedia.org/wiki/Coefficient_of_determination) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html) | **Coefficient of Determination**. Measures proportion of variance explained by the model. Can be negative. |
-| [Adj R²](https://en.wikipedia.org/wiki/Coefficient_of_determination#Adjusted_R2) |  | **Adjusted R²**. Like R² but penalizes for additional predictors. Helps avoid overfitting. |
+| [Adj R²](https://en.wikipedia.org/wiki/Coefficient_of_determination#Adjusted_R2) |  | **Adjusted R²**. Like R² but penalizes for additional predictors. |
 | [MSLE](https://permetrics.readthedocs.io/en/latest/pages/regression/MSLE.html) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html) | **Mean Squared Log Error**. MSE on log-transformed targets. Good for targets spanning orders of magnitude. |
 | [MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_percentage_error.html) | **Mean Absolute Percentage Error**. Average of absolute percentage errors. Can blow up if targets are near zero. |
 | [SMAPE](https://en.wikipedia.org/wiki/Symmetric_mean_absolute_percentage_error) |  | **Symmetric MAPE**. Like MAPE but less sensitive to small denominators. Often used in time series. |
 
 :::
+
+## Time Series Forecasting
+
+Many standard regression metrics are also commonly used in forecasting, including RMSE, MAE, and MAPE (described above).
+
+The metrics below are more specific to time series forecasting and help address issues like scale or seasonality.
+
+::: {.small-table}
+
+| Metric | Python | Details |
+|--------|--------|---------|
+| [MASE](https://en.wikipedia.org/wiki/Mean_absolute_scaled_error) |  [darts](https://unit8co.github.io/darts/generated_api/darts.metrics.html#darts.metrics.metrics.mase), [sktime](https://www.sktime.net/en/stable/api_reference/auto_generated/sktime.performance_metrics.forecasting.MeanAbsoluteScaledError.html) | **Mean Absolute Scaled Error**. Scales absolute error using a naive seasonal forecast. Interpretable across datasets. Value of 1.0 means same accuracy as naive baseline. |
+| [WAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error#Weighted_absolute_percentage_error) | [darts](https://unit8co.github.io/darts/generated_api/darts.metrics.html#darts.metrics.metrics.wape) | **Weighted Absolute Percentage Error**. Like MAPE but weighted by actual values. Less sensitive to small denominators. Often used in retail and demand forecasting. |
+
+:::
+
+
+## Anomaly Detection - Tabular Data
+### Supervised (labels available)
+
+When labels are available for anomalies, the problem becomes a binary classification task, and a model can be evaluated with some of the same metrics as used for binary classification (covered above): Precision, Recall, F1 Score, ROC AUC, PR AUC.
+
+Below are additional metrics used in anomaly detection:
+
+| Metric | Python | Details |
+|--------|--------|---------|
+| [MCC](https://en.wikipedia.org/wiki/Matthews_correlation_coefficient) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html) | **Matthews Correlation Coefficient**. Balanced score even for imbalanced classes. Range: -1 (total disagreement) to 0 (no better than random) to 1 (perfect agreement). |
+| [Balanced Accuracy](https://en.wikipedia.org/wiki/Accuracy_and_precision#Balanced_accuracy) | [skl](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html) | **Balanced Accuracy**. Average of recall for each class. |
+
+
+### Unsupervised (no labels)
+
+When no ground truth labels are available, you can’t directly compute classification metrics like precision or recall.
+
+Instead, the focus shifts to methods that evaluate **cluster structure**, **separation**, or **reconstruction error**, depending on the model used. Here are some options:
+
+- **Silhouette Score**: Measures how similar each point is to its own cluster vs others. Useful for density-based methods like DBSCAN.
+- **Reconstruction Error**: Used in autoencoder-based anomaly detection. High reconstruction error may signal an anomaly.
+- **Distance from Cluster Centers**: In k-means or GMMs, outliers may be far from centroids.
+- **Top-n Scoring**: Treat top N scored anomalies as flagged items, and assess with human validation or use domain-specific thresholds.
+
+## Anomaly Detection - Time Series
+
+In time series anomaly detection, evaluation includes not just individual points, but also how well the method identifies anomalous time windows.
+
+Some of the metrics used include:
+
+| Metric | Python | Details |
+|--------|--------|---------|
+| Precision / Recall / F1 (windowed) |  | **Window-based Precision / Recall / F1**. Standard classification metrics applied over labeled anomaly windows instead of pointwise labels. Partial overlap typically counted as correct. |
+| NAB Score | [nab](https://github.com/numenta/NAB) | **Numenta Anomaly Benchmark (NAB) Score**. Measures early and accurate detection within labeled windows. Penalizes late and false detections. |
+| Time-aware F1 |  | **Time-aware F1 Score**. Variant of F1 that allows some time tolerance around labeled anomalies. Useful when slight delay is acceptable. |
+
+These metrics typically require:
+
+- A ground truth label set with time ranges of anomalies
+- Evaluation logic that accounts for early/late detection, duration, and false positives
