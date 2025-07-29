@@ -6,11 +6,13 @@ This site is a concise, opinionated reference for practical data science and mac
 
 All code examples are in Python, using libraries like `pandas`, `matplotlib`, `scikit-learn`, and `darts`. They are written to be easy to copy and adapt.
 
-This is a work in progress, made by a data scientist who got tired of looking this stuff frequently :)
+This is a work in progress, made by a data scientist who got tired of looking this stuff up frequently :)
 
 ## Usage
 - Use the left sidebar to browse topics  
 - Use the search bar to find specific terms or methods
+- The **Concepts** section discusses challenges 
+- The **Workflows** section contains a variety of basic templates for data science tasks
 
 ## 
 <span style="font-size: 0.85em; color: #666;">
