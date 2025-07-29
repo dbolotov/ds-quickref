@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workflows/ds_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Science Project</span></a>
+ <span class="menu-text">Data Science Projects</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -271,7 +271,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#import-and-check-data" id="toc-import-and-check-data" class="nav-link active" data-scroll-target="#import-and-check-data">Import and Check Data</a></li>
+  <li><a href="#transform-data" id="toc-transform-data" class="nav-link" data-scroll-target="#transform-data">Transform Data</a></li>
+  <li><a href="#build-models---linear-regression-ridge-lasso-random-forest-k-nn-xgboost" id="toc-build-models---linear-regression-ridge-lasso-random-forest-k-nn-xgboost" class="nav-link" data-scroll-target="#build-models---linear-regression-ridge-lasso-random-forest-k-nn-xgboost">Build Models - Linear Regression, Ridge, Lasso, Random Forest, k-NN, XGBoost</a></li>
+  <li><a href="#evaluate-models-and-predict-on-sample-data-using-best-model-random-forest" id="toc-evaluate-models-and-predict-on-sample-data-using-best-model-random-forest" class="nav-link" data-scroll-target="#evaluate-models-and-predict-on-sample-data-using-best-model-random-forest">Evaluate Models and Predict on Sample Data Using Best Model (Random Forest)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -298,14 +307,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Supervised ML workflow for building a regression model on tabular data with categorical and continuous features.</p>
 <p>Uses the <code>tips</code> dataset from <strong>seaborn</strong>, and trains several models to predict the tip amount. Uses <strong>scikit-learn</strong> for pre-processing, modeling, and evaluation.</p>
 <p>This dataset contains no missing values, so imputation is not used.</p>
-<p>This script:</p>
+<p>This script does the following:</p>
 <ul>
-<li>Includes train/test split</li>
+<li>Splits data into train/test sets</li>
 <li>Handles categorical and numerical features separately</li>
 <li>Runs a grid search to find best model parameters for several models: linear regression, lasso, ridge, random forest regressor, knn regressor, xgboost regressor</li>
-<li>Evaluates results using RMSE, MAE, R² score</li>
-<li>Creates 3 plots for evaluating residuals per model</li>
-<li>Predicts target on a fictional example</li>
+<li>Evaluates results using RMSE, MAE, R² score to find the best model (Random Forest)</li>
+<li>Creates 3 plots for evaluating residuals per model, and plots the evaluation for the best model</li>
+<li>Predicts target on a fictional example using the best model</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="Note: Using `display` for HTML tables">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -328,7 +337,9 @@ Note: Using <code>display</code> for HTML tables
 </div>
 </div>
 </div>
-<div id="8cb0fe0e" class="cell" data-execution_count="1">
+<section id="import-and-check-data" class="level2">
+<h2 class="anchored" data-anchor-id="import-and-check-data">Import and Check Data</h2>
+<div id="0ed91cf4-0316-41c3-9b24-041bdc1ad5cf" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">from</span> minieda <span class="im">import</span> summarize <span class="co"># pip install git+https://github.com/dbolotov/minieda.git</span></span>
@@ -356,219 +367,14 @@ Note: Using <code>display</code> for HTML tables
 <span id="cb2-25"><a href="#cb2-25"></a><span class="co"># Load dataset and display first few rows</span></span>
 <span id="cb2-26"><a href="#cb2-26"></a>df <span class="op">=</span> sns.load_dataset(<span class="st">"tips"</span>)</span>
 <span id="cb2-27"><a href="#cb2-27"></a></span>
-<span id="cb2-28"><a href="#cb2-28"></a><span class="bu">print</span>(<span class="st">"----- SCRIPT OUTPUT -----"</span>)</span>
-<span id="cb2-29"><a href="#cb2-29"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- First Few Rows of Data -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="bu">print</span>(df.head())</span>
-<span id="cb2-31"><a href="#cb2-31"></a></span>
-<span id="cb2-32"><a href="#cb2-32"></a><span class="co"># Display summary</span></span>
-<span id="cb2-33"><a href="#cb2-33"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Data Summary -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-34"><a href="#cb2-34"></a><span class="bu">print</span>(summarize(df))</span>
-<span id="cb2-35"><a href="#cb2-35"></a></span>
-<span id="cb2-36"><a href="#cb2-36"></a><span class="co"># Define columns</span></span>
-<span id="cb2-37"><a href="#cb2-37"></a>cat_cols <span class="op">=</span> [<span class="st">'sex'</span>, <span class="st">'smoker'</span>, <span class="st">'day'</span>, <span class="st">'time'</span>]</span>
-<span id="cb2-38"><a href="#cb2-38"></a>num_cols <span class="op">=</span> [<span class="st">'total_bill'</span>, <span class="st">'size'</span>]</span>
-<span id="cb2-39"><a href="#cb2-39"></a></span>
-<span id="cb2-40"><a href="#cb2-40"></a><span class="co"># Split the data</span></span>
-<span id="cb2-41"><a href="#cb2-41"></a>X <span class="op">=</span> df[cat_cols <span class="op">+</span> num_cols]</span>
-<span id="cb2-42"><a href="#cb2-42"></a>y <span class="op">=</span> df[<span class="st">'tip'</span>]</span>
-<span id="cb2-43"><a href="#cb2-43"></a></span>
-<span id="cb2-44"><a href="#cb2-44"></a><span class="co"># Split into training and test</span></span>
-<span id="cb2-45"><a href="#cb2-45"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
-<span id="cb2-46"><a href="#cb2-46"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span></span>
-<span id="cb2-47"><a href="#cb2-47"></a>)</span>
-<span id="cb2-48"><a href="#cb2-48"></a></span>
-<span id="cb2-49"><a href="#cb2-49"></a><span class="co"># Define preprocessing for numeric and categorical features</span></span>
-<span id="cb2-50"><a href="#cb2-50"></a>numeric_preprocessing <span class="op">=</span> Pipeline([</span>
-<span id="cb2-51"><a href="#cb2-51"></a>    (<span class="st">'scale'</span>, StandardScaler())</span>
-<span id="cb2-52"><a href="#cb2-52"></a>])</span>
-<span id="cb2-53"><a href="#cb2-53"></a></span>
-<span id="cb2-54"><a href="#cb2-54"></a>categorical_preprocessing <span class="op">=</span> Pipeline([</span>
-<span id="cb2-55"><a href="#cb2-55"></a>    (<span class="st">'encode'</span>, OneHotEncoder(drop<span class="op">=</span><span class="st">'first'</span>, sparse_output<span class="op">=</span><span class="va">False</span>))  <span class="co"># one-hot; drop first feature to avoid multicollinearity</span></span>
-<span id="cb2-56"><a href="#cb2-56"></a>])</span>
-<span id="cb2-57"><a href="#cb2-57"></a></span>
-<span id="cb2-58"><a href="#cb2-58"></a><span class="co"># Combine into a column transformer</span></span>
-<span id="cb2-59"><a href="#cb2-59"></a>preprocessor <span class="op">=</span> ColumnTransformer([</span>
-<span id="cb2-60"><a href="#cb2-60"></a>    (<span class="st">'num'</span>, numeric_preprocessing, num_cols),</span>
-<span id="cb2-61"><a href="#cb2-61"></a>    (<span class="st">'cat'</span>, categorical_preprocessing, cat_cols)</span>
-<span id="cb2-62"><a href="#cb2-62"></a>])</span>
-<span id="cb2-63"><a href="#cb2-63"></a></span>
-<span id="cb2-64"><a href="#cb2-64"></a><span class="co"># Define models and hyperparameters to optimize</span></span>
-<span id="cb2-65"><a href="#cb2-65"></a>models <span class="op">=</span> [</span>
-<span id="cb2-66"><a href="#cb2-66"></a>    {</span>
-<span id="cb2-67"><a href="#cb2-67"></a>        <span class="st">"name"</span>: <span class="st">"LinearRegression"</span>,</span>
-<span id="cb2-68"><a href="#cb2-68"></a>        <span class="st">"estimator"</span>: LinearRegression(),</span>
-<span id="cb2-69"><a href="#cb2-69"></a>        <span class="st">"param_grid"</span>: <span class="va">None</span></span>
-<span id="cb2-70"><a href="#cb2-70"></a>    },</span>
-<span id="cb2-71"><a href="#cb2-71"></a>    {</span>
-<span id="cb2-72"><a href="#cb2-72"></a>        <span class="st">"name"</span>: <span class="st">"Ridge"</span>,</span>
-<span id="cb2-73"><a href="#cb2-73"></a>        <span class="st">"estimator"</span>: Ridge(),</span>
-<span id="cb2-74"><a href="#cb2-74"></a>        <span class="st">"param_grid"</span>: {</span>
-<span id="cb2-75"><a href="#cb2-75"></a>            <span class="st">"model__alpha"</span>: [<span class="fl">0.1</span>, <span class="fl">1.0</span>, <span class="fl">10.0</span>]</span>
-<span id="cb2-76"><a href="#cb2-76"></a>        }</span>
-<span id="cb2-77"><a href="#cb2-77"></a>    },</span>
-<span id="cb2-78"><a href="#cb2-78"></a>    {</span>
-<span id="cb2-79"><a href="#cb2-79"></a>        <span class="st">"name"</span>: <span class="st">"Lasso"</span>,</span>
-<span id="cb2-80"><a href="#cb2-80"></a>        <span class="st">"estimator"</span>: Lasso(),</span>
-<span id="cb2-81"><a href="#cb2-81"></a>        <span class="st">"param_grid"</span>: {</span>
-<span id="cb2-82"><a href="#cb2-82"></a>            <span class="st">"model__alpha"</span>: [<span class="fl">0.1</span>, <span class="fl">1.0</span>, <span class="fl">10.0</span>]</span>
-<span id="cb2-83"><a href="#cb2-83"></a>        }</span>
-<span id="cb2-84"><a href="#cb2-84"></a>    },</span>
-<span id="cb2-85"><a href="#cb2-85"></a>    {</span>
-<span id="cb2-86"><a href="#cb2-86"></a>        <span class="st">"name"</span>: <span class="st">"RandomForest"</span>,</span>
-<span id="cb2-87"><a href="#cb2-87"></a>        <span class="st">"estimator"</span>: RandomForestRegressor(random_state<span class="op">=</span><span class="dv">42</span>),</span>
-<span id="cb2-88"><a href="#cb2-88"></a>        <span class="st">"param_grid"</span>: {</span>
-<span id="cb2-89"><a href="#cb2-89"></a>            <span class="st">"model__n_estimators"</span>: [<span class="dv">20</span>,<span class="dv">30</span>],</span>
-<span id="cb2-90"><a href="#cb2-90"></a>            <span class="st">"model__max_depth"</span>: [<span class="va">None</span>, <span class="dv">10</span>],</span>
-<span id="cb2-91"><a href="#cb2-91"></a>            <span class="st">"model__min_samples_split"</span>: [<span class="dv">2</span>, <span class="dv">5</span>]</span>
-<span id="cb2-92"><a href="#cb2-92"></a>        }</span>
-<span id="cb2-93"><a href="#cb2-93"></a>    },</span>
-<span id="cb2-94"><a href="#cb2-94"></a>    {</span>
-<span id="cb2-95"><a href="#cb2-95"></a>        <span class="st">"name"</span>: <span class="st">"KNN"</span>,</span>
-<span id="cb2-96"><a href="#cb2-96"></a>        <span class="st">"estimator"</span>: KNeighborsRegressor(),</span>
-<span id="cb2-97"><a href="#cb2-97"></a>        <span class="st">"param_grid"</span>: {</span>
-<span id="cb2-98"><a href="#cb2-98"></a>            <span class="st">"model__n_neighbors"</span>: [<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>]</span>
-<span id="cb2-99"><a href="#cb2-99"></a>        }</span>
-<span id="cb2-100"><a href="#cb2-100"></a>    },</span>
-<span id="cb2-101"><a href="#cb2-101"></a>    {</span>
-<span id="cb2-102"><a href="#cb2-102"></a>        <span class="st">"name"</span>: <span class="st">"XGBoost"</span>,</span>
-<span id="cb2-103"><a href="#cb2-103"></a>        <span class="st">"estimator"</span>: XGBRegressor(random_state<span class="op">=</span><span class="dv">42</span>, verbosity<span class="op">=</span><span class="dv">0</span>),</span>
-<span id="cb2-104"><a href="#cb2-104"></a>        <span class="st">"param_grid"</span>: {</span>
-<span id="cb2-105"><a href="#cb2-105"></a>            <span class="st">"model__n_estimators"</span>: [<span class="dv">30</span>, <span class="dv">50</span>],</span>
-<span id="cb2-106"><a href="#cb2-106"></a>            <span class="st">"model__learning_rate"</span>: [<span class="fl">0.1</span>, <span class="fl">0.3</span>],</span>
-<span id="cb2-107"><a href="#cb2-107"></a>            <span class="st">"model__max_depth"</span>: [<span class="dv">3</span>, <span class="dv">6</span>]</span>
-<span id="cb2-108"><a href="#cb2-108"></a>        }</span>
-<span id="cb2-109"><a href="#cb2-109"></a>    }</span>
-<span id="cb2-110"><a href="#cb2-110"></a>]</span>
-<span id="cb2-111"><a href="#cb2-111"></a></span>
-<span id="cb2-112"><a href="#cb2-112"></a>results <span class="op">=</span> []</span>
-<span id="cb2-113"><a href="#cb2-113"></a></span>
-<span id="cb2-114"><a href="#cb2-114"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- GRID SEARCH WITH BEST RESULT ON TRAIN AND TEST SETS -----"</span>)</span>
-<span id="cb2-115"><a href="#cb2-115"></a></span>
-<span id="cb2-116"><a href="#cb2-116"></a>start_time <span class="op">=</span> time.time()</span>
-<span id="cb2-117"><a href="#cb2-117"></a>trained_models <span class="op">=</span> {}</span>
-<span id="cb2-118"><a href="#cb2-118"></a><span class="cf">for</span> m <span class="kw">in</span> models:</span>
-<span id="cb2-119"><a href="#cb2-119"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">--- </span><span class="sc">{</span>m[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss"> ---"</span>)</span>
-<span id="cb2-120"><a href="#cb2-120"></a>    </span>
-<span id="cb2-121"><a href="#cb2-121"></a>    pipeline <span class="op">=</span> Pipeline([(<span class="st">'pre'</span>, preprocessor), (<span class="st">'model'</span>, m[<span class="st">"estimator"</span>])])</span>
-<span id="cb2-122"><a href="#cb2-122"></a></span>
-<span id="cb2-123"><a href="#cb2-123"></a>    <span class="cf">if</span> m[<span class="st">"param_grid"</span>]:</span>
-<span id="cb2-124"><a href="#cb2-124"></a>        search <span class="op">=</span> GridSearchCV(</span>
-<span id="cb2-125"><a href="#cb2-125"></a>            pipeline,</span>
-<span id="cb2-126"><a href="#cb2-126"></a>            m[<span class="st">"param_grid"</span>],</span>
-<span id="cb2-127"><a href="#cb2-127"></a>            scoring<span class="op">=</span><span class="st">"neg_root_mean_squared_error"</span>,  <span class="co"># RMSE</span></span>
-<span id="cb2-128"><a href="#cb2-128"></a>            cv<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb2-129"><a href="#cb2-129"></a>            n_jobs<span class="op">=-</span><span class="dv">1</span>,</span>
-<span id="cb2-130"><a href="#cb2-130"></a>            verbose<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb2-131"><a href="#cb2-131"></a>        )</span>
-<span id="cb2-132"><a href="#cb2-132"></a>        search.fit(X_train, y_train)</span>
-<span id="cb2-133"><a href="#cb2-133"></a>        best_model <span class="op">=</span> search.best_estimator_</span>
-<span id="cb2-134"><a href="#cb2-134"></a>        <span class="bu">print</span>(<span class="st">"Best params:"</span>, search.best_params_)</span>
-<span id="cb2-135"><a href="#cb2-135"></a>    <span class="cf">else</span>: <span class="co">#if no parameters to optimize</span></span>
-<span id="cb2-136"><a href="#cb2-136"></a>        pipeline.fit(X_train, y_train)</span>
-<span id="cb2-137"><a href="#cb2-137"></a>        best_model <span class="op">=</span> pipeline</span>
-<span id="cb2-138"><a href="#cb2-138"></a>    </span>
-<span id="cb2-139"><a href="#cb2-139"></a>    trained_models[m[<span class="st">"name"</span>]] <span class="op">=</span> best_model</span>
-<span id="cb2-140"><a href="#cb2-140"></a></span>
-<span id="cb2-141"><a href="#cb2-141"></a>    <span class="co"># Predict and evaluate on both train and test</span></span>
-<span id="cb2-142"><a href="#cb2-142"></a>    y_train_pred <span class="op">=</span> best_model.predict(X_train)</span>
-<span id="cb2-143"><a href="#cb2-143"></a>    y_test_pred <span class="op">=</span> best_model.predict(X_test)</span>
-<span id="cb2-144"><a href="#cb2-144"></a>    </span>
-<span id="cb2-145"><a href="#cb2-145"></a>    train_rmse <span class="op">=</span> root_mean_squared_error(y_train, y_train_pred)</span>
-<span id="cb2-146"><a href="#cb2-146"></a>    test_rmse <span class="op">=</span> root_mean_squared_error(y_test, y_test_pred)</span>
-<span id="cb2-147"><a href="#cb2-147"></a>    </span>
-<span id="cb2-148"><a href="#cb2-148"></a>    train_mae <span class="op">=</span> mean_absolute_error(y_train, y_train_pred)</span>
-<span id="cb2-149"><a href="#cb2-149"></a>    test_mae <span class="op">=</span> mean_absolute_error(y_test, y_test_pred)</span>
-<span id="cb2-150"><a href="#cb2-150"></a>    </span>
-<span id="cb2-151"><a href="#cb2-151"></a>    train_r2 <span class="op">=</span> r2_score(y_train, y_train_pred)</span>
-<span id="cb2-152"><a href="#cb2-152"></a>    test_r2 <span class="op">=</span> r2_score(y_test, y_test_pred)</span>
-<span id="cb2-153"><a href="#cb2-153"></a>    </span>
-<span id="cb2-154"><a href="#cb2-154"></a>    <span class="bu">print</span>(<span class="st">""</span>)</span>
-<span id="cb2-155"><a href="#cb2-155"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'Metric'</span><span class="sc">:&lt;6}</span><span class="ss"> | </span><span class="sc">{</span><span class="st">'Train'</span><span class="sc">:&gt;6}</span><span class="ss"> | </span><span class="sc">{</span><span class="st">'Test'</span><span class="sc">:&gt;6}</span><span class="ss">"</span>)</span>
-<span id="cb2-156"><a href="#cb2-156"></a>    <span class="co"># print("-" * 24)</span></span>
-<span id="cb2-157"><a href="#cb2-157"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'RMSE'</span><span class="sc">:&lt;6}</span><span class="ss"> | </span><span class="sc">{</span>train_rmse<span class="sc">:&gt;6.4f}</span><span class="ss"> | </span><span class="sc">{</span>test_rmse<span class="sc">:&gt;6.4f}</span><span class="ss">"</span>)</span>
-<span id="cb2-158"><a href="#cb2-158"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'MAE'</span><span class="sc">:&lt;6}</span><span class="ss"> | </span><span class="sc">{</span>train_mae<span class="sc">:&gt;6.4f}</span><span class="ss"> | </span><span class="sc">{</span>test_mae<span class="sc">:&gt;6.4f}</span><span class="ss">"</span>)</span>
-<span id="cb2-159"><a href="#cb2-159"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'R²'</span><span class="sc">:&lt;6}</span><span class="ss"> | </span><span class="sc">{</span>train_r2<span class="sc">:&gt;6.4f}</span><span class="ss"> | </span><span class="sc">{</span>test_r2<span class="sc">:&gt;6.4f}</span><span class="ss">"</span>)</span>
-<span id="cb2-160"><a href="#cb2-160"></a></span>
-<span id="cb2-161"><a href="#cb2-161"></a>    <span class="co"># results.append({</span></span>
-<span id="cb2-162"><a href="#cb2-162"></a>    <span class="co">#     "model": m["name"],</span></span>
-<span id="cb2-163"><a href="#cb2-163"></a>    <span class="co">#     "rmse": rmse,</span></span>
-<span id="cb2-164"><a href="#cb2-164"></a>    <span class="co">#     "mae": mae,</span></span>
-<span id="cb2-165"><a href="#cb2-165"></a>    <span class="co">#     "r2": r2</span></span>
-<span id="cb2-166"><a href="#cb2-166"></a>    <span class="co"># })</span></span>
-<span id="cb2-167"><a href="#cb2-167"></a></span>
-<span id="cb2-168"><a href="#cb2-168"></a>    results.append({</span>
-<span id="cb2-169"><a href="#cb2-169"></a>        <span class="st">"model"</span>: m[<span class="st">"name"</span>],</span>
-<span id="cb2-170"><a href="#cb2-170"></a>        <span class="st">"train_rmse"</span>: train_rmse,</span>
-<span id="cb2-171"><a href="#cb2-171"></a>        <span class="st">"test_rmse"</span>: test_rmse,</span>
-<span id="cb2-172"><a href="#cb2-172"></a>        <span class="st">"train_mae"</span>: train_mae,</span>
-<span id="cb2-173"><a href="#cb2-173"></a>        <span class="st">"test_mae"</span>: test_mae,</span>
-<span id="cb2-174"><a href="#cb2-174"></a>        <span class="st">"train_r2"</span>: train_r2,</span>
-<span id="cb2-175"><a href="#cb2-175"></a>        <span class="st">"test_r2"</span>: test_r2</span>
-<span id="cb2-176"><a href="#cb2-176"></a>    })</span>
-<span id="cb2-177"><a href="#cb2-177"></a></span>
-<span id="cb2-178"><a href="#cb2-178"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Grid search completed in </span><span class="sc">{</span>time<span class="sc">.</span>time() <span class="op">-</span> start_time<span class="sc">:.2f}</span><span class="ss"> seconds"</span>)</span>
-<span id="cb2-179"><a href="#cb2-179"></a></span>
-<span id="cb2-180"><a href="#cb2-180"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- EVALUATION SUMMARY -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-181"><a href="#cb2-181"></a><span class="bu">print</span>(pd.DataFrame(results).sort_values(<span class="st">"test_rmse"</span>, ascending<span class="op">=</span><span class="va">False</span>))</span>
-<span id="cb2-182"><a href="#cb2-182"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-183"><a href="#cb2-183"></a></span>
-<span id="cb2-184"><a href="#cb2-184"></a><span class="kw">def</span> plot_residual_diagnostics(y_true, y_pred, model_name<span class="op">=</span><span class="st">"Model"</span>):</span>
-<span id="cb2-185"><a href="#cb2-185"></a>    residuals <span class="op">=</span> y_true <span class="op">-</span> y_pred</span>
-<span id="cb2-186"><a href="#cb2-186"></a></span>
-<span id="cb2-187"><a href="#cb2-187"></a>    fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>))</span>
-<span id="cb2-188"><a href="#cb2-188"></a>    fig.suptitle(<span class="ss">f"Residual Diagnostics: </span><span class="sc">{</span>model_name<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-189"><a href="#cb2-189"></a></span>
-<span id="cb2-190"><a href="#cb2-190"></a>    <span class="co"># 1. Residuals vs Predicted</span></span>
-<span id="cb2-191"><a href="#cb2-191"></a>    sns.scatterplot(x<span class="op">=</span>y_pred, y<span class="op">=</span>residuals, ax<span class="op">=</span>axes[<span class="dv">0</span>])</span>
-<span id="cb2-192"><a href="#cb2-192"></a>    axes[<span class="dv">0</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"red"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
-<span id="cb2-193"><a href="#cb2-193"></a>    axes[<span class="dv">0</span>].set_xlabel(<span class="st">"Predicted"</span>)</span>
-<span id="cb2-194"><a href="#cb2-194"></a>    axes[<span class="dv">0</span>].set_ylabel(<span class="st">"Residuals"</span>)</span>
-<span id="cb2-195"><a href="#cb2-195"></a>    axes[<span class="dv">0</span>].set_title(<span class="st">"Residuals vs Predicted"</span>)</span>
-<span id="cb2-196"><a href="#cb2-196"></a></span>
-<span id="cb2-197"><a href="#cb2-197"></a>    <span class="co"># 2. Histogram of residuals</span></span>
-<span id="cb2-198"><a href="#cb2-198"></a>    sns.histplot(residuals, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">1</span>])</span>
-<span id="cb2-199"><a href="#cb2-199"></a>    axes[<span class="dv">1</span>].set_title(<span class="st">"Residuals Histogram"</span>)</span>
-<span id="cb2-200"><a href="#cb2-200"></a>    axes[<span class="dv">1</span>].set_xlabel(<span class="st">"Residual"</span>)</span>
-<span id="cb2-201"><a href="#cb2-201"></a></span>
-<span id="cb2-202"><a href="#cb2-202"></a>    <span class="co"># 3. Q-Q Plot</span></span>
-<span id="cb2-203"><a href="#cb2-203"></a>    stats.probplot(residuals, dist<span class="op">=</span><span class="st">"norm"</span>, plot<span class="op">=</span>axes[<span class="dv">2</span>])</span>
-<span id="cb2-204"><a href="#cb2-204"></a>    axes[<span class="dv">2</span>].set_title(<span class="st">"Q-Q Plot"</span>)</span>
-<span id="cb2-205"><a href="#cb2-205"></a>    axes[<span class="dv">2</span>].get_lines()[<span class="dv">0</span>].set_color(<span class="st">"tab:blue"</span>)  <span class="co"># points</span></span>
-<span id="cb2-206"><a href="#cb2-206"></a>    axes[<span class="dv">2</span>].get_lines()[<span class="dv">1</span>].set_color(<span class="st">"red"</span>)       <span class="co"># reference line</span></span>
-<span id="cb2-207"><a href="#cb2-207"></a></span>
-<span id="cb2-208"><a href="#cb2-208"></a>    plt.tight_layout(rect<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.95</span>])</span>
-<span id="cb2-209"><a href="#cb2-209"></a>    plt.show()</span>
-<span id="cb2-210"><a href="#cb2-210"></a></span>
-<span id="cb2-211"><a href="#cb2-211"></a>y_test_pred <span class="op">=</span> trained_models[<span class="st">"RandomForest"</span>].predict(X_test)</span>
-<span id="cb2-212"><a href="#cb2-212"></a>plot_residual_diagnostics(y_test, y_test_pred, model_name<span class="op">=</span><span class="st">"Random Forest"</span>)</span>
-<span id="cb2-213"><a href="#cb2-213"></a></span>
-<span id="cb2-214"><a href="#cb2-214"></a></span>
-<span id="cb2-215"><a href="#cb2-215"></a><span class="co"># Predict on a new example</span></span>
-<span id="cb2-216"><a href="#cb2-216"></a>new_sample <span class="op">=</span> pd.DataFrame([{</span>
-<span id="cb2-217"><a href="#cb2-217"></a>    <span class="st">'sex'</span>: <span class="st">'Female'</span>,</span>
-<span id="cb2-218"><a href="#cb2-218"></a>    <span class="st">'smoker'</span>: <span class="st">'No'</span>,</span>
-<span id="cb2-219"><a href="#cb2-219"></a>    <span class="st">'day'</span>: <span class="st">'Sun'</span>,</span>
-<span id="cb2-220"><a href="#cb2-220"></a>    <span class="st">'time'</span>: <span class="st">'Dinner'</span>,</span>
-<span id="cb2-221"><a href="#cb2-221"></a>    <span class="st">'total_bill'</span>: <span class="fl">40.0</span>,</span>
-<span id="cb2-222"><a href="#cb2-222"></a>    <span class="st">'size'</span>: <span class="dv">2</span></span>
-<span id="cb2-223"><a href="#cb2-223"></a>}])</span>
-<span id="cb2-224"><a href="#cb2-224"></a></span>
-<span id="cb2-225"><a href="#cb2-225"></a><span class="co"># Predict on fictional sample with each model</span></span>
-<span id="cb2-226"><a href="#cb2-226"></a>predictions <span class="op">=</span> []</span>
-<span id="cb2-227"><a href="#cb2-227"></a></span>
-<span id="cb2-228"><a href="#cb2-228"></a><span class="cf">for</span> model_name, model <span class="kw">in</span> trained_models.items():</span>
-<span id="cb2-229"><a href="#cb2-229"></a>    pred <span class="op">=</span> model.predict(new_sample)[<span class="dv">0</span>]</span>
-<span id="cb2-230"><a href="#cb2-230"></a>    predictions.append({<span class="st">"model"</span>: model_name, <span class="st">"predicted_tip"</span>: <span class="bu">round</span>(pred, <span class="dv">2</span>)})</span>
-<span id="cb2-231"><a href="#cb2-231"></a></span>
-<span id="cb2-232"><a href="#cb2-232"></a><span class="co"># Display predictions</span></span>
-<span id="cb2-233"><a href="#cb2-233"></a><span class="bu">print</span>(<span class="st">"----- PREDICTIONS ON NEW SAMPLE -----"</span>)</span>
-<span id="cb2-234"><a href="#cb2-234"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Sample Input -----"</span>)</span>
-<span id="cb2-235"><a href="#cb2-235"></a><span class="bu">print</span>(new_sample)</span>
-<span id="cb2-236"><a href="#cb2-236"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Sample Predictions -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-237"><a href="#cb2-237"></a><span class="bu">print</span>(pd.DataFrame(predictions).sort_values(<span class="st">"predicted_tip"</span>, ascending<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- First Few Rows of Data -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb2-30"><a href="#cb2-30"></a></span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="co"># Display summary</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Data Summary -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="bu">print</span>(summarize(df))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>----- SCRIPT OUTPUT -----
-
+<pre><code>
 ----- First Few Rows of Data -----
 
    total_bill   tip     sex smoker  day    time  size
@@ -587,8 +393,155 @@ size           int64    244       6         2.46        0           0.0     0   
 sex         category    244       2         0.82        0           0.0     0        0.0    Male  157                                      
 smoker      category    244       2         0.82        0           0.0     0        0.0      No  151                                      
 day         category    244       4         1.64        0           0.0     0        0.0     Sat   87                                      
-time        category    244       2         0.82        0           0.0     0        0.0  Dinner  176                                      
-
+time        category    244       2         0.82        0           0.0     0        0.0  Dinner  176                                      </code></pre>
+</div>
+</div>
+</section>
+<section id="transform-data" class="level2">
+<h2 class="anchored" data-anchor-id="transform-data">Transform Data</h2>
+<div id="ffed69b5-735d-4187-b6b2-2c5cea572643" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Define columns</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>cat_cols <span class="op">=</span> [<span class="st">'sex'</span>, <span class="st">'smoker'</span>, <span class="st">'day'</span>, <span class="st">'time'</span>]</span>
+<span id="cb4-3"><a href="#cb4-3"></a>num_cols <span class="op">=</span> [<span class="st">'total_bill'</span>, <span class="st">'size'</span>]</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co"># Split the data</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>X <span class="op">=</span> df[cat_cols <span class="op">+</span> num_cols]</span>
+<span id="cb4-7"><a href="#cb4-7"></a>y <span class="op">=</span> df[<span class="st">'tip'</span>]</span>
+<span id="cb4-8"><a href="#cb4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co"># Split into training and test</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>)</span>
+<span id="cb4-13"><a href="#cb4-13"></a></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co"># Define preprocessing for numeric and categorical features</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a>numeric_preprocessing <span class="op">=</span> Pipeline([</span>
+<span id="cb4-16"><a href="#cb4-16"></a>    (<span class="st">'scale'</span>, StandardScaler())</span>
+<span id="cb4-17"><a href="#cb4-17"></a>])</span>
+<span id="cb4-18"><a href="#cb4-18"></a></span>
+<span id="cb4-19"><a href="#cb4-19"></a>categorical_preprocessing <span class="op">=</span> Pipeline([</span>
+<span id="cb4-20"><a href="#cb4-20"></a>    (<span class="st">'encode'</span>, OneHotEncoder(drop<span class="op">=</span><span class="st">'first'</span>, sparse_output<span class="op">=</span><span class="va">False</span>))  <span class="co"># one-hot; drop first feature to avoid multicollinearity</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a>])</span>
+<span id="cb4-22"><a href="#cb4-22"></a></span>
+<span id="cb4-23"><a href="#cb4-23"></a><span class="co"># Combine into a column transformer</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a>preprocessor <span class="op">=</span> ColumnTransformer([</span>
+<span id="cb4-25"><a href="#cb4-25"></a>    (<span class="st">'num'</span>, numeric_preprocessing, num_cols),</span>
+<span id="cb4-26"><a href="#cb4-26"></a>    (<span class="st">'cat'</span>, categorical_preprocessing, cat_cols)</span>
+<span id="cb4-27"><a href="#cb4-27"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="build-models---linear-regression-ridge-lasso-random-forest-k-nn-xgboost" class="level2">
+<h2 class="anchored" data-anchor-id="build-models---linear-regression-ridge-lasso-random-forest-k-nn-xgboost">Build Models - Linear Regression, Ridge, Lasso, Random Forest, k-NN, XGBoost</h2>
+<div id="8cb0fe0e" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Define models and hyperparameters to optimize</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>models <span class="op">=</span> [</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    {</span>
+<span id="cb5-4"><a href="#cb5-4"></a>        <span class="st">"name"</span>: <span class="st">"LinearRegression"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5"></a>        <span class="st">"estimator"</span>: LinearRegression(),</span>
+<span id="cb5-6"><a href="#cb5-6"></a>        <span class="st">"param_grid"</span>: <span class="va">None</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>    },</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    {</span>
+<span id="cb5-9"><a href="#cb5-9"></a>        <span class="st">"name"</span>: <span class="st">"Ridge"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10"></a>        <span class="st">"estimator"</span>: Ridge(),</span>
+<span id="cb5-11"><a href="#cb5-11"></a>        <span class="st">"param_grid"</span>: {</span>
+<span id="cb5-12"><a href="#cb5-12"></a>            <span class="st">"model__alpha"</span>: [<span class="fl">0.1</span>, <span class="fl">1.0</span>, <span class="fl">10.0</span>]</span>
+<span id="cb5-13"><a href="#cb5-13"></a>        }</span>
+<span id="cb5-14"><a href="#cb5-14"></a>    },</span>
+<span id="cb5-15"><a href="#cb5-15"></a>    {</span>
+<span id="cb5-16"><a href="#cb5-16"></a>        <span class="st">"name"</span>: <span class="st">"Lasso"</span>,</span>
+<span id="cb5-17"><a href="#cb5-17"></a>        <span class="st">"estimator"</span>: Lasso(),</span>
+<span id="cb5-18"><a href="#cb5-18"></a>        <span class="st">"param_grid"</span>: {</span>
+<span id="cb5-19"><a href="#cb5-19"></a>            <span class="st">"model__alpha"</span>: [<span class="fl">0.1</span>, <span class="fl">1.0</span>, <span class="fl">10.0</span>]</span>
+<span id="cb5-20"><a href="#cb5-20"></a>        }</span>
+<span id="cb5-21"><a href="#cb5-21"></a>    },</span>
+<span id="cb5-22"><a href="#cb5-22"></a>    {</span>
+<span id="cb5-23"><a href="#cb5-23"></a>        <span class="st">"name"</span>: <span class="st">"RandomForest"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24"></a>        <span class="st">"estimator"</span>: RandomForestRegressor(random_state<span class="op">=</span><span class="dv">42</span>),</span>
+<span id="cb5-25"><a href="#cb5-25"></a>        <span class="st">"param_grid"</span>: {</span>
+<span id="cb5-26"><a href="#cb5-26"></a>            <span class="st">"model__n_estimators"</span>: [<span class="dv">20</span>,<span class="dv">30</span>],</span>
+<span id="cb5-27"><a href="#cb5-27"></a>            <span class="st">"model__max_depth"</span>: [<span class="va">None</span>, <span class="dv">10</span>],</span>
+<span id="cb5-28"><a href="#cb5-28"></a>            <span class="st">"model__min_samples_split"</span>: [<span class="dv">2</span>, <span class="dv">5</span>]</span>
+<span id="cb5-29"><a href="#cb5-29"></a>        }</span>
+<span id="cb5-30"><a href="#cb5-30"></a>    },</span>
+<span id="cb5-31"><a href="#cb5-31"></a>    {</span>
+<span id="cb5-32"><a href="#cb5-32"></a>        <span class="st">"name"</span>: <span class="st">"KNN"</span>,</span>
+<span id="cb5-33"><a href="#cb5-33"></a>        <span class="st">"estimator"</span>: KNeighborsRegressor(),</span>
+<span id="cb5-34"><a href="#cb5-34"></a>        <span class="st">"param_grid"</span>: {</span>
+<span id="cb5-35"><a href="#cb5-35"></a>            <span class="st">"model__n_neighbors"</span>: [<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>]</span>
+<span id="cb5-36"><a href="#cb5-36"></a>        }</span>
+<span id="cb5-37"><a href="#cb5-37"></a>    },</span>
+<span id="cb5-38"><a href="#cb5-38"></a>    {</span>
+<span id="cb5-39"><a href="#cb5-39"></a>        <span class="st">"name"</span>: <span class="st">"XGBoost"</span>,</span>
+<span id="cb5-40"><a href="#cb5-40"></a>        <span class="st">"estimator"</span>: XGBRegressor(random_state<span class="op">=</span><span class="dv">42</span>, verbosity<span class="op">=</span><span class="dv">0</span>),</span>
+<span id="cb5-41"><a href="#cb5-41"></a>        <span class="st">"param_grid"</span>: {</span>
+<span id="cb5-42"><a href="#cb5-42"></a>            <span class="st">"model__n_estimators"</span>: [<span class="dv">30</span>, <span class="dv">50</span>],</span>
+<span id="cb5-43"><a href="#cb5-43"></a>            <span class="st">"model__learning_rate"</span>: [<span class="fl">0.1</span>, <span class="fl">0.3</span>],</span>
+<span id="cb5-44"><a href="#cb5-44"></a>            <span class="st">"model__max_depth"</span>: [<span class="dv">3</span>, <span class="dv">6</span>]</span>
+<span id="cb5-45"><a href="#cb5-45"></a>        }</span>
+<span id="cb5-46"><a href="#cb5-46"></a>    }</span>
+<span id="cb5-47"><a href="#cb5-47"></a>]</span>
+<span id="cb5-48"><a href="#cb5-48"></a></span>
+<span id="cb5-49"><a href="#cb5-49"></a>results <span class="op">=</span> []</span>
+<span id="cb5-50"><a href="#cb5-50"></a></span>
+<span id="cb5-51"><a href="#cb5-51"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- GRID SEARCH WITH BEST RESULT ON TRAIN AND TEST SETS -----"</span>)</span>
+<span id="cb5-52"><a href="#cb5-52"></a></span>
+<span id="cb5-53"><a href="#cb5-53"></a>start_time <span class="op">=</span> time.time()</span>
+<span id="cb5-54"><a href="#cb5-54"></a>trained_models <span class="op">=</span> {}</span>
+<span id="cb5-55"><a href="#cb5-55"></a><span class="cf">for</span> m <span class="kw">in</span> models:</span>
+<span id="cb5-56"><a href="#cb5-56"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">--- </span><span class="sc">{</span>m[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss"> ---"</span>)</span>
+<span id="cb5-57"><a href="#cb5-57"></a>    </span>
+<span id="cb5-58"><a href="#cb5-58"></a>    pipeline <span class="op">=</span> Pipeline([(<span class="st">'pre'</span>, preprocessor), (<span class="st">'model'</span>, m[<span class="st">"estimator"</span>])])</span>
+<span id="cb5-59"><a href="#cb5-59"></a></span>
+<span id="cb5-60"><a href="#cb5-60"></a>    <span class="cf">if</span> m[<span class="st">"param_grid"</span>]:</span>
+<span id="cb5-61"><a href="#cb5-61"></a>        search <span class="op">=</span> GridSearchCV(</span>
+<span id="cb5-62"><a href="#cb5-62"></a>            pipeline,</span>
+<span id="cb5-63"><a href="#cb5-63"></a>            m[<span class="st">"param_grid"</span>],</span>
+<span id="cb5-64"><a href="#cb5-64"></a>            scoring<span class="op">=</span><span class="st">"neg_root_mean_squared_error"</span>,  <span class="co"># RMSE</span></span>
+<span id="cb5-65"><a href="#cb5-65"></a>            cv<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb5-66"><a href="#cb5-66"></a>            n_jobs<span class="op">=-</span><span class="dv">1</span>,</span>
+<span id="cb5-67"><a href="#cb5-67"></a>            verbose<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb5-68"><a href="#cb5-68"></a>        )</span>
+<span id="cb5-69"><a href="#cb5-69"></a>        search.fit(X_train, y_train)</span>
+<span id="cb5-70"><a href="#cb5-70"></a>        best_model <span class="op">=</span> search.best_estimator_</span>
+<span id="cb5-71"><a href="#cb5-71"></a>        <span class="bu">print</span>(<span class="st">"Best params:"</span>, search.best_params_)</span>
+<span id="cb5-72"><a href="#cb5-72"></a>    <span class="cf">else</span>: <span class="co">#if no parameters to optimize</span></span>
+<span id="cb5-73"><a href="#cb5-73"></a>        pipeline.fit(X_train, y_train)</span>
+<span id="cb5-74"><a href="#cb5-74"></a>        best_model <span class="op">=</span> pipeline</span>
+<span id="cb5-75"><a href="#cb5-75"></a>    </span>
+<span id="cb5-76"><a href="#cb5-76"></a>    trained_models[m[<span class="st">"name"</span>]] <span class="op">=</span> best_model</span>
+<span id="cb5-77"><a href="#cb5-77"></a></span>
+<span id="cb5-78"><a href="#cb5-78"></a>    <span class="co"># Predict and evaluate on both train and test</span></span>
+<span id="cb5-79"><a href="#cb5-79"></a>    y_train_pred <span class="op">=</span> best_model.predict(X_train)</span>
+<span id="cb5-80"><a href="#cb5-80"></a>    y_test_pred <span class="op">=</span> best_model.predict(X_test)</span>
+<span id="cb5-81"><a href="#cb5-81"></a>    </span>
+<span id="cb5-82"><a href="#cb5-82"></a>    train_rmse <span class="op">=</span> root_mean_squared_error(y_train, y_train_pred)</span>
+<span id="cb5-83"><a href="#cb5-83"></a>    test_rmse <span class="op">=</span> root_mean_squared_error(y_test, y_test_pred)</span>
+<span id="cb5-84"><a href="#cb5-84"></a>    </span>
+<span id="cb5-85"><a href="#cb5-85"></a>    train_mae <span class="op">=</span> mean_absolute_error(y_train, y_train_pred)</span>
+<span id="cb5-86"><a href="#cb5-86"></a>    test_mae <span class="op">=</span> mean_absolute_error(y_test, y_test_pred)</span>
+<span id="cb5-87"><a href="#cb5-87"></a>    </span>
+<span id="cb5-88"><a href="#cb5-88"></a>    train_r2 <span class="op">=</span> r2_score(y_train, y_train_pred)</span>
+<span id="cb5-89"><a href="#cb5-89"></a>    test_r2 <span class="op">=</span> r2_score(y_test, y_test_pred)</span>
+<span id="cb5-90"><a href="#cb5-90"></a>    </span>
+<span id="cb5-91"><a href="#cb5-91"></a>    <span class="bu">print</span>(<span class="st">""</span>)</span>
+<span id="cb5-92"><a href="#cb5-92"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'Metric'</span><span class="sc">:&lt;6}</span><span class="ss"> | </span><span class="sc">{</span><span class="st">'Train'</span><span class="sc">:&gt;6}</span><span class="ss"> | </span><span class="sc">{</span><span class="st">'Test'</span><span class="sc">:&gt;6}</span><span class="ss">"</span>)</span>
+<span id="cb5-93"><a href="#cb5-93"></a>    <span class="co"># print("-" * 24)</span></span>
+<span id="cb5-94"><a href="#cb5-94"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'RMSE'</span><span class="sc">:&lt;6}</span><span class="ss"> | </span><span class="sc">{</span>train_rmse<span class="sc">:&gt;6.4f}</span><span class="ss"> | </span><span class="sc">{</span>test_rmse<span class="sc">:&gt;6.4f}</span><span class="ss">"</span>)</span>
+<span id="cb5-95"><a href="#cb5-95"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'MAE'</span><span class="sc">:&lt;6}</span><span class="ss"> | </span><span class="sc">{</span>train_mae<span class="sc">:&gt;6.4f}</span><span class="ss"> | </span><span class="sc">{</span>test_mae<span class="sc">:&gt;6.4f}</span><span class="ss">"</span>)</span>
+<span id="cb5-96"><a href="#cb5-96"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'R²'</span><span class="sc">:&lt;6}</span><span class="ss"> | </span><span class="sc">{</span>train_r2<span class="sc">:&gt;6.4f}</span><span class="ss"> | </span><span class="sc">{</span>test_r2<span class="sc">:&gt;6.4f}</span><span class="ss">"</span>)</span>
+<span id="cb5-97"><a href="#cb5-97"></a></span>
+<span id="cb5-98"><a href="#cb5-98"></a>    results.append({</span>
+<span id="cb5-99"><a href="#cb5-99"></a>        <span class="st">"model"</span>: m[<span class="st">"name"</span>],</span>
+<span id="cb5-100"><a href="#cb5-100"></a>        <span class="st">"train_rmse"</span>: train_rmse,</span>
+<span id="cb5-101"><a href="#cb5-101"></a>        <span class="st">"test_rmse"</span>: test_rmse,</span>
+<span id="cb5-102"><a href="#cb5-102"></a>        <span class="st">"train_mae"</span>: train_mae,</span>
+<span id="cb5-103"><a href="#cb5-103"></a>        <span class="st">"test_mae"</span>: test_mae,</span>
+<span id="cb5-104"><a href="#cb5-104"></a>        <span class="st">"train_r2"</span>: train_r2,</span>
+<span id="cb5-105"><a href="#cb5-105"></a>        <span class="st">"test_r2"</span>: test_r2</span>
+<span id="cb5-106"><a href="#cb5-106"></a>    })</span>
+<span id="cb5-107"><a href="#cb5-107"></a></span>
+<span id="cb5-108"><a href="#cb5-108"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Grid search completed in </span><span class="sc">{</span>time<span class="sc">.</span>time() <span class="op">-</span> start_time<span class="sc">:.2f}</span><span class="ss"> seconds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
 ----- GRID SEARCH WITH BEST RESULT ON TRAIN AND TEST SETS -----
 
 --- LinearRegression ---
@@ -643,8 +596,73 @@ RMSE   | 0.7910 | 0.8755
 MAE    | 0.5830 | 0.7102
 R²     | 0.6920 | 0.3868
 
-Grid search completed in 2.78 seconds
-
+Grid search completed in 2.85 seconds</code></pre>
+</div>
+</div>
+</section>
+<section id="evaluate-models-and-predict-on-sample-data-using-best-model-random-forest" class="level2">
+<h2 class="anchored" data-anchor-id="evaluate-models-and-predict-on-sample-data-using-best-model-random-forest">Evaluate Models and Predict on Sample Data Using Best Model (Random Forest)</h2>
+<div id="d7f6a66e" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- EVALUATION SUMMARY -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="bu">print</span>(pd.DataFrame(results).sort_values(<span class="st">"test_rmse"</span>, ascending<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="kw">def</span> plot_residual_diagnostics(y_true, y_pred, model_name<span class="op">=</span><span class="st">"Model"</span>):</span>
+<span id="cb7-6"><a href="#cb7-6"></a>    residuals <span class="op">=</span> y_true <span class="op">-</span> y_pred</span>
+<span id="cb7-7"><a href="#cb7-7"></a></span>
+<span id="cb7-8"><a href="#cb7-8"></a>    fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>))</span>
+<span id="cb7-9"><a href="#cb7-9"></a>    fig.suptitle(<span class="ss">f"Residual Diagnostics: </span><span class="sc">{</span>model_name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10"></a></span>
+<span id="cb7-11"><a href="#cb7-11"></a>    <span class="co"># 1. Residuals vs Predicted</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a>    sns.scatterplot(x<span class="op">=</span>y_pred, y<span class="op">=</span>residuals, ax<span class="op">=</span>axes[<span class="dv">0</span>])</span>
+<span id="cb7-13"><a href="#cb7-13"></a>    axes[<span class="dv">0</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"red"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb7-14"><a href="#cb7-14"></a>    axes[<span class="dv">0</span>].set_xlabel(<span class="st">"Predicted"</span>)</span>
+<span id="cb7-15"><a href="#cb7-15"></a>    axes[<span class="dv">0</span>].set_ylabel(<span class="st">"Residuals"</span>)</span>
+<span id="cb7-16"><a href="#cb7-16"></a>    axes[<span class="dv">0</span>].set_title(<span class="st">"Residuals vs Predicted"</span>)</span>
+<span id="cb7-17"><a href="#cb7-17"></a></span>
+<span id="cb7-18"><a href="#cb7-18"></a>    <span class="co"># 2. Histogram of residuals</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a>    sns.histplot(residuals, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">1</span>])</span>
+<span id="cb7-20"><a href="#cb7-20"></a>    axes[<span class="dv">1</span>].set_title(<span class="st">"Residuals Histogram"</span>)</span>
+<span id="cb7-21"><a href="#cb7-21"></a>    axes[<span class="dv">1</span>].set_xlabel(<span class="st">"Residual"</span>)</span>
+<span id="cb7-22"><a href="#cb7-22"></a></span>
+<span id="cb7-23"><a href="#cb7-23"></a>    <span class="co"># 3. Q-Q Plot</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a>    stats.probplot(residuals, dist<span class="op">=</span><span class="st">"norm"</span>, plot<span class="op">=</span>axes[<span class="dv">2</span>])</span>
+<span id="cb7-25"><a href="#cb7-25"></a>    axes[<span class="dv">2</span>].set_title(<span class="st">"Q-Q Plot"</span>)</span>
+<span id="cb7-26"><a href="#cb7-26"></a>    axes[<span class="dv">2</span>].get_lines()[<span class="dv">0</span>].set_color(<span class="st">"tab:blue"</span>)  <span class="co"># points</span></span>
+<span id="cb7-27"><a href="#cb7-27"></a>    axes[<span class="dv">2</span>].get_lines()[<span class="dv">1</span>].set_color(<span class="st">"red"</span>)       <span class="co"># reference line</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a></span>
+<span id="cb7-29"><a href="#cb7-29"></a>    plt.tight_layout(rect<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.95</span>])</span>
+<span id="cb7-30"><a href="#cb7-30"></a>    plt.show()</span>
+<span id="cb7-31"><a href="#cb7-31"></a></span>
+<span id="cb7-32"><a href="#cb7-32"></a>y_test_pred <span class="op">=</span> trained_models[<span class="st">"RandomForest"</span>].predict(X_test)</span>
+<span id="cb7-33"><a href="#cb7-33"></a>plot_residual_diagnostics(y_test, y_test_pred, model_name<span class="op">=</span><span class="st">"Random Forest"</span>)</span>
+<span id="cb7-34"><a href="#cb7-34"></a></span>
+<span id="cb7-35"><a href="#cb7-35"></a></span>
+<span id="cb7-36"><a href="#cb7-36"></a><span class="co"># Predict on a new example</span></span>
+<span id="cb7-37"><a href="#cb7-37"></a>new_sample <span class="op">=</span> pd.DataFrame([{</span>
+<span id="cb7-38"><a href="#cb7-38"></a>    <span class="st">'sex'</span>: <span class="st">'Female'</span>,</span>
+<span id="cb7-39"><a href="#cb7-39"></a>    <span class="st">'smoker'</span>: <span class="st">'No'</span>,</span>
+<span id="cb7-40"><a href="#cb7-40"></a>    <span class="st">'day'</span>: <span class="st">'Sun'</span>,</span>
+<span id="cb7-41"><a href="#cb7-41"></a>    <span class="st">'time'</span>: <span class="st">'Dinner'</span>,</span>
+<span id="cb7-42"><a href="#cb7-42"></a>    <span class="st">'total_bill'</span>: <span class="fl">40.0</span>,</span>
+<span id="cb7-43"><a href="#cb7-43"></a>    <span class="st">'size'</span>: <span class="dv">2</span></span>
+<span id="cb7-44"><a href="#cb7-44"></a>}])</span>
+<span id="cb7-45"><a href="#cb7-45"></a></span>
+<span id="cb7-46"><a href="#cb7-46"></a><span class="co"># Predict on fictional sample with each model</span></span>
+<span id="cb7-47"><a href="#cb7-47"></a>predictions <span class="op">=</span> []</span>
+<span id="cb7-48"><a href="#cb7-48"></a></span>
+<span id="cb7-49"><a href="#cb7-49"></a><span class="cf">for</span> model_name, model <span class="kw">in</span> trained_models.items():</span>
+<span id="cb7-50"><a href="#cb7-50"></a>    pred <span class="op">=</span> model.predict(new_sample)[<span class="dv">0</span>]</span>
+<span id="cb7-51"><a href="#cb7-51"></a>    predictions.append({<span class="st">"model"</span>: model_name, <span class="st">"predicted_tip"</span>: <span class="bu">round</span>(pred, <span class="dv">2</span>)})</span>
+<span id="cb7-52"><a href="#cb7-52"></a></span>
+<span id="cb7-53"><a href="#cb7-53"></a><span class="co"># Display predictions</span></span>
+<span id="cb7-54"><a href="#cb7-54"></a><span class="bu">print</span>(<span class="st">"----- PREDICTIONS ON NEW SAMPLE -----"</span>)</span>
+<span id="cb7-55"><a href="#cb7-55"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Sample Input -----"</span>)</span>
+<span id="cb7-56"><a href="#cb7-56"></a><span class="bu">print</span>(new_sample)</span>
+<span id="cb7-57"><a href="#cb7-57"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Sample Predictions -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-58"><a href="#cb7-58"></a><span class="bu">print</span>(pd.DataFrame(predictions).sort_values(<span class="st">"predicted_tip"</span>, ascending<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
 ----- EVALUATION SUMMARY -----
 
               model  train_rmse  test_rmse  train_mae  test_mae  train_r2   test_r2
@@ -675,13 +693,14 @@ Grid search completed in 2.78 seconds
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="regression_tabular_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="regression_tabular_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

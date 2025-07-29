@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workflows/ds_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Science Project</span></a>
+ <span class="menu-text">Data Science Projects</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -271,7 +271,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#import-and-check-data" id="toc-import-and-check-data" class="nav-link active" data-scroll-target="#import-and-check-data">Import and Check Data</a></li>
+  <li><a href="#transform-data" id="toc-transform-data" class="nav-link" data-scroll-target="#transform-data">Transform Data</a></li>
+  <li><a href="#run-grid-search-for-model---random-forest" id="toc-run-grid-search-for-model---random-forest" class="nav-link" data-scroll-target="#run-grid-search-for-model---random-forest">Run Grid Search for Model - Random Forest</a></li>
+  <li><a href="#evaluate-and-show-feature-importance" id="toc-evaluate-and-show-feature-importance" class="nav-link" data-scroll-target="#evaluate-and-show-feature-importance">Evaluate and Show Feature Importance</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -297,9 +306,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Supervised ML workflow for building a classification model on tabular data with categorical and continuous features.</p>
 <p>Using Palmer’s <code>penguins</code> dataset from <strong>seaborn</strong>, train a random forest to predict the penguin species. Use <strong>scikit-learn</strong> for pre-processing, modeling, and evaluation.</p>
-<p>This script:</p>
+<p>This script does the following:</p>
 <ul>
-<li>Includes stratified train/test split</li>
+<li>Splits data using a stratified train/test split</li>
 <li>Includes imputation inside the pipeline</li>
 <li>Handles categorical and numerical features separately</li>
 <li>Runs a grid search to find best model parameters</li>
@@ -327,7 +336,9 @@ Note: Using <code>display</code> for HTML tables
 </div>
 </div>
 </div>
-<div id="df6b0896-64b7-4ac5-8f78-03ae83df15f4" class="cell" data-execution_count="1">
+<section id="import-and-check-data" class="level2">
+<h2 class="anchored" data-anchor-id="import-and-check-data">Import and Check Data</h2>
+<div id="ed43042b-ed4b-4be4-beb4-330e5fcab2a9" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -359,103 +370,7 @@ Note: Using <code>display</code> for HTML tables
 <span id="cb2-29"><a href="#cb2-29"></a></span>
 <span id="cb2-30"><a href="#cb2-30"></a><span class="co"># Per-class value count</span></span>
 <span id="cb2-31"><a href="#cb2-31"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Target class frequencies (normalized) -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-32"><a href="#cb2-32"></a><span class="bu">print</span>(df[<span class="st">'species'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>).rename(<span class="va">None</span>).rename_axis(<span class="va">None</span>))</span>
-<span id="cb2-33"><a href="#cb2-33"></a></span>
-<span id="cb2-34"><a href="#cb2-34"></a><span class="co"># Define columns</span></span>
-<span id="cb2-35"><a href="#cb2-35"></a>cat_cols <span class="op">=</span> [<span class="st">'island'</span>, <span class="st">'sex'</span>]</span>
-<span id="cb2-36"><a href="#cb2-36"></a>num_cols <span class="op">=</span> [<span class="st">'bill_length_mm'</span>, <span class="st">'bill_depth_mm'</span>, <span class="st">'flipper_length_mm'</span>, <span class="st">'body_mass_g'</span>]</span>
-<span id="cb2-37"><a href="#cb2-37"></a></span>
-<span id="cb2-38"><a href="#cb2-38"></a><span class="co"># Drop rows where the target is missing (can't model without target)</span></span>
-<span id="cb2-39"><a href="#cb2-39"></a>df <span class="op">=</span> df.dropna(subset<span class="op">=</span>[<span class="st">'species'</span>])</span>
-<span id="cb2-40"><a href="#cb2-40"></a></span>
-<span id="cb2-41"><a href="#cb2-41"></a><span class="co"># Split the data</span></span>
-<span id="cb2-42"><a href="#cb2-42"></a>X <span class="op">=</span> df[cat_cols <span class="op">+</span> num_cols]</span>
-<span id="cb2-43"><a href="#cb2-43"></a>y <span class="op">=</span> df[<span class="st">'species'</span>]</span>
-<span id="cb2-44"><a href="#cb2-44"></a></span>
-<span id="cb2-45"><a href="#cb2-45"></a><span class="co"># Split into training and test</span></span>
-<span id="cb2-46"><a href="#cb2-46"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
-<span id="cb2-47"><a href="#cb2-47"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>, stratify<span class="op">=</span>y</span>
-<span id="cb2-48"><a href="#cb2-48"></a>)</span>
-<span id="cb2-49"><a href="#cb2-49"></a></span>
-<span id="cb2-50"><a href="#cb2-50"></a><span class="co"># Define preprocessing for numeric and categorical features</span></span>
-<span id="cb2-51"><a href="#cb2-51"></a>numeric_preprocessing <span class="op">=</span> Pipeline([</span>
-<span id="cb2-52"><a href="#cb2-52"></a>    (<span class="st">'impute'</span>, SimpleImputer(strategy<span class="op">=</span><span class="st">'mean'</span>)),</span>
-<span id="cb2-53"><a href="#cb2-53"></a>    (<span class="st">'scale'</span>, StandardScaler())</span>
-<span id="cb2-54"><a href="#cb2-54"></a>])</span>
-<span id="cb2-55"><a href="#cb2-55"></a></span>
-<span id="cb2-56"><a href="#cb2-56"></a>categorical_preprocessing <span class="op">=</span> Pipeline([</span>
-<span id="cb2-57"><a href="#cb2-57"></a>    (<span class="st">'impute'</span>, SimpleImputer(strategy<span class="op">=</span><span class="st">'most_frequent'</span>)),</span>
-<span id="cb2-58"><a href="#cb2-58"></a>    (<span class="st">'encode'</span>, OneHotEncoder(drop<span class="op">=</span><span class="st">'first'</span>, sparse_output<span class="op">=</span><span class="va">False</span>))  <span class="co"># one-hot; drop first feature to avoid multicollinearity</span></span>
-<span id="cb2-59"><a href="#cb2-59"></a>])</span>
-<span id="cb2-60"><a href="#cb2-60"></a></span>
-<span id="cb2-61"><a href="#cb2-61"></a><span class="co"># Combine into a column transformer</span></span>
-<span id="cb2-62"><a href="#cb2-62"></a>preprocessor <span class="op">=</span> ColumnTransformer([</span>
-<span id="cb2-63"><a href="#cb2-63"></a>    (<span class="st">'num'</span>, numeric_preprocessing, num_cols),</span>
-<span id="cb2-64"><a href="#cb2-64"></a>    (<span class="st">'cat'</span>, categorical_preprocessing, cat_cols)</span>
-<span id="cb2-65"><a href="#cb2-65"></a>])</span>
-<span id="cb2-66"><a href="#cb2-66"></a></span>
-<span id="cb2-67"><a href="#cb2-67"></a><span class="co"># Base pipeline</span></span>
-<span id="cb2-68"><a href="#cb2-68"></a>clf_pipeline <span class="op">=</span> Pipeline([</span>
-<span id="cb2-69"><a href="#cb2-69"></a>    (<span class="st">'pre'</span>, preprocessor),</span>
-<span id="cb2-70"><a href="#cb2-70"></a>    (<span class="st">'model'</span>, RandomForestClassifier(random_state<span class="op">=</span><span class="dv">42</span>))</span>
-<span id="cb2-71"><a href="#cb2-71"></a>])</span>
-<span id="cb2-72"><a href="#cb2-72"></a></span>
-<span id="cb2-73"><a href="#cb2-73"></a><span class="co"># Define hyperparameter grid</span></span>
-<span id="cb2-74"><a href="#cb2-74"></a>param_grid <span class="op">=</span> {</span>
-<span id="cb2-75"><a href="#cb2-75"></a>    <span class="st">'model__n_estimators'</span>: [<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],</span>
-<span id="cb2-76"><a href="#cb2-76"></a>    <span class="st">'model__max_depth'</span>: [<span class="va">None</span>],</span>
-<span id="cb2-77"><a href="#cb2-77"></a>    <span class="st">'model__min_samples_leaf'</span>: [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>],</span>
-<span id="cb2-78"><a href="#cb2-78"></a>    <span class="st">'model__max_features'</span>: [<span class="st">'sqrt'</span>]</span>
-<span id="cb2-79"><a href="#cb2-79"></a>}</span>
-<span id="cb2-80"><a href="#cb2-80"></a></span>
-<span id="cb2-81"><a href="#cb2-81"></a><span class="co"># Grid search with cross-validation</span></span>
-<span id="cb2-82"><a href="#cb2-82"></a>grid_search <span class="op">=</span> GridSearchCV(</span>
-<span id="cb2-83"><a href="#cb2-83"></a>    estimator<span class="op">=</span>clf_pipeline,</span>
-<span id="cb2-84"><a href="#cb2-84"></a>    param_grid<span class="op">=</span>param_grid,</span>
-<span id="cb2-85"><a href="#cb2-85"></a>    cv<span class="op">=</span><span class="dv">5</span>,</span>
-<span id="cb2-86"><a href="#cb2-86"></a>    scoring<span class="op">=</span><span class="st">'accuracy'</span>,</span>
-<span id="cb2-87"><a href="#cb2-87"></a>    n_jobs<span class="op">=-</span><span class="dv">1</span>,</span>
-<span id="cb2-88"><a href="#cb2-88"></a>    verbose<span class="op">=</span><span class="dv">2</span></span>
-<span id="cb2-89"><a href="#cb2-89"></a>)</span>
-<span id="cb2-90"><a href="#cb2-90"></a></span>
-<span id="cb2-91"><a href="#cb2-91"></a><span class="co"># Fit grid search on training data</span></span>
-<span id="cb2-92"><a href="#cb2-92"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- GRID SEARCH -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-93"><a href="#cb2-93"></a>start_time <span class="op">=</span> time.time()</span>
-<span id="cb2-94"><a href="#cb2-94"></a>grid_search.fit(X_train, y_train)</span>
-<span id="cb2-95"><a href="#cb2-95"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Grid search completed in </span><span class="sc">{</span>time<span class="sc">.</span>time() <span class="op">-</span> start_time<span class="sc">:.2f}</span><span class="ss"> seconds"</span>)</span>
-<span id="cb2-96"><a href="#cb2-96"></a></span>
-<span id="cb2-97"><a href="#cb2-97"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Best Grid Search Result -----"</span>)</span>
-<span id="cb2-98"><a href="#cb2-98"></a><span class="bu">print</span>(<span class="ss">f"Accuracy: </span><span class="sc">{</span>grid_search<span class="sc">.</span>best_score_<span class="sc">:.4f}</span><span class="ss"> ± </span><span class="sc">{</span>grid_search<span class="sc">.</span>cv_results_[<span class="st">'std_test_score'</span>][grid_search.best_index_]<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb2-99"><a href="#cb2-99"></a><span class="bu">print</span>(<span class="st">"Parameters:"</span>)</span>
-<span id="cb2-100"><a href="#cb2-100"></a>pprint(grid_search.best_params_)</span>
-<span id="cb2-101"><a href="#cb2-101"></a></span>
-<span id="cb2-102"><a href="#cb2-102"></a><span class="co"># Use best model from grid search</span></span>
-<span id="cb2-103"><a href="#cb2-103"></a>clf_pipeline <span class="op">=</span> grid_search.best_estimator_</span>
-<span id="cb2-104"><a href="#cb2-104"></a></span>
-<span id="cb2-105"><a href="#cb2-105"></a><span class="co"># Evaluate</span></span>
-<span id="cb2-106"><a href="#cb2-106"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- EVALUATION -----"</span>)</span>
-<span id="cb2-107"><a href="#cb2-107"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Train/Test Accuracy -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-108"><a href="#cb2-108"></a><span class="bu">print</span>(<span class="ss">f"Train accuracy: </span><span class="sc">{</span>clf_pipeline<span class="sc">.</span>score(X_train, y_train)<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb2-109"><a href="#cb2-109"></a><span class="bu">print</span>(<span class="ss">f"Test accuracy:  </span><span class="sc">{</span>clf_pipeline<span class="sc">.</span>score(X_test, y_test)<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb2-110"><a href="#cb2-110"></a></span>
-<span id="cb2-111"><a href="#cb2-111"></a>y_test_pred <span class="op">=</span> clf_pipeline.predict(X_test)</span>
-<span id="cb2-112"><a href="#cb2-112"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Classification Report -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-113"><a href="#cb2-113"></a><span class="bu">print</span>(classification_report(y_test, y_test_pred))</span>
-<span id="cb2-114"><a href="#cb2-114"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Confusion Matrix -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-115"><a href="#cb2-115"></a>cm <span class="op">=</span> confusion_matrix(y_test, y_test_pred, labels<span class="op">=</span>clf_pipeline.classes_)</span>
-<span id="cb2-116"><a href="#cb2-116"></a><span class="bu">print</span>(cm)</span>
-<span id="cb2-117"><a href="#cb2-117"></a></span>
-<span id="cb2-118"><a href="#cb2-118"></a><span class="co"># Print normalized feature importances</span></span>
-<span id="cb2-119"><a href="#cb2-119"></a>model <span class="op">=</span> clf_pipeline.named_steps[<span class="st">'model'</span>]</span>
-<span id="cb2-120"><a href="#cb2-120"></a>encoded_feature_names <span class="op">=</span> clf_pipeline.named_steps[<span class="st">'pre'</span>].get_feature_names_out()</span>
-<span id="cb2-121"><a href="#cb2-121"></a></span>
-<span id="cb2-122"><a href="#cb2-122"></a>feat_importance_df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb2-123"><a href="#cb2-123"></a>    <span class="st">'feature'</span>: encoded_feature_names,</span>
-<span id="cb2-124"><a href="#cb2-124"></a>    <span class="st">'importance'</span>: model.feature_importances_</span>
-<span id="cb2-125"><a href="#cb2-125"></a>}).sort_values(by<span class="op">=</span><span class="st">'importance'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb2-126"><a href="#cb2-126"></a></span>
-<span id="cb2-127"><a href="#cb2-127"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Feature Importance -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-128"><a href="#cb2-128"></a><span class="bu">print</span>(feat_importance_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="bu">print</span>(df[<span class="st">'species'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>).rename(<span class="va">None</span>).rename_axis(<span class="va">None</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>----- SCRIPT OUTPUT -----
 
@@ -484,13 +399,91 @@ sex                 object    333       2         0.58       11          3.20   
 Adelie       0.441860
 Gentoo       0.360465
 Chinstrap    0.197674
-dtype: float64
-
+dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="transform-data" class="level2">
+<h2 class="anchored" data-anchor-id="transform-data">Transform Data</h2>
+<div id="d9e4fc23-a53e-480a-8e94-5f7813612eda" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Define columns</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>cat_cols <span class="op">=</span> [<span class="st">'island'</span>, <span class="st">'sex'</span>]</span>
+<span id="cb4-3"><a href="#cb4-3"></a>num_cols <span class="op">=</span> [<span class="st">'bill_length_mm'</span>, <span class="st">'bill_depth_mm'</span>, <span class="st">'flipper_length_mm'</span>, <span class="st">'body_mass_g'</span>]</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co"># Drop rows where the target is missing (can't model without target)</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>df <span class="op">=</span> df.dropna(subset<span class="op">=</span>[<span class="st">'species'</span>])</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co"># Split the data</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>X <span class="op">=</span> df[cat_cols <span class="op">+</span> num_cols]</span>
+<span id="cb4-10"><a href="#cb4-10"></a>y <span class="op">=</span> df[<span class="st">'species'</span>]</span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co"># Split into training and test</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb4-14"><a href="#cb4-14"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>, stratify<span class="op">=</span>y</span>
+<span id="cb4-15"><a href="#cb4-15"></a>)</span>
+<span id="cb4-16"><a href="#cb4-16"></a></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="co"># Define preprocessing for numeric and categorical features</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>numeric_preprocessing <span class="op">=</span> Pipeline([</span>
+<span id="cb4-19"><a href="#cb4-19"></a>    (<span class="st">'impute'</span>, SimpleImputer(strategy<span class="op">=</span><span class="st">'mean'</span>)),</span>
+<span id="cb4-20"><a href="#cb4-20"></a>    (<span class="st">'scale'</span>, StandardScaler())</span>
+<span id="cb4-21"><a href="#cb4-21"></a>])</span>
+<span id="cb4-22"><a href="#cb4-22"></a></span>
+<span id="cb4-23"><a href="#cb4-23"></a>categorical_preprocessing <span class="op">=</span> Pipeline([</span>
+<span id="cb4-24"><a href="#cb4-24"></a>    (<span class="st">'impute'</span>, SimpleImputer(strategy<span class="op">=</span><span class="st">'most_frequent'</span>)),</span>
+<span id="cb4-25"><a href="#cb4-25"></a>    (<span class="st">'encode'</span>, OneHotEncoder(drop<span class="op">=</span><span class="st">'first'</span>, sparse_output<span class="op">=</span><span class="va">False</span>))  <span class="co"># one-hot; drop first feature to avoid multicollinearity</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a>])</span>
+<span id="cb4-27"><a href="#cb4-27"></a></span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="co"># Combine into a column transformer</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a>preprocessor <span class="op">=</span> ColumnTransformer([</span>
+<span id="cb4-30"><a href="#cb4-30"></a>    (<span class="st">'num'</span>, numeric_preprocessing, num_cols),</span>
+<span id="cb4-31"><a href="#cb4-31"></a>    (<span class="st">'cat'</span>, categorical_preprocessing, cat_cols)</span>
+<span id="cb4-32"><a href="#cb4-32"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="run-grid-search-for-model---random-forest" class="level2">
+<h2 class="anchored" data-anchor-id="run-grid-search-for-model---random-forest">Run Grid Search for Model - Random Forest</h2>
+<div id="1389366f-df6f-4719-9bc1-5bb2231074fe" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Base pipeline</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>clf_pipeline <span class="op">=</span> Pipeline([</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    (<span class="st">'pre'</span>, preprocessor),</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    (<span class="st">'model'</span>, RandomForestClassifier(random_state<span class="op">=</span><span class="dv">42</span>))</span>
+<span id="cb5-5"><a href="#cb5-5"></a>])</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># Define hyperparameter grid</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>param_grid <span class="op">=</span> {</span>
+<span id="cb5-9"><a href="#cb5-9"></a>    <span class="st">'model__n_estimators'</span>: [<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],</span>
+<span id="cb5-10"><a href="#cb5-10"></a>    <span class="st">'model__max_depth'</span>: [<span class="va">None</span>],</span>
+<span id="cb5-11"><a href="#cb5-11"></a>    <span class="st">'model__min_samples_leaf'</span>: [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>],</span>
+<span id="cb5-12"><a href="#cb5-12"></a>    <span class="st">'model__max_features'</span>: [<span class="st">'sqrt'</span>]</span>
+<span id="cb5-13"><a href="#cb5-13"></a>}</span>
+<span id="cb5-14"><a href="#cb5-14"></a></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co"># Grid search with cross-validation</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a>grid_search <span class="op">=</span> GridSearchCV(</span>
+<span id="cb5-17"><a href="#cb5-17"></a>    estimator<span class="op">=</span>clf_pipeline,</span>
+<span id="cb5-18"><a href="#cb5-18"></a>    param_grid<span class="op">=</span>param_grid,</span>
+<span id="cb5-19"><a href="#cb5-19"></a>    cv<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb5-20"><a href="#cb5-20"></a>    scoring<span class="op">=</span><span class="st">'accuracy'</span>,</span>
+<span id="cb5-21"><a href="#cb5-21"></a>    n_jobs<span class="op">=-</span><span class="dv">1</span>,</span>
+<span id="cb5-22"><a href="#cb5-22"></a>    verbose<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a>)</span>
+<span id="cb5-24"><a href="#cb5-24"></a></span>
+<span id="cb5-25"><a href="#cb5-25"></a><span class="co"># Fit grid search on training data</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- GRID SEARCH -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb5-27"><a href="#cb5-27"></a>start_time <span class="op">=</span> time.time()</span>
+<span id="cb5-28"><a href="#cb5-28"></a>grid_search.fit(X_train, y_train)</span>
+<span id="cb5-29"><a href="#cb5-29"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Grid search completed in </span><span class="sc">{</span>time<span class="sc">.</span>time() <span class="op">-</span> start_time<span class="sc">:.2f}</span><span class="ss"> seconds"</span>)</span>
+<span id="cb5-30"><a href="#cb5-30"></a></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Best Grid Search Result -----"</span>)</span>
+<span id="cb5-32"><a href="#cb5-32"></a><span class="bu">print</span>(<span class="ss">f"Accuracy: </span><span class="sc">{</span>grid_search<span class="sc">.</span>best_score_<span class="sc">:.4f}</span><span class="ss"> ± </span><span class="sc">{</span>grid_search<span class="sc">.</span>cv_results_[<span class="st">'std_test_score'</span>][grid_search.best_index_]<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb5-33"><a href="#cb5-33"></a><span class="bu">print</span>(<span class="st">"Parameters:"</span>)</span>
+<span id="cb5-34"><a href="#cb5-34"></a>pprint(grid_search.best_params_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
 ----- GRID SEARCH -----
 
 Fitting 5 folds for each of 12 candidates, totalling 60 fits
 
-Grid search completed in 3.02 seconds
+Grid search completed in 3.09 seconds
 
 ----- Best Grid Search Result -----
 Accuracy: 0.9855 ± 0.0073
@@ -498,8 +491,42 @@ Parameters:
 {'model__max_depth': None,
  'model__max_features': 'sqrt',
  'model__min_samples_leaf': 1,
- 'model__n_estimators': 30}
-
+ 'model__n_estimators': 30}</code></pre>
+</div>
+</div>
+</section>
+<section id="evaluate-and-show-feature-importance" class="level2">
+<h2 class="anchored" data-anchor-id="evaluate-and-show-feature-importance">Evaluate and Show Feature Importance</h2>
+<div id="a70ca063-5211-435b-adb2-e4ed20b283a0" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Use best model from grid search</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>clf_pipeline <span class="op">=</span> grid_search.best_estimator_</span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># Evaluate</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- EVALUATION -----"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Train/Test Accuracy -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="bu">print</span>(<span class="ss">f"Train accuracy: </span><span class="sc">{</span>clf_pipeline<span class="sc">.</span>score(X_train, y_train)<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="bu">print</span>(<span class="ss">f"Test accuracy:  </span><span class="sc">{</span>clf_pipeline<span class="sc">.</span>score(X_test, y_test)<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9"></a></span>
+<span id="cb7-10"><a href="#cb7-10"></a>y_test_pred <span class="op">=</span> clf_pipeline.predict(X_test)</span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Classification Report -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="bu">print</span>(classification_report(y_test, y_test_pred))</span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Confusion Matrix -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-14"><a href="#cb7-14"></a>cm <span class="op">=</span> confusion_matrix(y_test, y_test_pred, labels<span class="op">=</span>clf_pipeline.classes_)</span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="bu">print</span>(cm)</span>
+<span id="cb7-16"><a href="#cb7-16"></a></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="co"># Print normalized feature importances</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a>model <span class="op">=</span> clf_pipeline.named_steps[<span class="st">'model'</span>]</span>
+<span id="cb7-19"><a href="#cb7-19"></a>encoded_feature_names <span class="op">=</span> clf_pipeline.named_steps[<span class="st">'pre'</span>].get_feature_names_out()</span>
+<span id="cb7-20"><a href="#cb7-20"></a></span>
+<span id="cb7-21"><a href="#cb7-21"></a>feat_importance_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb7-22"><a href="#cb7-22"></a>    <span class="st">'feature'</span>: encoded_feature_names,</span>
+<span id="cb7-23"><a href="#cb7-23"></a>    <span class="st">'importance'</span>: model.feature_importances_</span>
+<span id="cb7-24"><a href="#cb7-24"></a>}).sort_values(by<span class="op">=</span><span class="st">'importance'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb7-25"><a href="#cb7-25"></a></span>
+<span id="cb7-26"><a href="#cb7-26"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Feature Importance -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="bu">print</span>(feat_importance_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
 ----- EVALUATION -----
 
 ----- Train/Test Accuracy -----
@@ -540,6 +567,7 @@ weighted avg       1.00      1.00      1.00        69
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

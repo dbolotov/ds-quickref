@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workflows/ds_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Science Project</span></a>
+ <span class="menu-text">Data Science Projects</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -396,33 +396,30 @@ sex                 object    333       2         0.58       11          3.20   
 <section id="transform-data" class="level2">
 <h2 class="anchored" data-anchor-id="transform-data">Transform Data</h2>
 <div id="7ea0d22a-5e4a-4f6c-b3f5-46999bd70c87" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> gower</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Drop rows with missing values</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>df <span class="op">=</span> df.dropna().reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Drop rows with missing values</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>df <span class="op">=</span> df.dropna().reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-6"><a href="#cb4-6"></a></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co"># Define categorical and numeric columns</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>cat_cols <span class="op">=</span> [<span class="st">'island'</span>, <span class="st">'sex'</span>]</span>
-<span id="cb4-9"><a href="#cb4-9"></a>num_cols <span class="op">=</span> [<span class="st">'bill_length_mm'</span>, <span class="st">'bill_depth_mm'</span>, <span class="st">'flipper_length_mm'</span>, <span class="st">'body_mass_g'</span>]</span>
-<span id="cb4-10"><a href="#cb4-10"></a>features <span class="op">=</span> cat_cols <span class="op">+</span> num_cols</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Define categorical and numeric columns</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>cat_cols <span class="op">=</span> [<span class="st">'island'</span>, <span class="st">'sex'</span>]</span>
+<span id="cb4-6"><a href="#cb4-6"></a>num_cols <span class="op">=</span> [<span class="st">'bill_length_mm'</span>, <span class="st">'bill_depth_mm'</span>, <span class="st">'flipper_length_mm'</span>, <span class="st">'body_mass_g'</span>]</span>
+<span id="cb4-7"><a href="#cb4-7"></a>features <span class="op">=</span> cat_cols <span class="op">+</span> num_cols</span>
+<span id="cb4-8"><a href="#cb4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co"># Make an explicit copy to avoid chained assignment warnings</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>X <span class="op">=</span> df[features].copy()</span>
 <span id="cb4-11"><a href="#cb4-11"></a></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="co"># Make an explicit copy to avoid chained assignment warnings</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a>X <span class="op">=</span> df[features].copy()</span>
-<span id="cb4-14"><a href="#cb4-14"></a></span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="co"># Ensure categorical columns are strings</span></span>
-<span id="cb4-16"><a href="#cb4-16"></a><span class="cf">for</span> col <span class="kw">in</span> cat_cols:</span>
-<span id="cb4-17"><a href="#cb4-17"></a>    X[col] <span class="op">=</span> X[col].astype(<span class="bu">str</span>)</span>
-<span id="cb4-18"><a href="#cb4-18"></a></span>
-<span id="cb4-19"><a href="#cb4-19"></a><span class="co"># For k-prototypes: scale numeric columns</span></span>
-<span id="cb4-20"><a href="#cb4-20"></a>X_kproto <span class="op">=</span> X.copy()</span>
-<span id="cb4-21"><a href="#cb4-21"></a>scaler <span class="op">=</span> StandardScaler()</span>
-<span id="cb4-22"><a href="#cb4-22"></a>X_kproto[num_cols] <span class="op">=</span> scaler.fit_transform(X_kproto[num_cols])</span>
-<span id="cb4-23"><a href="#cb4-23"></a>X_kproto_matrix <span class="op">=</span> X_kproto.to_numpy()</span>
-<span id="cb4-24"><a href="#cb4-24"></a>categorical_idx <span class="op">=</span> [X_kproto.columns.get_loc(col) <span class="cf">for</span> col <span class="kw">in</span> cat_cols]</span>
-<span id="cb4-25"><a href="#cb4-25"></a></span>
-<span id="cb4-26"><a href="#cb4-26"></a><span class="co"># For Gower distance: create Gower matrix using raw data</span></span>
-<span id="cb4-27"><a href="#cb4-27"></a>gower_matrix <span class="op">=</span> gower.gower_matrix(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co"># Ensure categorical columns are strings</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="cf">for</span> col <span class="kw">in</span> cat_cols:</span>
+<span id="cb4-14"><a href="#cb4-14"></a>    X[col] <span class="op">=</span> X[col].astype(<span class="bu">str</span>)</span>
+<span id="cb4-15"><a href="#cb4-15"></a></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="co"># For k-prototypes: scale numeric columns</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>X_kproto <span class="op">=</span> X.copy()</span>
+<span id="cb4-18"><a href="#cb4-18"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb4-19"><a href="#cb4-19"></a>X_kproto[num_cols] <span class="op">=</span> scaler.fit_transform(X_kproto[num_cols])</span>
+<span id="cb4-20"><a href="#cb4-20"></a>X_kproto_matrix <span class="op">=</span> X_kproto.to_numpy()</span>
+<span id="cb4-21"><a href="#cb4-21"></a>categorical_idx <span class="op">=</span> [X_kproto.columns.get_loc(col) <span class="cf">for</span> col <span class="kw">in</span> cat_cols]</span>
+<span id="cb4-22"><a href="#cb4-22"></a></span>
+<span id="cb4-23"><a href="#cb4-23"></a><span class="co"># For Gower distance: create Gower matrix using raw data</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a>gower_matrix <span class="op">=</span> gower.gower_matrix(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="build-models---k-prototypes-dbscan-agglomerativeclustering" class="level2">

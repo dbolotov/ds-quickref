@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workflows/ds_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Science Project</span></a>
+ <span class="menu-text">Data Science Projects</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -271,7 +271,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#import-and-check-data" id="toc-import-and-check-data" class="nav-link active" data-scroll-target="#import-and-check-data">Import and Check Data</a></li>
+  <li><a href="#transform-data" id="toc-transform-data" class="nav-link" data-scroll-target="#transform-data">Transform Data</a></li>
+  <li><a href="#train-models" id="toc-train-models" class="nav-link" data-scroll-target="#train-models">Train Models</a></li>
+  <li><a href="#evaluate-and-plot-forecasts" id="toc-evaluate-and-plot-forecasts" class="nav-link" data-scroll-target="#evaluate-and-plot-forecasts">Evaluate and Plot Forecasts</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -298,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Supervised ML workflow for building forecasting models on univariate time series data.</p>
 <p>Uses the <code>seaice</code> dataset from <strong>seaborn</strong>, and applies several time series models to forecast sea ice extent (Naive Mean, ARIMA, Exponential Smoothing, LightGBM with lagged features, Theta).</p>
 <p>This dataset contains no missing values, so no imputation is used.</p>
-<p>This script:</p>
+<p>This script does the following:</p>
 <ul>
 <li>Splits the data into train and test sets</li>
 <li>Scales data before training (except for AutoARIMA and ExponentialSmoothing, which typically work with unscaled data)</li>
@@ -326,7 +335,9 @@ Note: Using <code>display</code> for HTML tables
 </div>
 </div>
 </div>
-<div id="01c65be6-fcef-48c7-aaf1-de954a10627f" class="cell" data-execution_count="1">
+<section id="import-and-check-data" class="level2">
+<h2 class="anchored" data-anchor-id="import-and-check-data">Import and Check Data</h2>
+<div id="a0fb3ecd-2750-410f-a382-91d48c7cf830" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> warnings</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> time</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -360,108 +371,7 @@ Note: Using <code>display</code> for HTML tables
 <span id="cb2-31"><a href="#cb2-31"></a></span>
 <span id="cb2-32"><a href="#cb2-32"></a><span class="co"># Display summary</span></span>
 <span id="cb2-33"><a href="#cb2-33"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Data Summary -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-34"><a href="#cb2-34"></a><span class="bu">print</span>(summarize(df, include_perc<span class="op">=</span><span class="va">False</span>, sort<span class="op">=</span><span class="va">True</span>))</span>
-<span id="cb2-35"><a href="#cb2-35"></a></span>
-<span id="cb2-36"><a href="#cb2-36"></a><span class="co"># Sort by date and set Date as index</span></span>
-<span id="cb2-37"><a href="#cb2-37"></a>df <span class="op">=</span> df.sort_values(<span class="st">"Date"</span>).set_index(<span class="st">"Date"</span>)</span>
-<span id="cb2-38"><a href="#cb2-38"></a></span>
-<span id="cb2-39"><a href="#cb2-39"></a><span class="co"># Resample to different frequency using linear interpolation</span></span>
-<span id="cb2-40"><a href="#cb2-40"></a>df_resampled <span class="op">=</span> df.resample(<span class="st">"MS"</span>).interpolate(<span class="st">"linear"</span>) <span class="co"># monthly</span></span>
-<span id="cb2-41"><a href="#cb2-41"></a></span>
-<span id="cb2-42"><a href="#cb2-42"></a><span class="co"># Drop any missing values (usually at the edges)</span></span>
-<span id="cb2-43"><a href="#cb2-43"></a>df_resampled <span class="op">=</span> df_resampled.dropna()</span>
-<span id="cb2-44"><a href="#cb2-44"></a></span>
-<span id="cb2-45"><a href="#cb2-45"></a><span class="co"># Convert to Darts TimeSeries, allowing it to infer frequency</span></span>
-<span id="cb2-46"><a href="#cb2-46"></a>dts <span class="op">=</span> TimeSeries.from_series(df_resampled[<span class="st">"Extent"</span>], fill_missing_dates<span class="op">=</span><span class="va">True</span>, freq<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb2-47"><a href="#cb2-47"></a></span>
-<span id="cb2-48"><a href="#cb2-48"></a><span class="co"># Show darts info</span></span>
-<span id="cb2-49"><a href="#cb2-49"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- darts TimeSeries Summary -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-50"><a href="#cb2-50"></a><span class="bu">print</span>(<span class="st">"frequency: "</span>, dts.freq_str)</span>
-<span id="cb2-51"><a href="#cb2-51"></a></span>
-<span id="cb2-52"><a href="#cb2-52"></a><span class="co"># Split the series into training and test sets</span></span>
-<span id="cb2-53"><a href="#cb2-53"></a>test_frac <span class="op">=</span> <span class="fl">0.15</span></span>
-<span id="cb2-54"><a href="#cb2-54"></a>n_test <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(dts) <span class="op">*</span> test_frac)</span>
-<span id="cb2-55"><a href="#cb2-55"></a>train, test <span class="op">=</span> dts[:<span class="op">-</span>n_test], dts[<span class="op">-</span>n_test:]</span>
-<span id="cb2-56"><a href="#cb2-56"></a></span>
-<span id="cb2-57"><a href="#cb2-57"></a><span class="co"># Confirm split sizes</span></span>
-<span id="cb2-58"><a href="#cb2-58"></a><span class="bu">print</span>(<span class="ss">f"Train range: </span><span class="sc">{</span>train<span class="sc">.</span>start_time()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>train<span class="sc">.</span>end_time()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>train<span class="sc">.</span>n_timesteps<span class="sc">}</span><span class="ss"> steps)"</span>)</span>
-<span id="cb2-59"><a href="#cb2-59"></a><span class="bu">print</span>(<span class="ss">f"Test  range: </span><span class="sc">{</span>test<span class="sc">.</span>start_time()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>test<span class="sc">.</span>end_time()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>test<span class="sc">.</span>n_timesteps<span class="sc">}</span><span class="ss"> steps)"</span>)</span>
-<span id="cb2-60"><a href="#cb2-60"></a></span>
-<span id="cb2-61"><a href="#cb2-61"></a><span class="co"># Normalize</span></span>
-<span id="cb2-62"><a href="#cb2-62"></a>scaler <span class="op">=</span> Scaler()</span>
-<span id="cb2-63"><a href="#cb2-63"></a>train_scaled <span class="op">=</span> scaler.fit_transform(train)</span>
-<span id="cb2-64"><a href="#cb2-64"></a>test_scaled <span class="op">=</span> scaler.transform(test)</span>
-<span id="cb2-65"><a href="#cb2-65"></a></span>
-<span id="cb2-66"><a href="#cb2-66"></a><span class="co"># Initialize models</span></span>
-<span id="cb2-67"><a href="#cb2-67"></a>models <span class="op">=</span> {</span>
-<span id="cb2-68"><a href="#cb2-68"></a>    <span class="st">"NaiveMean"</span>: NaiveMean(),</span>
-<span id="cb2-69"><a href="#cb2-69"></a>    <span class="st">"AutoARIMA"</span>: AutoARIMA(season_length<span class="op">=</span><span class="dv">12</span>, max_p<span class="op">=</span><span class="dv">2</span>, max_q<span class="op">=</span><span class="dv">2</span>,</span>
-<span id="cb2-70"><a href="#cb2-70"></a>                            max_P<span class="op">=</span><span class="dv">1</span>, max_Q<span class="op">=</span><span class="dv">1</span>, max_d<span class="op">=</span><span class="dv">1</span>, max_D<span class="op">=</span><span class="dv">1</span>),</span>
-<span id="cb2-71"><a href="#cb2-71"></a>    <span class="st">"ExponentialSmoothing"</span>: ExponentialSmoothing(trend<span class="op">=</span>ModelMode.ADDITIVE, seasonal<span class="op">=</span>SeasonalityMode.ADDITIVE,</span>
-<span id="cb2-72"><a href="#cb2-72"></a>                                                seasonal_periods<span class="op">=</span><span class="dv">12</span>,damped<span class="op">=</span><span class="va">True</span>),</span>
-<span id="cb2-73"><a href="#cb2-73"></a>    <span class="st">"LightGBMModel"</span>: LightGBMModel(lags<span class="op">=</span><span class="dv">12</span>, output_chunk_length<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb2-74"><a href="#cb2-74"></a>        random_state<span class="op">=</span><span class="dv">42</span>, verbose<span class="op">=-</span><span class="dv">1</span>, force_col_wise<span class="op">=</span><span class="va">True</span>),</span>
-<span id="cb2-75"><a href="#cb2-75"></a>    <span class="st">"Theta"</span>: Theta(season_mode<span class="op">=</span>SeasonalityMode.ADDITIVE),</span>
-<span id="cb2-76"><a href="#cb2-76"></a>}</span>
-<span id="cb2-77"><a href="#cb2-77"></a></span>
-<span id="cb2-78"><a href="#cb2-78"></a><span class="co"># ---- TRAIN MODELS AND PREDICT ----</span></span>
-<span id="cb2-79"><a href="#cb2-79"></a></span>
-<span id="cb2-80"><a href="#cb2-80"></a>results <span class="op">=</span> []</span>
-<span id="cb2-81"><a href="#cb2-81"></a>forecasts_test <span class="op">=</span> {}</span>
-<span id="cb2-82"><a href="#cb2-82"></a></span>
-<span id="cb2-83"><a href="#cb2-83"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Training Models -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-84"><a href="#cb2-84"></a></span>
-<span id="cb2-85"><a href="#cb2-85"></a><span class="cf">for</span> name, model <span class="kw">in</span> models.items():</span>
-<span id="cb2-86"><a href="#cb2-86"></a>    <span class="bu">print</span>(<span class="ss">f"Training </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">..."</span>)</span>
-<span id="cb2-87"><a href="#cb2-87"></a>    start_time <span class="op">=</span> time.time()</span>
-<span id="cb2-88"><a href="#cb2-88"></a></span>
-<span id="cb2-89"><a href="#cb2-89"></a>    <span class="co"># Use unscaled data for ARIMA and ExponentialSmoothing</span></span>
-<span id="cb2-90"><a href="#cb2-90"></a>    <span class="cf">if</span> name <span class="kw">in</span> [<span class="st">"AutoARIMA"</span>, <span class="st">"ExponentialSmoothing"</span>]:</span>
-<span id="cb2-91"><a href="#cb2-91"></a>        model.fit(train)</span>
-<span id="cb2-92"><a href="#cb2-92"></a>        pred_test <span class="op">=</span> model.predict(n<span class="op">=</span><span class="bu">len</span>(test))</span>
-<span id="cb2-93"><a href="#cb2-93"></a>    <span class="cf">else</span>:</span>
-<span id="cb2-94"><a href="#cb2-94"></a>        model.fit(train_scaled)</span>
-<span id="cb2-95"><a href="#cb2-95"></a>        pred_test_scaled <span class="op">=</span> model.predict(n<span class="op">=</span><span class="bu">len</span>(test_scaled))</span>
-<span id="cb2-96"><a href="#cb2-96"></a>        pred_test <span class="op">=</span> scaler.inverse_transform(pred_test_scaled)</span>
-<span id="cb2-97"><a href="#cb2-97"></a></span>
-<span id="cb2-98"><a href="#cb2-98"></a>    train_duration <span class="op">=</span> time.time() <span class="op">-</span> start_time</span>
-<span id="cb2-99"><a href="#cb2-99"></a>    forecasts_test[name] <span class="op">=</span> pred_test</span>
-<span id="cb2-100"><a href="#cb2-100"></a></span>
-<span id="cb2-101"><a href="#cb2-101"></a>    <span class="co"># Evaluate on test set</span></span>
-<span id="cb2-102"><a href="#cb2-102"></a>    results.append({</span>
-<span id="cb2-103"><a href="#cb2-103"></a>        <span class="st">"Model"</span>: name,</span>
-<span id="cb2-104"><a href="#cb2-104"></a>        <span class="st">"MAE"</span>: mae(test, pred_test),</span>
-<span id="cb2-105"><a href="#cb2-105"></a>        <span class="st">"RMSE"</span>: rmse(test, pred_test),</span>
-<span id="cb2-106"><a href="#cb2-106"></a>        <span class="st">"Train Time (s)"</span>: train_duration</span>
-<span id="cb2-107"><a href="#cb2-107"></a>    })</span>
-<span id="cb2-108"><a href="#cb2-108"></a></span>
-<span id="cb2-109"><a href="#cb2-109"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- EVALUATION -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-110"><a href="#cb2-110"></a></span>
-<span id="cb2-111"><a href="#cb2-111"></a><span class="co"># Display results</span></span>
-<span id="cb2-112"><a href="#cb2-112"></a>results_df <span class="op">=</span> pd.DataFrame(results).sort_values(<span class="st">"RMSE"</span>)</span>
-<span id="cb2-113"><a href="#cb2-113"></a><span class="bu">print</span>(results_df.to_string(index<span class="op">=</span><span class="va">False</span>))</span>
-<span id="cb2-114"><a href="#cb2-114"></a></span>
-<span id="cb2-115"><a href="#cb2-115"></a><span class="co"># Plot: final 60 train + full test + predictions on test</span></span>
-<span id="cb2-116"><a href="#cb2-116"></a>train_to_plot <span class="op">=</span> train[<span class="op">-</span><span class="dv">60</span>:]  <span class="co"># last 60 points from train</span></span>
-<span id="cb2-117"><a href="#cb2-117"></a></span>
-<span id="cb2-118"><a href="#cb2-118"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">3</span>))</span>
-<span id="cb2-119"><a href="#cb2-119"></a></span>
-<span id="cb2-120"><a href="#cb2-120"></a><span class="co"># Plot actual data</span></span>
-<span id="cb2-121"><a href="#cb2-121"></a>train_to_plot.plot(label<span class="op">=</span><span class="st">"Train"</span>, linewidth<span class="op">=</span><span class="fl">0.9</span>)</span>
-<span id="cb2-122"><a href="#cb2-122"></a>test.plot(label<span class="op">=</span><span class="st">"Test"</span>, linewidth<span class="op">=</span><span class="fl">0.9</span>, alpha<span class="op">=</span><span class="fl">0.9</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
-<span id="cb2-123"><a href="#cb2-123"></a></span>
-<span id="cb2-124"><a href="#cb2-124"></a><span class="co"># Plot forecasts made on test set</span></span>
-<span id="cb2-125"><a href="#cb2-125"></a><span class="cf">for</span> name, forecast <span class="kw">in</span> forecasts_test.items():</span>
-<span id="cb2-126"><a href="#cb2-126"></a>    <span class="cf">if</span> forecast <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb2-127"><a href="#cb2-127"></a>        forecast.plot(label<span class="op">=</span>name, linewidth<span class="op">=</span><span class="fl">0.9</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb2-128"><a href="#cb2-128"></a></span>
-<span id="cb2-129"><a href="#cb2-129"></a>plt.title(<span class="st">"Sea Ice - Forecast Comparison - Train (last 60 points) and Test Data"</span>)</span>
-<span id="cb2-130"><a href="#cb2-130"></a>plt.xlabel(<span class="st">"Date"</span>)</span>
-<span id="cb2-131"><a href="#cb2-131"></a>plt.ylabel(<span class="st">"Extent"</span>)</span>
-<span id="cb2-132"><a href="#cb2-132"></a>plt.legend(loc<span class="op">=</span><span class="st">"center left"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.0</span>, <span class="fl">0.5</span>))</span>
-<span id="cb2-133"><a href="#cb2-133"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
-<span id="cb2-134"><a href="#cb2-134"></a>plt.tight_layout()</span>
-<span id="cb2-135"><a href="#cb2-135"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-34"><a href="#cb2-34"></a><span class="bu">print</span>(summarize(df, include_perc<span class="op">=</span><span class="va">False</span>, sort<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>----- SCRIPT OUTPUT -----
 
@@ -478,41 +388,156 @@ Note: Using <code>display</code> for HTML tables
 
                  dtype  count  unique  missing  zero   mean   std   min    50%    max  skew
 Extent         float64  13175    7649        0     0  11.29  3.28  3.34  11.98  16.41 -0.44
-Date    datetime64[ns]  13175   13175        0     0                                       
-
+Date    datetime64[ns]  13175   13175        0     0                                       </code></pre>
+</div>
+</div>
+</section>
+<section id="transform-data" class="level2">
+<h2 class="anchored" data-anchor-id="transform-data">Transform Data</h2>
+<div id="e15e9d03-d010-4ba2-ab52-de9313e673cf" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Sort by date and set Date as index</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>df <span class="op">=</span> df.sort_values(<span class="st">"Date"</span>).set_index(<span class="st">"Date"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Resample to different frequency using linear interpolation</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>df_resampled <span class="op">=</span> df.resample(<span class="st">"MS"</span>).interpolate(<span class="st">"linear"</span>) <span class="co"># monthly</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co"># Drop any missing values (usually at the edges)</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>df_resampled <span class="op">=</span> df_resampled.dropna()</span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co"># Convert to Darts TimeSeries, allowing it to infer frequency</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>dts <span class="op">=</span> TimeSeries.from_series(df_resampled[<span class="st">"Extent"</span>], fill_missing_dates<span class="op">=</span><span class="va">True</span>, freq<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb4-12"><a href="#cb4-12"></a></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co"># Show darts info</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- darts TimeSeries Summary -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="bu">print</span>(<span class="st">"frequency: "</span>, dts.freq_str)</span>
+<span id="cb4-16"><a href="#cb4-16"></a></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="co"># Split the series into training and test sets</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>test_frac <span class="op">=</span> <span class="fl">0.15</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a>n_test <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(dts) <span class="op">*</span> test_frac)</span>
+<span id="cb4-20"><a href="#cb4-20"></a>train, test <span class="op">=</span> dts[:<span class="op">-</span>n_test], dts[<span class="op">-</span>n_test:]</span>
+<span id="cb4-21"><a href="#cb4-21"></a></span>
+<span id="cb4-22"><a href="#cb4-22"></a><span class="co"># Confirm split sizes</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a><span class="bu">print</span>(<span class="ss">f"Train range: </span><span class="sc">{</span>train<span class="sc">.</span>start_time()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>train<span class="sc">.</span>end_time()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>train<span class="sc">.</span>n_timesteps<span class="sc">}</span><span class="ss"> steps)"</span>)</span>
+<span id="cb4-24"><a href="#cb4-24"></a><span class="bu">print</span>(<span class="ss">f"Test  range: </span><span class="sc">{</span>test<span class="sc">.</span>start_time()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>test<span class="sc">.</span>end_time()<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>test<span class="sc">.</span>n_timesteps<span class="sc">}</span><span class="ss"> steps)"</span>)</span>
+<span id="cb4-25"><a href="#cb4-25"></a></span>
+<span id="cb4-26"><a href="#cb4-26"></a><span class="co"># Normalize</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a>scaler <span class="op">=</span> Scaler()</span>
+<span id="cb4-28"><a href="#cb4-28"></a>train_scaled <span class="op">=</span> scaler.fit_transform(train)</span>
+<span id="cb4-29"><a href="#cb4-29"></a>test_scaled <span class="op">=</span> scaler.transform(test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
 ----- darts TimeSeries Summary -----
 
 frequency:  MS
 Train range: 1980-01-01 to 2013-12-01 (408 steps)
-Test  range: 2014-01-01 to 2019-12-01 (72 steps)
-
+Test  range: 2014-01-01 to 2019-12-01 (72 steps)</code></pre>
+</div>
+</div>
+</section>
+<section id="train-models" class="level2">
+<h2 class="anchored" data-anchor-id="train-models">Train Models</h2>
+<div id="bcfc0028-1473-4a53-a3ed-4b27e4ebe277" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Initialize models</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>models <span class="op">=</span> {</span>
+<span id="cb6-3"><a href="#cb6-3"></a>    <span class="st">"NaiveMean"</span>: NaiveMean(),</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="st">"AutoARIMA"</span>: AutoARIMA(season_length<span class="op">=</span><span class="dv">12</span>, max_p<span class="op">=</span><span class="dv">2</span>, max_q<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb6-5"><a href="#cb6-5"></a>                            max_P<span class="op">=</span><span class="dv">1</span>, max_Q<span class="op">=</span><span class="dv">1</span>, max_d<span class="op">=</span><span class="dv">1</span>, max_D<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb6-6"><a href="#cb6-6"></a>    <span class="st">"ExponentialSmoothing"</span>: ExponentialSmoothing(trend<span class="op">=</span>ModelMode.ADDITIVE, seasonal<span class="op">=</span>SeasonalityMode.ADDITIVE,</span>
+<span id="cb6-7"><a href="#cb6-7"></a>                                                seasonal_periods<span class="op">=</span><span class="dv">12</span>,damped<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb6-8"><a href="#cb6-8"></a>    <span class="st">"LightGBMModel"</span>: LightGBMModel(lags<span class="op">=</span><span class="dv">12</span>, output_chunk_length<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb6-9"><a href="#cb6-9"></a>        random_state<span class="op">=</span><span class="dv">42</span>, verbose<span class="op">=-</span><span class="dv">1</span>, force_col_wise<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb6-10"><a href="#cb6-10"></a>    <span class="st">"Theta"</span>: Theta(season_mode<span class="op">=</span>SeasonalityMode.ADDITIVE),</span>
+<span id="cb6-11"><a href="#cb6-11"></a>}</span>
+<span id="cb6-12"><a href="#cb6-12"></a></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co"># ---- TRAIN MODELS AND PREDICT ----</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a></span>
+<span id="cb6-15"><a href="#cb6-15"></a>results <span class="op">=</span> []</span>
+<span id="cb6-16"><a href="#cb6-16"></a>forecasts_test <span class="op">=</span> {}</span>
+<span id="cb6-17"><a href="#cb6-17"></a></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Training Models -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb6-19"><a href="#cb6-19"></a></span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="cf">for</span> name, model <span class="kw">in</span> models.items():</span>
+<span id="cb6-21"><a href="#cb6-21"></a>    <span class="bu">print</span>(<span class="ss">f"Training </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">..."</span>)</span>
+<span id="cb6-22"><a href="#cb6-22"></a>    start_time <span class="op">=</span> time.time()</span>
+<span id="cb6-23"><a href="#cb6-23"></a></span>
+<span id="cb6-24"><a href="#cb6-24"></a>    <span class="co"># Use unscaled data for ARIMA and ExponentialSmoothing</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a>    <span class="cf">if</span> name <span class="kw">in</span> [<span class="st">"AutoARIMA"</span>, <span class="st">"ExponentialSmoothing"</span>]:</span>
+<span id="cb6-26"><a href="#cb6-26"></a>        model.fit(train)</span>
+<span id="cb6-27"><a href="#cb6-27"></a>        pred_test <span class="op">=</span> model.predict(n<span class="op">=</span><span class="bu">len</span>(test))</span>
+<span id="cb6-28"><a href="#cb6-28"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-29"><a href="#cb6-29"></a>        model.fit(train_scaled)</span>
+<span id="cb6-30"><a href="#cb6-30"></a>        pred_test_scaled <span class="op">=</span> model.predict(n<span class="op">=</span><span class="bu">len</span>(test_scaled))</span>
+<span id="cb6-31"><a href="#cb6-31"></a>        pred_test <span class="op">=</span> scaler.inverse_transform(pred_test_scaled)</span>
+<span id="cb6-32"><a href="#cb6-32"></a></span>
+<span id="cb6-33"><a href="#cb6-33"></a>    train_duration <span class="op">=</span> time.time() <span class="op">-</span> start_time</span>
+<span id="cb6-34"><a href="#cb6-34"></a>    forecasts_test[name] <span class="op">=</span> pred_test</span>
+<span id="cb6-35"><a href="#cb6-35"></a></span>
+<span id="cb6-36"><a href="#cb6-36"></a>    <span class="co"># Evaluate on test set</span></span>
+<span id="cb6-37"><a href="#cb6-37"></a>    results.append({</span>
+<span id="cb6-38"><a href="#cb6-38"></a>        <span class="st">"Model"</span>: name,</span>
+<span id="cb6-39"><a href="#cb6-39"></a>        <span class="st">"MAE"</span>: mae(test, pred_test),</span>
+<span id="cb6-40"><a href="#cb6-40"></a>        <span class="st">"RMSE"</span>: rmse(test, pred_test),</span>
+<span id="cb6-41"><a href="#cb6-41"></a>        <span class="st">"Train Time (s)"</span>: train_duration</span>
+<span id="cb6-42"><a href="#cb6-42"></a>    })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
 ----- Training Models -----
 
 Training NaiveMean...
 Training AutoARIMA...
 Training ExponentialSmoothing...
 Training LightGBMModel...
-Training Theta...
-
------ EVALUATION -----
-
-               Model      MAE     RMSE  Train Time (s)
-           AutoARIMA 0.325538 0.411305        2.386688
-       LightGBMModel 0.438801 0.531785        0.108643
-ExponentialSmoothing 0.577775 0.667614        0.114603
-               Theta 0.605557 0.756212        0.005900
-           NaiveMean 2.937516 3.581656        0.000876</code></pre>
+Training Theta...</code></pre>
+</div>
+</div>
+</section>
+<section id="evaluate-and-plot-forecasts" class="level2">
+<h2 class="anchored" data-anchor-id="evaluate-and-plot-forecasts">Evaluate and Plot Forecasts</h2>
+<div id="8401cbe5-064e-40d9-9286-3eb504f3c5ea" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Display results</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>results_df <span class="op">=</span> pd.DataFrame(results).sort_values(<span class="st">"RMSE"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="bu">print</span>(results_df.to_string(index<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="co"># Plot: final 60 train + full test + predictions on test</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>train_to_plot <span class="op">=</span> train[<span class="op">-</span><span class="dv">60</span>:]  <span class="co"># last 60 points from train</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a></span>
+<span id="cb8-8"><a href="#cb8-8"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">3</span>))</span>
+<span id="cb8-9"><a href="#cb8-9"></a></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="co"># Plot actual data</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a>train_to_plot.plot(label<span class="op">=</span><span class="st">"Train"</span>, linewidth<span class="op">=</span><span class="fl">0.9</span>)</span>
+<span id="cb8-12"><a href="#cb8-12"></a>test.plot(label<span class="op">=</span><span class="st">"Test"</span>, linewidth<span class="op">=</span><span class="fl">0.9</span>, alpha<span class="op">=</span><span class="fl">0.9</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb8-13"><a href="#cb8-13"></a></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="co"># Plot forecasts made on test set</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="cf">for</span> name, forecast <span class="kw">in</span> forecasts_test.items():</span>
+<span id="cb8-16"><a href="#cb8-16"></a>    <span class="cf">if</span> forecast <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb8-17"><a href="#cb8-17"></a>        forecast.plot(label<span class="op">=</span>name, linewidth<span class="op">=</span><span class="fl">0.9</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb8-18"><a href="#cb8-18"></a></span>
+<span id="cb8-19"><a href="#cb8-19"></a>plt.title(<span class="st">"Sea Ice - Forecast Comparison - Train (last 60 points) and Test Data"</span>)</span>
+<span id="cb8-20"><a href="#cb8-20"></a>plt.xlabel(<span class="st">"Date"</span>)</span>
+<span id="cb8-21"><a href="#cb8-21"></a>plt.ylabel(<span class="st">"Extent"</span>)</span>
+<span id="cb8-22"><a href="#cb8-22"></a>plt.legend(loc<span class="op">=</span><span class="st">"center left"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.0</span>, <span class="fl">0.5</span>))</span>
+<span id="cb8-23"><a href="#cb8-23"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb8-24"><a href="#cb8-24"></a>plt.tight_layout()</span>
+<span id="cb8-25"><a href="#cb8-25"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Model      MAE     RMSE  Train Time (s)
+           AutoARIMA 0.325538 0.411305        2.408919
+       LightGBMModel 0.438801 0.531785        0.122438
+ExponentialSmoothing 0.577775 0.667614        0.113575
+               Theta 0.605557 0.756212        0.006496
+           NaiveMean 2.937516 3.581656        0.000945</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="forecasting_multi_univariate_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="forecasting_multi_univariate_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
