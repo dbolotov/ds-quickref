@@ -6,10 +6,11 @@
 
 | Category          | Resource | Description |
 |------------------|----------|-------------|
+| Modeling | [An Introduction to Statistical Learning](https://www.statlearning.com/) | Statistical and machine learning approaches to learning from data. Includes companion website for [Python](https://islp.readthedocs.io/en/main/index.html) examples. |
 | Explainability | [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/) | A practical overview of techniques for making ML models more transparent, including SHAP. |
 | Visualization | [UW Interactive Data Lab Curriculum](https://idl.uw.edu/visualization-curriculum/intro.html) | Book on statistical visualization using Vega-Lite and Altair. |
 | Visualization | [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) | Principles and examples of clear, effective visual communication. |
-| Time Series | [Forecasting: Principles and Practice](https://otexts.com/fpp2/) | Covers forecasting techniques like exponential smoothing and ARIMA, with examples in R. |
+| Time Series | Forecasting: Principles and Practice: [R](https://otexts.com/fpp3/), [Python](https://otexts.com/fpppy/) | Comprehensive introduction to forecasting methods. Includes like exponential smoothing and ARIMA. Versions for R and Python available. |
 | Data Imputation | [Flexible Imputation of Missing Data](https://stefvanbuuren.name/fimd/) | Methods to handle missing data, with emphasis on multiple imputation. |
 | Fraud Detection | [Fraud Detection Handbook](https://fraud-detection-handbook.github.io/fraud-detection-handbook/Foreword.html) | Applied techniques for detecting fraud in highly imbalanced datasets. Includes instructions on using a fraud data simulator. |
 
