@@ -11,8 +11,8 @@ This is a work in progress, made by a data scientist who got tired of looking th
 ## Usage
 - Use the left sidebar to browse topics  
 - Use the search bar to find specific terms or methods
-- The **Concepts** section discusses challenges 
-- The **Workflows** section contains a variety of basic templates for data science tasks
+- The **Concepts** section discusses topics around model building and evaluation, and contains links to resources as well as python code 
+- The **Workflows** section contains a variety of starter templates for data science tasks, to be used for structuring a data analysis or model building project
 
 ## 
 <span style="font-size: 0.85em; color: #666;">
