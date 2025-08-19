@@ -31,7 +31,7 @@ website:
           - href: workflows/index.qmd
             text: "Workflows Index"
           - href: workflows/ds_workflow.qmd
-            text: Data Science Projects
+            text: DS Project Workflow & Tools
           - href: workflows/classification_tabular.ipynb
             text: Classification
           - href: workflows/clustering_mixed_types.ipynb
