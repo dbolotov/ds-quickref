@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workflows/ds_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Science Projects</span></a>
+ <span class="menu-text">DS Project Workflow &amp; Tools</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -365,16 +365,14 @@ Note: Using <code>display</code> for HTML tables
 <span id="cb2-25"><a href="#cb2-25"></a><span class="co"># Load dataset and display first few rows</span></span>
 <span id="cb2-26"><a href="#cb2-26"></a>df <span class="op">=</span> sns.load_dataset(<span class="st">"seaice"</span>)</span>
 <span id="cb2-27"><a href="#cb2-27"></a></span>
-<span id="cb2-28"><a href="#cb2-28"></a><span class="bu">print</span>(<span class="st">"----- SCRIPT OUTPUT -----"</span>)</span>
-<span id="cb2-29"><a href="#cb2-29"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- First Few Rows of Data -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="bu">print</span>(df.head())</span>
-<span id="cb2-31"><a href="#cb2-31"></a></span>
-<span id="cb2-32"><a href="#cb2-32"></a><span class="co"># Display summary</span></span>
-<span id="cb2-33"><a href="#cb2-33"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Data Summary -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb2-34"><a href="#cb2-34"></a><span class="bu">print</span>(summarize(df, include_perc<span class="op">=</span><span class="va">False</span>, sort<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- First Few Rows of Data -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb2-30"><a href="#cb2-30"></a></span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="co"># Display summary</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">----- Data Summary -----</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="bu">print</span>(summarize(df, include_perc<span class="op">=</span><span class="va">False</span>, sort<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>----- SCRIPT OUTPUT -----
-
+<pre><code>
 ----- First Few Rows of Data -----
 
         Date  Extent
@@ -521,11 +519,11 @@ Training Theta...</code></pre>
 <span id="cb8-25"><a href="#cb8-25"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               Model      MAE     RMSE  Train Time (s)
-           AutoARIMA 0.325538 0.411305        2.408919
-       LightGBMModel 0.438801 0.531785        0.122438
-ExponentialSmoothing 0.577775 0.667614        0.113575
-               Theta 0.605557 0.756212        0.006496
-           NaiveMean 2.937516 3.581656        0.000945</code></pre>
+           AutoARIMA 0.325538 0.411305        2.409551
+       LightGBMModel 0.438801 0.531785        0.147598
+ExponentialSmoothing 0.577775 0.667614        0.113654
+               Theta 0.605557 0.756212        0.006145
+           NaiveMean 2.937516 3.581656        0.000901</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>

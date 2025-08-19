@@ -1,163 +1,42 @@
 [
   {
-    "objectID": "common_problems.html",
-    "href": "common_problems.html",
-    "title": "Common Problems in Data Science",
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
     "section": "",
-    "text": "Problem\nSolution\n\n\n\n\nNot enough data\nUse data augmentation or synthetic sampling (e.g. SMOTE, SDV)\n\n\nData not representative of the distribution\nReassess how data was collected; consider stratified sampling\n\n\nImbalanced classes\nTry resampling, adjusting class weights, or adding synthetic data with SDV\n\n\nToo much data (examples)\nSubsample or use mini-batch training; profile before full-scale training\n\n\nToo many features / high dimensionality\nApply feature selection or dimensionality reduction (e.g. PCA)\n\n\nData has extreme values, outliers, or anomalies\nUse robust statistics, or find such values using outlier/anomaly detection methods. Consider removing examples.\n\n\nData may have been faked\nCheck for duplicate rows, unnatural distributions, and value repetition\n\n\nData leakage\nReview data sources and pipeline; make sure target isn’t leaking into features\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem\nSolution\n\n\n\n\nModel performs well on training, terrible on test (overfitting)\nReduce model complexity, add regularization, or get more data\n\n\nModel performs poorly on training AND test data (underfitting)\nUse a more complex model, add better features, reduce regularization.\n\n\nClassification model worse than a random guess or worse than majority class guess\nInvestigate data quality, imbalanced classes.\n\n\nModel performs unusually well on train and test data\nCheck for data leakage; the model may have access to information it shouldn’t.\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem\nSolution\n\n\n\n\nJupyter notebook is too large\nAvoid storing large Plotly outputs; clean outputs or split the notebook\n\n\nModel training takes too long\nUse smaller subsets for tuning; simplify the model or parallelize training",
+    "text": "Category\nResource\nDescription\n\n\n\n\nModeling\nAn Introduction to Statistical Learning\nStatistical and machine learning approaches to learning from data. Includes companion website for Python examples.\n\n\nExplainability\nInterpretable Machine Learning\nA practical overview of techniques for making ML models more transparent, including SHAP.\n\n\nVisualization\nUW Interactive Data Lab Curriculum\nBook on statistical visualization using Vega-Lite and Altair.\n\n\nVisualization\nFundamentals of Data Visualization\nPrinciples and examples of clear, effective visual communication.\n\n\nTime Series\nForecasting: Principles and Practice: R, Python\nComprehensive introduction to forecasting methods. Includes like exponential smoothing and ARIMA. Versions for R and Python available.\n\n\nData Imputation\nFlexible Imputation of Missing Data\nMethods to handle missing data, with emphasis on multiple imputation.\n\n\nFraud Detection\nFraud Detection Handbook\nApplied techniques for detecting fraud in highly imbalanced datasets. Includes instructions on using a fraud data simulator.\n\n\n\n\n\n\n\n\nSDV - Python library for creating tabular synthetic data.\npermetrics - Python library for performance metrics of machine learning models. Documentation site includes quick explanations of each metric.\n\n\n\n\n\nQuarto: Extensive publishing system. Supports jupyter notebooks and markdown.\nbootswatch: Collection of free themes for Bootstrap-based sites.",
     "crumbs": [
-      "Common DS Problems"
+      "References"
     ]
   },
   {
-    "objectID": "common_problems.html#data",
-    "href": "common_problems.html#data",
-    "title": "Common Problems in Data Science",
+    "objectID": "references.html#online-books",
+    "href": "references.html#online-books",
+    "title": "References",
     "section": "",
-    "text": "Problem\nSolution\n\n\n\n\nNot enough data\nUse data augmentation or synthetic sampling (e.g. SMOTE, SDV)\n\n\nData not representative of the distribution\nReassess how data was collected; consider stratified sampling\n\n\nImbalanced classes\nTry resampling, adjusting class weights, or adding synthetic data with SDV\n\n\nToo much data (examples)\nSubsample or use mini-batch training; profile before full-scale training\n\n\nToo many features / high dimensionality\nApply feature selection or dimensionality reduction (e.g. PCA)\n\n\nData has extreme values, outliers, or anomalies\nUse robust statistics, or find such values using outlier/anomaly detection methods. Consider removing examples.\n\n\nData may have been faked\nCheck for duplicate rows, unnatural distributions, and value repetition\n\n\nData leakage\nReview data sources and pipeline; make sure target isn’t leaking into features",
+    "text": "Category\nResource\nDescription\n\n\n\n\nModeling\nAn Introduction to Statistical Learning\nStatistical and machine learning approaches to learning from data. Includes companion website for Python examples.\n\n\nExplainability\nInterpretable Machine Learning\nA practical overview of techniques for making ML models more transparent, including SHAP.\n\n\nVisualization\nUW Interactive Data Lab Curriculum\nBook on statistical visualization using Vega-Lite and Altair.\n\n\nVisualization\nFundamentals of Data Visualization\nPrinciples and examples of clear, effective visual communication.\n\n\nTime Series\nForecasting: Principles and Practice: R, Python\nComprehensive introduction to forecasting methods. Includes like exponential smoothing and ARIMA. Versions for R and Python available.\n\n\nData Imputation\nFlexible Imputation of Missing Data\nMethods to handle missing data, with emphasis on multiple imputation.\n\n\nFraud Detection\nFraud Detection Handbook\nApplied techniques for detecting fraud in highly imbalanced datasets. Includes instructions on using a fraud data simulator.",
     "crumbs": [
-      "Common DS Problems"
+      "References"
     ]
   },
   {
-    "objectID": "common_problems.html#modeling",
-    "href": "common_problems.html#modeling",
-    "title": "Common Problems in Data Science",
+    "objectID": "references.html#tools",
+    "href": "references.html#tools",
+    "title": "References",
     "section": "",
-    "text": "Problem\nSolution\n\n\n\n\nModel performs well on training, terrible on test (overfitting)\nReduce model complexity, add regularization, or get more data\n\n\nModel performs poorly on training AND test data (underfitting)\nUse a more complex model, add better features, reduce regularization.\n\n\nClassification model worse than a random guess or worse than majority class guess\nInvestigate data quality, imbalanced classes.\n\n\nModel performs unusually well on train and test data\nCheck for data leakage; the model may have access to information it shouldn’t.",
+    "text": "SDV - Python library for creating tabular synthetic data.\npermetrics - Python library for performance metrics of machine learning models. Documentation site includes quick explanations of each metric.",
     "crumbs": [
-      "Common DS Problems"
+      "References"
     ]
   },
   {
-    "objectID": "common_problems.html#workflow",
-    "href": "common_problems.html#workflow",
-    "title": "Common Problems in Data Science",
+    "objectID": "references.html#resources-used-to-make-this-guide",
+    "href": "references.html#resources-used-to-make-this-guide",
+    "title": "References",
     "section": "",
-    "text": "Problem\nSolution\n\n\n\n\nJupyter notebook is too large\nAvoid storing large Plotly outputs; clean outputs or split the notebook\n\n\nModel training takes too long\nUse smaller subsets for tuning; simplify the model or parallelize training",
+    "text": "Quarto: Extensive publishing system. Supports jupyter notebooks and markdown.\nbootswatch: Collection of free themes for Bootstrap-based sites.",
     "crumbs": [
-      "Common DS Problems"
-    ]
-  },
-  {
-    "objectID": "workflows/clustering_mixed_types.html",
-    "href": "workflows/clustering_mixed_types.html",
-    "title": "Clustering with Mixed-Type Tabular Data",
-    "section": "",
-    "text": "This notebook explores three approaches to clustering datasets with mixed data types.\nUses the penguins dataset from seaborn, and applies different distance strategies and models. Final results are evaluated using Adjusted Rand Index (ARI) and Normalized Mutual Information (NMI) and the known taget variable (penguin species).\nClustering mixed-type data (e.g. numeric + categorical) requires special handling of distance metrics. Standard clustering methods like KMeans assume numeric, Euclidean space. Here we use Gower distance or specialized models like k-prototypes that support categorical features directly.\nWe use feature standardization for the numeric columns before building the k-prototypes model. We don’t use standardization for the data that is used to create the Gower matrix (as that is handled internally).\nThis notebook does the following:",
-    "crumbs": [
-      "Workflows",
-      "Clustering (Mixed Data)"
-    ]
-  },
-  {
-    "objectID": "workflows/clustering_mixed_types.html#import-and-check-data",
-    "href": "workflows/clustering_mixed_types.html#import-and-check-data",
-    "title": "Clustering with Mixed-Type Tabular Data",
-    "section": "Import and Check Data",
-    "text": "Import and Check Data\n\nimport seaborn as sns\nimport pandas as pd\nfrom minieda import summarize # pip install git+https://github.com/dbolotov/minieda.git\nfrom pprint import pprint\n\nfrom kmodes.kprototypes import KPrototypes\nfrom sklearn.preprocessing import StandardScaler, LabelEncoder\nimport gower\nfrom sklearn.cluster import DBSCAN, AgglomerativeClustering\nfrom sklearn.metrics import adjusted_rand_score,  normalized_mutual_info_score\n\npd.set_option(\"display.width\", 220) # set display width for printed tables\n\n# Load dataset and display first few rows\ndf = sns.load_dataset(\"penguins\")\n\nprint(\"----- First Few Rows of Data -----\\n\")\nprint(df.head())\n\n# Display summary\nprint(\"\\n----- Data Summary -----\\n\")\nprint(summarize(df))\n\n----- First Few Rows of Data -----\n\n  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex\n0  Adelie  Torgersen            39.1           18.7              181.0       3750.0    Male\n1  Adelie  Torgersen            39.5           17.4              186.0       3800.0  Female\n2  Adelie  Torgersen            40.3           18.0              195.0       3250.0  Female\n3  Adelie  Torgersen             NaN            NaN                NaN          NaN     NaN\n4  Adelie  Torgersen            36.7           19.3              193.0       3450.0  Female\n\n----- Data Summary -----\n\n                     dtype  count  unique  unique_perc  missing  missing_perc  zero  zero_perc     top freq     mean     std     min     50%     max  skew\nbill_length_mm     float64    342     164        47.67        2          0.58     0        0.0                 43.92    5.46    32.1   44.45    59.6  0.05\nbill_depth_mm      float64    342      80        23.26        2          0.58     0        0.0                 17.15    1.97    13.1    17.3    21.5 -0.14\nflipper_length_mm  float64    342      55        15.99        2          0.58     0        0.0                200.92   14.06   172.0   197.0   231.0  0.35\nbody_mass_g        float64    342      94        27.33        2          0.58     0        0.0               4201.75  801.95  2700.0  4050.0  6300.0  0.47\nspecies             object    344       3         0.87        0          0.00     0        0.0  Adelie  152                                               \nisland              object    344       3         0.87        0          0.00     0        0.0  Biscoe  168                                               \nsex                 object    333       2         0.58       11          3.20     0        0.0    Male  168",
-    "crumbs": [
-      "Workflows",
-      "Clustering (Mixed Data)"
-    ]
-  },
-  {
-    "objectID": "workflows/clustering_mixed_types.html#transform-data",
-    "href": "workflows/clustering_mixed_types.html#transform-data",
-    "title": "Clustering with Mixed-Type Tabular Data",
-    "section": "Transform Data",
-    "text": "Transform Data\n\n# Drop rows with missing values\ndf = df.dropna().reset_index(drop=True)\n\n# Define categorical and numeric columns\ncat_cols = ['island', 'sex']\nnum_cols = ['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']\nfeatures = cat_cols + num_cols\n\n# Make an explicit copy to avoid chained assignment warnings\nX = df[features].copy()\n\n# Ensure categorical columns are strings\nfor col in cat_cols:\n    X[col] = X[col].astype(str)\n\n# For k-prototypes: scale numeric columns\nX_kproto = X.copy()\nscaler = StandardScaler()\nX_kproto[num_cols] = scaler.fit_transform(X_kproto[num_cols])\nX_kproto_matrix = X_kproto.to_numpy()\ncategorical_idx = [X_kproto.columns.get_loc(col) for col in cat_cols]\n\n# For Gower distance: create Gower matrix using raw data\ngower_matrix = gower.gower_matrix(X)",
-    "crumbs": [
-      "Workflows",
-      "Clustering (Mixed Data)"
-    ]
-  },
-  {
-    "objectID": "workflows/clustering_mixed_types.html#build-models---k-prototypes-dbscan-agglomerativeclustering",
-    "href": "workflows/clustering_mixed_types.html#build-models---k-prototypes-dbscan-agglomerativeclustering",
-    "title": "Clustering with Mixed-Type Tabular Data",
-    "section": "Build Models - K-Prototypes, DBSCAN, AgglomerativeClustering",
-    "text": "Build Models - K-Prototypes, DBSCAN, AgglomerativeClustering\n\n# Copy base DataFrame for clustering\ndf_clustered = df.copy()\n\n# Create a results dictionary\nresults = {}\n\n# K-Prototypes\nkproto = KPrototypes(n_clusters=3, init='Huang', verbose=0, random_state=42)\nkproto_labels = kproto.fit_predict(X_kproto_matrix, categorical=categorical_idx)\ndf_clustered['kproto'] = kproto_labels\n\nresults['kproto'] = {\n    'ARI': adjusted_rand_score(df_clustered[\"species\"], kproto_labels),\n    'NMI': normalized_mutual_info_score(df_clustered[\"species\"], kproto_labels)\n}\n\n# DBSCAN with Gower matrix\n\n# Optional: tune eps manually\n# for eps in [0.05, 0.1, 0.15, 0.17]:\n#     model = DBSCAN(eps=eps, min_samples=5, metric='precomputed')\n#     labels = model.fit_predict(gower_matrix)\n#     print(f\"eps={eps:.2f} → clusters: {len(set(labels)) - (1 if -1 in labels else 0)}, noise: {(labels == -1).sum()}\")\n\ndbscan_model = DBSCAN(eps=0.15, min_samples=5, metric='precomputed')\ndbscan_labels = dbscan_model.fit_predict(gower_matrix)\ndf_clustered['gower_dbscan'] = dbscan_labels\n\nresults['gower_dbscan'] = {\n    'ARI': adjusted_rand_score(df_clustered[\"species\"], dbscan_labels),\n    'NMI': normalized_mutual_info_score(df_clustered[\"species\"], dbscan_labels)\n}\n\n# Agglomerative Clustering with Gower\nagglo_model = AgglomerativeClustering(n_clusters=3, metric='precomputed', linkage='average')\nagglo_labels = agglo_model.fit_predict(gower_matrix)\ndf_clustered['gower_aggl'] = agglo_labels\n\nresults['gower_aggl'] = {\n    'ARI': adjusted_rand_score(df_clustered[\"species\"], agglo_labels),\n    'NMI': normalized_mutual_info_score(df_clustered[\"species\"], agglo_labels)\n}",
-    "crumbs": [
-      "Workflows",
-      "Clustering (Mixed Data)"
-    ]
-  },
-  {
-    "objectID": "workflows/clustering_mixed_types.html#evaluate",
-    "href": "workflows/clustering_mixed_types.html#evaluate",
-    "title": "Clustering with Mixed-Type Tabular Data",
-    "section": "Evaluate",
-    "text": "Evaluate\n\n# Evaluation summary table\nevaluation_df = pd.DataFrame(results).T\nprint(\"----- ARI and NMI Summary -----\\n\")\nprint(evaluation_df)\n\n# Label encode true species values for confusion matrices\nle = LabelEncoder()\ntrue_labels = le.fit_transform(df_clustered[\"species\"])\n\n# Print cluster counts and confusion matrices\nprint(\"\\n----- Per-Model Cluster Counts -----\")\nfor model_name in ['kproto', 'gower_dbscan', 'gower_aggl']:\n    print(f\"\\n----- {model_name} -----\\n\")\n    \n    cluster_counts = df_clustered[model_name].value_counts()\n    print(cluster_counts)\n\n----- ARI and NMI Summary -----\n\n                   ARI       NMI\nkproto        0.733731  0.739709\ngower_dbscan  0.212538  0.375291\ngower_aggl    0.542704  0.606129\n\n----- Per-Model Cluster Counts -----\n\n----- kproto -----\n\nkproto\n0    124\n2    119\n1     90\nName: count, dtype: int64\n\n----- gower_dbscan -----\n\ngower_dbscan\n3    83\n2    80\n5    62\n4    61\n1    24\n0    23\nName: count, dtype: int64\n\n----- gower_aggl -----\n\ngower_aggl\n0    119\n1    107\n2    107\nName: count, dtype: int64",
-    "crumbs": [
-      "Workflows",
-      "Clustering (Mixed Data)"
-    ]
-  },
-  {
-    "objectID": "workflows/forecasting_multi_univariate.html",
-    "href": "workflows/forecasting_multi_univariate.html",
-    "title": "Forecasting on Univariate Time Series Data",
-    "section": "",
-    "text": "Supervised ML workflow for building forecasting models on univariate time series data.\nUses the seaice dataset from seaborn, and applies several time series models to forecast sea ice extent (Naive Mean, ARIMA, Exponential Smoothing, LightGBM with lagged features, Theta).\nThis dataset contains no missing values, so no imputation is used.\nThis script does the following:",
-    "crumbs": [
-      "Workflows",
-      "Forecasting with ML"
-    ]
-  },
-  {
-    "objectID": "workflows/forecasting_multi_univariate.html#import-and-check-data",
-    "href": "workflows/forecasting_multi_univariate.html#import-and-check-data",
-    "title": "Forecasting on Univariate Time Series Data",
-    "section": "Import and Check Data",
-    "text": "Import and Check Data\n\nimport warnings\nimport time\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\nfrom minieda import summarize  # pip install git+https://github.com/dbolotov/minieda.git\n\nfrom darts import TimeSeries\nfrom darts.models import NaiveMean, AutoARIMA, ExponentialSmoothing, LightGBMModel, Theta\nfrom darts.dataprocessing.transformers import Scaler\nfrom darts.utils.utils import ModelMode, SeasonalityMode\nfrom darts.metrics import mae, rmse\n\nfrom sklearn.linear_model import LinearRegression\n\n# Suppress sklearn warnings\nwarnings.filterwarnings(\"ignore\", category=UserWarning, module=\"sklearn\")\n\n# Display and plot settings\npd.set_option(\"display.width\", 220)\nplt.rcParams.update({'font.size': 9})\n\n# Load dataset and display first few rows\ndf = sns.load_dataset(\"seaice\")\n\nprint(\"----- SCRIPT OUTPUT -----\")\nprint(\"\\n----- First Few Rows of Data -----\\n\")\nprint(df.head())\n\n# Display summary\nprint(\"\\n----- Data Summary -----\\n\")\nprint(summarize(df, include_perc=False, sort=True))\n\n----- SCRIPT OUTPUT -----\n\n----- First Few Rows of Data -----\n\n        Date  Extent\n0 1980-01-01  14.200\n1 1980-01-03  14.302\n2 1980-01-05  14.414\n3 1980-01-07  14.518\n4 1980-01-09  14.594\n\n----- Data Summary -----\n\n                 dtype  count  unique  missing  zero   mean   std   min    50%    max  skew\nExtent         float64  13175    7649        0     0  11.29  3.28  3.34  11.98  16.41 -0.44\nDate    datetime64[ns]  13175   13175        0     0",
-    "crumbs": [
-      "Workflows",
-      "Forecasting with ML"
-    ]
-  },
-  {
-    "objectID": "workflows/forecasting_multi_univariate.html#transform-data",
-    "href": "workflows/forecasting_multi_univariate.html#transform-data",
-    "title": "Forecasting on Univariate Time Series Data",
-    "section": "Transform Data",
-    "text": "Transform Data\n\n# Sort by date and set Date as index\ndf = df.sort_values(\"Date\").set_index(\"Date\")\n\n# Resample to different frequency using linear interpolation\ndf_resampled = df.resample(\"MS\").interpolate(\"linear\") # monthly\n\n# Drop any missing values (usually at the edges)\ndf_resampled = df_resampled.dropna()\n\n# Convert to Darts TimeSeries, allowing it to infer frequency\ndts = TimeSeries.from_series(df_resampled[\"Extent\"], fill_missing_dates=True, freq=None)\n\n# Show darts info\nprint(\"\\n----- darts TimeSeries Summary -----\\n\")\nprint(\"frequency: \", dts.freq_str)\n\n# Split the series into training and test sets\ntest_frac = 0.15\nn_test = int(len(dts) * test_frac)\ntrain, test = dts[:-n_test], dts[-n_test:]\n\n# Confirm split sizes\nprint(f\"Train range: {train.start_time().date()} to {train.end_time().date()} ({train.n_timesteps} steps)\")\nprint(f\"Test  range: {test.start_time().date()} to {test.end_time().date()} ({test.n_timesteps} steps)\")\n\n# Normalize\nscaler = Scaler()\ntrain_scaled = scaler.fit_transform(train)\ntest_scaled = scaler.transform(test)\n\n\n----- darts TimeSeries Summary -----\n\nfrequency:  MS\nTrain range: 1980-01-01 to 2013-12-01 (408 steps)\nTest  range: 2014-01-01 to 2019-12-01 (72 steps)",
-    "crumbs": [
-      "Workflows",
-      "Forecasting with ML"
-    ]
-  },
-  {
-    "objectID": "workflows/forecasting_multi_univariate.html#train-models",
-    "href": "workflows/forecasting_multi_univariate.html#train-models",
-    "title": "Forecasting on Univariate Time Series Data",
-    "section": "Train Models",
-    "text": "Train Models\n\n# Initialize models\nmodels = {\n    \"NaiveMean\": NaiveMean(),\n    \"AutoARIMA\": AutoARIMA(season_length=12, max_p=2, max_q=2,\n                            max_P=1, max_Q=1, max_d=1, max_D=1),\n    \"ExponentialSmoothing\": ExponentialSmoothing(trend=ModelMode.ADDITIVE, seasonal=SeasonalityMode.ADDITIVE,\n                                                seasonal_periods=12,damped=True),\n    \"LightGBMModel\": LightGBMModel(lags=12, output_chunk_length=1,\n        random_state=42, verbose=-1, force_col_wise=True),\n    \"Theta\": Theta(season_mode=SeasonalityMode.ADDITIVE),\n}\n\n# ---- TRAIN MODELS AND PREDICT ----\n\nresults = []\nforecasts_test = {}\n\nprint(\"\\n----- Training Models -----\\n\")\n\nfor name, model in models.items():\n    print(f\"Training {name}...\")\n    start_time = time.time()\n\n    # Use unscaled data for ARIMA and ExponentialSmoothing\n    if name in [\"AutoARIMA\", \"ExponentialSmoothing\"]:\n        model.fit(train)\n        pred_test = model.predict(n=len(test))\n    else:\n        model.fit(train_scaled)\n        pred_test_scaled = model.predict(n=len(test_scaled))\n        pred_test = scaler.inverse_transform(pred_test_scaled)\n\n    train_duration = time.time() - start_time\n    forecasts_test[name] = pred_test\n\n    # Evaluate on test set\n    results.append({\n        \"Model\": name,\n        \"MAE\": mae(test, pred_test),\n        \"RMSE\": rmse(test, pred_test),\n        \"Train Time (s)\": train_duration\n    })\n\n\n----- Training Models -----\n\nTraining NaiveMean...\nTraining AutoARIMA...\nTraining ExponentialSmoothing...\nTraining LightGBMModel...\nTraining Theta...",
-    "crumbs": [
-      "Workflows",
-      "Forecasting with ML"
-    ]
-  },
-  {
-    "objectID": "workflows/forecasting_multi_univariate.html#evaluate-and-plot-forecasts",
-    "href": "workflows/forecasting_multi_univariate.html#evaluate-and-plot-forecasts",
-    "title": "Forecasting on Univariate Time Series Data",
-    "section": "Evaluate and Plot Forecasts",
-    "text": "Evaluate and Plot Forecasts\n\n# Display results\nresults_df = pd.DataFrame(results).sort_values(\"RMSE\")\nprint(results_df.to_string(index=False))\n\n# Plot: final 60 train + full test + predictions on test\ntrain_to_plot = train[-60:]  # last 60 points from train\n\nplt.figure(figsize=(12, 3))\n\n# Plot actual data\ntrain_to_plot.plot(label=\"Train\", linewidth=0.9)\ntest.plot(label=\"Test\", linewidth=0.9, alpha=0.9, linestyle=\"--\")\n\n# Plot forecasts made on test set\nfor name, forecast in forecasts_test.items():\n    if forecast is not None:\n        forecast.plot(label=name, linewidth=0.9, alpha=0.7)\n\nplt.title(\"Sea Ice - Forecast Comparison - Train (last 60 points) and Test Data\")\nplt.xlabel(\"Date\")\nplt.ylabel(\"Extent\")\nplt.legend(loc=\"center left\", bbox_to_anchor=(1.0, 0.5))\nplt.grid(True, alpha=0.4)\nplt.tight_layout()\nplt.show()\n\n               Model      MAE     RMSE  Train Time (s)\n           AutoARIMA 0.325538 0.411305        2.408919\n       LightGBMModel 0.438801 0.531785        0.122438\nExponentialSmoothing 0.577775 0.667614        0.113575\n               Theta 0.605557 0.756212        0.006496\n           NaiveMean 2.937516 3.581656        0.000945",
-    "crumbs": [
-      "Workflows",
-      "Forecasting with ML"
-    ]
-  },
-  {
-    "objectID": "workflows/ds_workflow.html",
-    "href": "workflows/ds_workflow.html",
-    "title": "End-to-End Data Science Project Workflow",
-    "section": "",
-    "text": "End-to-End Data Science Project Workflow\nWhen you’re working on a data science project - data analysis, ML models, LLM experiments, or quick apps - it’s helpful to have a clear system for developing, publishing, and sharing your work.\nThis is the workflow I use to go from local notebooks to hosted apps and public writeups. It works well for both solo projects and professional prototypes, and uses open-source and free tools throughout.\n\n1. Develop (local or remote)\n\nAnaconda to manage Python environments\nJupyterLab for notebooks and analysis\nVS Code for scripts, app and package development; integrates with GitHub for version control\nQuarto for writing reports, websites, and blog-style content (supports Jupyter notebooks for code examples)\n\n\n2. Publish (code, content, apps)\nCode & Reports\n\nGitHub: store code, README files, and notebooks in public and private repositories\nGitHub Pages: host personal portfolio, Quarto-based websites, and writeups\nnbviewer: fallback viewer for Jupyter notebooks that won’t render on GitHub\n\nApps & Demos\n\nStreamlit: build interactive apps with Python and deploy to streamlit.io\nGradio: quickly wrap ML functions into web UIs for demos or prototypes\nHugging Face Spaces: host public demos (Gradio or Streamlit) with no infrastructure setup\nNote: free hosting can be slow to wake up after inactivity\n\n\n3. Share\n\nPost projects or insights on LinkedIn (pin key projects to your profile)\nWrite articles about the work on Medium, Towards Data Science, or Substack\nLink everything back through your GitHub Pages portfolio site",
-    "crumbs": [
-      "Workflows",
-      "Data Science Projects"
+      "References"
     ]
   },
   {
@@ -249,11 +128,313 @@
     ]
   },
   {
+    "objectID": "workflows/classification_tabular.html",
+    "href": "workflows/classification_tabular.html",
+    "title": "Classification with Tabular Data",
+    "section": "",
+    "text": "Supervised ML workflow for building a classification model on tabular data with categorical and continuous features.\nUsing Palmer’s penguins dataset from seaborn, train a random forest to predict the penguin species. Use scikit-learn for pre-processing, modeling, and evaluation.\nThis script does the following:",
+    "crumbs": [
+      "Workflows",
+      "Classification"
+    ]
+  },
+  {
+    "objectID": "workflows/classification_tabular.html#import-and-check-data",
+    "href": "workflows/classification_tabular.html#import-and-check-data",
+    "title": "Classification with Tabular Data",
+    "section": "Import and Check Data",
+    "text": "Import and Check Data\n\nfrom IPython.display import display\nimport seaborn as sns\nimport pandas as pd\nfrom minieda import summarize # pip install git+https://github.com/dbolotov/minieda.git\nimport time\nfrom pprint import pprint\n\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.compose import ColumnTransformer\nfrom sklearn.preprocessing import OneHotEncoder, StandardScaler\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.impute import SimpleImputer\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.model_selection import GridSearchCV\nfrom sklearn.metrics import classification_report, confusion_matrix\n\npd.set_option(\"display.width\", 220) # set display width for printed tables\n\n# Load dataset and display first few rows\ndf = sns.load_dataset(\"penguins\")\n\nprint(\"\\n----- First Few Rows of Data -----\\n\")\nprint(df.head())\n\n# Display summary\nprint(\"\\n----- Data Summary -----\\n\")\nprint(summarize(df))\n\n# Per-class value count\nprint(\"\\n----- Target class frequencies (normalized) -----\\n\")\nprint(df['species'].value_counts(normalize=True).rename(None).rename_axis(None))\n\n\n----- First Few Rows of Data -----\n\n  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex\n0  Adelie  Torgersen            39.1           18.7              181.0       3750.0    Male\n1  Adelie  Torgersen            39.5           17.4              186.0       3800.0  Female\n2  Adelie  Torgersen            40.3           18.0              195.0       3250.0  Female\n3  Adelie  Torgersen             NaN            NaN                NaN          NaN     NaN\n4  Adelie  Torgersen            36.7           19.3              193.0       3450.0  Female\n\n----- Data Summary -----\n\n                     dtype  count  unique  unique_perc  missing  missing_perc  zero  zero_perc     top freq     mean     std     min     50%     max  skew\nbill_length_mm     float64    342     164        47.67        2          0.58     0        0.0                 43.92    5.46    32.1   44.45    59.6  0.05\nbill_depth_mm      float64    342      80        23.26        2          0.58     0        0.0                 17.15    1.97    13.1    17.3    21.5 -0.14\nflipper_length_mm  float64    342      55        15.99        2          0.58     0        0.0                200.92   14.06   172.0   197.0   231.0  0.35\nbody_mass_g        float64    342      94        27.33        2          0.58     0        0.0               4201.75  801.95  2700.0  4050.0  6300.0  0.47\nspecies             object    344       3         0.87        0          0.00     0        0.0  Adelie  152                                               \nisland              object    344       3         0.87        0          0.00     0        0.0  Biscoe  168                                               \nsex                 object    333       2         0.58       11          3.20     0        0.0    Male  168                                               \n\n----- Target class frequencies (normalized) -----\n\nAdelie       0.441860\nGentoo       0.360465\nChinstrap    0.197674\ndtype: float64",
+    "crumbs": [
+      "Workflows",
+      "Classification"
+    ]
+  },
+  {
+    "objectID": "workflows/classification_tabular.html#transform-data",
+    "href": "workflows/classification_tabular.html#transform-data",
+    "title": "Classification with Tabular Data",
+    "section": "Transform Data",
+    "text": "Transform Data\n\n# Define columns\ncat_cols = ['island', 'sex']\nnum_cols = ['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']\n\n# Drop rows where the target is missing (can't model without target)\ndf = df.dropna(subset=['species'])\n\n# Split the data\nX = df[cat_cols + num_cols]\ny = df['species']\n\n# Split into training and test\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=42, stratify=y\n)\n\n# Define preprocessing for numeric and categorical features\nnumeric_preprocessing = Pipeline([\n    ('impute', SimpleImputer(strategy='mean')),\n    ('scale', StandardScaler())\n])\n\ncategorical_preprocessing = Pipeline([\n    ('impute', SimpleImputer(strategy='most_frequent')),\n    ('encode', OneHotEncoder(drop='first', sparse_output=False))  # one-hot; drop first feature to avoid multicollinearity\n])\n\n# Combine into a column transformer\npreprocessor = ColumnTransformer([\n    ('num', numeric_preprocessing, num_cols),\n    ('cat', categorical_preprocessing, cat_cols)\n])",
+    "crumbs": [
+      "Workflows",
+      "Classification"
+    ]
+  },
+  {
+    "objectID": "workflows/classification_tabular.html#run-grid-search-for-model---random-forest",
+    "href": "workflows/classification_tabular.html#run-grid-search-for-model---random-forest",
+    "title": "Classification with Tabular Data",
+    "section": "Run Grid Search for Model - Random Forest",
+    "text": "Run Grid Search for Model - Random Forest\n\n# Base pipeline\nclf_pipeline = Pipeline([\n    ('pre', preprocessor),\n    ('model', RandomForestClassifier(random_state=42))\n])\n\n# Define hyperparameter grid\nparam_grid = {\n    'model__n_estimators': [20,30,40],\n    'model__max_depth': [None],\n    'model__min_samples_leaf': [1, 3, 5, 7],\n    'model__max_features': ['sqrt']\n}\n\n# Grid search with cross-validation\ngrid_search = GridSearchCV(\n    estimator=clf_pipeline,\n    param_grid=param_grid,\n    cv=5,\n    scoring='accuracy',\n    n_jobs=-1,\n    verbose=2\n)\n\n# Fit grid search on training data\nprint(\"\\n----- GRID SEARCH -----\\n\")\nstart_time = time.time()\ngrid_search.fit(X_train, y_train)\nprint(f\"\\nGrid search completed in {time.time() - start_time:.2f} seconds\")\n\nprint(\"\\n----- Best Grid Search Result -----\")\nprint(f\"Accuracy: {grid_search.best_score_:.4f} ± {grid_search.cv_results_['std_test_score'][grid_search.best_index_]:.4f}\")\nprint(\"Parameters:\")\npprint(grid_search.best_params_)\n\n\n----- GRID SEARCH -----\n\nFitting 5 folds for each of 12 candidates, totalling 60 fits\n\nGrid search completed in 3.03 seconds\n\n----- Best Grid Search Result -----\nAccuracy: 0.9855 ± 0.0073\nParameters:\n{'model__max_depth': None,\n 'model__max_features': 'sqrt',\n 'model__min_samples_leaf': 1,\n 'model__n_estimators': 30}",
+    "crumbs": [
+      "Workflows",
+      "Classification"
+    ]
+  },
+  {
+    "objectID": "workflows/classification_tabular.html#evaluate-and-show-feature-importance",
+    "href": "workflows/classification_tabular.html#evaluate-and-show-feature-importance",
+    "title": "Classification with Tabular Data",
+    "section": "Evaluate and Show Feature Importance",
+    "text": "Evaluate and Show Feature Importance\n\n# Use best model from grid search\nclf_pipeline = grid_search.best_estimator_\n\n# Evaluate\nprint(\"\\n----- EVALUATION -----\")\nprint(\"\\n----- Train/Test Accuracy -----\\n\")\nprint(f\"Train accuracy: {clf_pipeline.score(X_train, y_train):.4f}\")\nprint(f\"Test accuracy:  {clf_pipeline.score(X_test, y_test):.4f}\")\n\ny_test_pred = clf_pipeline.predict(X_test)\nprint(\"\\n----- Classification Report -----\\n\")\nprint(classification_report(y_test, y_test_pred))\nprint(\"\\n----- Confusion Matrix -----\\n\")\ncm = confusion_matrix(y_test, y_test_pred, labels=clf_pipeline.classes_)\nprint(cm)\n\n# Print normalized feature importances\nmodel = clf_pipeline.named_steps['model']\nencoded_feature_names = clf_pipeline.named_steps['pre'].get_feature_names_out()\n\nfeat_importance_df = pd.DataFrame({\n    'feature': encoded_feature_names,\n    'importance': model.feature_importances_\n}).sort_values(by='importance', ascending=False)\n\nprint(\"\\n----- Feature Importance -----\\n\")\nprint(feat_importance_df)\n\n\n----- EVALUATION -----\n\n----- Train/Test Accuracy -----\n\nTrain accuracy: 1.0000\nTest accuracy:  1.0000\n\n----- Classification Report -----\n\n              precision    recall  f1-score   support\n\n      Adelie       1.00      1.00      1.00        30\n   Chinstrap       1.00      1.00      1.00        14\n      Gentoo       1.00      1.00      1.00        25\n\n    accuracy                           1.00        69\n   macro avg       1.00      1.00      1.00        69\nweighted avg       1.00      1.00      1.00        69\n\n\n----- Confusion Matrix -----\n\n[[30  0  0]\n [ 0 14  0]\n [ 0  0 25]]\n\n----- Feature Importance -----\n\n                  feature  importance\n0     num__bill_length_mm    0.312770\n1      num__bill_depth_mm    0.216133\n2  num__flipper_length_mm    0.205913\n4       cat__island_Dream    0.138414\n3        num__body_mass_g    0.096331\n5   cat__island_Torgersen    0.021391\n6           cat__sex_Male    0.009048",
+    "crumbs": [
+      "Workflows",
+      "Classification"
+    ]
+  },
+  {
+    "objectID": "workflows/ds_workflow.html",
+    "href": "workflows/ds_workflow.html",
+    "title": "End-to-End Data Science Project Workflow",
+    "section": "",
+    "text": "End-to-End Data Science Project Workflow\nWhen you’re working on a data science project - data analysis, ML models, LLM experiments, or quick apps - it’s helpful to have a clear system for developing, publishing, and sharing your work.\nThis is the workflow I use to go from local notebooks to hosted apps and public writeups. It works well for both solo projects and professional prototypes, and uses open-source and free tools throughout.\n\n1. Develop (local or remote)\n\nAnaconda to manage Python environments\nJupyterLab for notebooks and analysis\nVS Code for scripts, app and package development; integrates with GitHub for version control\nQuarto for writing reports, websites, and blog-style content (supports Jupyter notebooks for code examples)\n\n\n2. Publish (code, content, apps)\nCode & Reports\n\nGitHub: store code, README files, and notebooks in public and private repositories\nGitHub Pages: host personal portfolio, Quarto-based websites, and writeups\nnbviewer: fallback viewer for Jupyter notebooks that won’t render on GitHub\n\nApps & Demos\n\nStreamlit: build interactive apps with Python and deploy to streamlit.io\nGradio: quickly wrap ML functions into web UIs for demos or prototypes\nHugging Face Spaces: host public demos (Gradio or Streamlit) with no infrastructure setup\nNote: free hosting can be slow to wake up after inactivity\n\n\n3. Share\n\nPost projects or insights on LinkedIn (pin key projects to your profile)\nWrite articles about the work on Medium, Towards Data Science, or Substack\nLink everything back through your GitHub Pages portfolio site",
+    "crumbs": [
+      "Workflows",
+      "DS Project Workflow & Tools"
+    ]
+  },
+  {
+    "objectID": "workflows/forecasting_multi_univariate.html",
+    "href": "workflows/forecasting_multi_univariate.html",
+    "title": "Forecasting on Univariate Time Series Data",
+    "section": "",
+    "text": "Supervised ML workflow for building forecasting models on univariate time series data.\nUses the seaice dataset from seaborn, and applies several time series models to forecast sea ice extent (Naive Mean, ARIMA, Exponential Smoothing, LightGBM with lagged features, Theta).\nThis dataset contains no missing values, so no imputation is used.\nThis script does the following:",
+    "crumbs": [
+      "Workflows",
+      "Forecasting with ML"
+    ]
+  },
+  {
+    "objectID": "workflows/forecasting_multi_univariate.html#import-and-check-data",
+    "href": "workflows/forecasting_multi_univariate.html#import-and-check-data",
+    "title": "Forecasting on Univariate Time Series Data",
+    "section": "Import and Check Data",
+    "text": "Import and Check Data\n\nimport warnings\nimport time\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\nfrom minieda import summarize  # pip install git+https://github.com/dbolotov/minieda.git\n\nfrom darts import TimeSeries\nfrom darts.models import NaiveMean, AutoARIMA, ExponentialSmoothing, LightGBMModel, Theta\nfrom darts.dataprocessing.transformers import Scaler\nfrom darts.utils.utils import ModelMode, SeasonalityMode\nfrom darts.metrics import mae, rmse\n\nfrom sklearn.linear_model import LinearRegression\n\n# Suppress sklearn warnings\nwarnings.filterwarnings(\"ignore\", category=UserWarning, module=\"sklearn\")\n\n# Display and plot settings\npd.set_option(\"display.width\", 220)\nplt.rcParams.update({'font.size': 9})\n\n# Load dataset and display first few rows\ndf = sns.load_dataset(\"seaice\")\n\nprint(\"\\n----- First Few Rows of Data -----\\n\")\nprint(df.head())\n\n# Display summary\nprint(\"\\n----- Data Summary -----\\n\")\nprint(summarize(df, include_perc=False, sort=True))\n\n\n----- First Few Rows of Data -----\n\n        Date  Extent\n0 1980-01-01  14.200\n1 1980-01-03  14.302\n2 1980-01-05  14.414\n3 1980-01-07  14.518\n4 1980-01-09  14.594\n\n----- Data Summary -----\n\n                 dtype  count  unique  missing  zero   mean   std   min    50%    max  skew\nExtent         float64  13175    7649        0     0  11.29  3.28  3.34  11.98  16.41 -0.44\nDate    datetime64[ns]  13175   13175        0     0",
+    "crumbs": [
+      "Workflows",
+      "Forecasting with ML"
+    ]
+  },
+  {
+    "objectID": "workflows/forecasting_multi_univariate.html#transform-data",
+    "href": "workflows/forecasting_multi_univariate.html#transform-data",
+    "title": "Forecasting on Univariate Time Series Data",
+    "section": "Transform Data",
+    "text": "Transform Data\n\n# Sort by date and set Date as index\ndf = df.sort_values(\"Date\").set_index(\"Date\")\n\n# Resample to different frequency using linear interpolation\ndf_resampled = df.resample(\"MS\").interpolate(\"linear\") # monthly\n\n# Drop any missing values (usually at the edges)\ndf_resampled = df_resampled.dropna()\n\n# Convert to Darts TimeSeries, allowing it to infer frequency\ndts = TimeSeries.from_series(df_resampled[\"Extent\"], fill_missing_dates=True, freq=None)\n\n# Show darts info\nprint(\"\\n----- darts TimeSeries Summary -----\\n\")\nprint(\"frequency: \", dts.freq_str)\n\n# Split the series into training and test sets\ntest_frac = 0.15\nn_test = int(len(dts) * test_frac)\ntrain, test = dts[:-n_test], dts[-n_test:]\n\n# Confirm split sizes\nprint(f\"Train range: {train.start_time().date()} to {train.end_time().date()} ({train.n_timesteps} steps)\")\nprint(f\"Test  range: {test.start_time().date()} to {test.end_time().date()} ({test.n_timesteps} steps)\")\n\n# Normalize\nscaler = Scaler()\ntrain_scaled = scaler.fit_transform(train)\ntest_scaled = scaler.transform(test)\n\n\n----- darts TimeSeries Summary -----\n\nfrequency:  MS\nTrain range: 1980-01-01 to 2013-12-01 (408 steps)\nTest  range: 2014-01-01 to 2019-12-01 (72 steps)",
+    "crumbs": [
+      "Workflows",
+      "Forecasting with ML"
+    ]
+  },
+  {
+    "objectID": "workflows/forecasting_multi_univariate.html#train-models",
+    "href": "workflows/forecasting_multi_univariate.html#train-models",
+    "title": "Forecasting on Univariate Time Series Data",
+    "section": "Train Models",
+    "text": "Train Models\n\n# Initialize models\nmodels = {\n    \"NaiveMean\": NaiveMean(),\n    \"AutoARIMA\": AutoARIMA(season_length=12, max_p=2, max_q=2,\n                            max_P=1, max_Q=1, max_d=1, max_D=1),\n    \"ExponentialSmoothing\": ExponentialSmoothing(trend=ModelMode.ADDITIVE, seasonal=SeasonalityMode.ADDITIVE,\n                                                seasonal_periods=12,damped=True),\n    \"LightGBMModel\": LightGBMModel(lags=12, output_chunk_length=1,\n        random_state=42, verbose=-1, force_col_wise=True),\n    \"Theta\": Theta(season_mode=SeasonalityMode.ADDITIVE),\n}\n\n# ---- TRAIN MODELS AND PREDICT ----\n\nresults = []\nforecasts_test = {}\n\nprint(\"\\n----- Training Models -----\\n\")\n\nfor name, model in models.items():\n    print(f\"Training {name}...\")\n    start_time = time.time()\n\n    # Use unscaled data for ARIMA and ExponentialSmoothing\n    if name in [\"AutoARIMA\", \"ExponentialSmoothing\"]:\n        model.fit(train)\n        pred_test = model.predict(n=len(test))\n    else:\n        model.fit(train_scaled)\n        pred_test_scaled = model.predict(n=len(test_scaled))\n        pred_test = scaler.inverse_transform(pred_test_scaled)\n\n    train_duration = time.time() - start_time\n    forecasts_test[name] = pred_test\n\n    # Evaluate on test set\n    results.append({\n        \"Model\": name,\n        \"MAE\": mae(test, pred_test),\n        \"RMSE\": rmse(test, pred_test),\n        \"Train Time (s)\": train_duration\n    })\n\n\n----- Training Models -----\n\nTraining NaiveMean...\nTraining AutoARIMA...\nTraining ExponentialSmoothing...\nTraining LightGBMModel...\nTraining Theta...",
+    "crumbs": [
+      "Workflows",
+      "Forecasting with ML"
+    ]
+  },
+  {
+    "objectID": "workflows/forecasting_multi_univariate.html#evaluate-and-plot-forecasts",
+    "href": "workflows/forecasting_multi_univariate.html#evaluate-and-plot-forecasts",
+    "title": "Forecasting on Univariate Time Series Data",
+    "section": "Evaluate and Plot Forecasts",
+    "text": "Evaluate and Plot Forecasts\n\n# Display results\nresults_df = pd.DataFrame(results).sort_values(\"RMSE\")\nprint(results_df.to_string(index=False))\n\n# Plot: final 60 train + full test + predictions on test\ntrain_to_plot = train[-60:]  # last 60 points from train\n\nplt.figure(figsize=(12, 3))\n\n# Plot actual data\ntrain_to_plot.plot(label=\"Train\", linewidth=0.9)\ntest.plot(label=\"Test\", linewidth=0.9, alpha=0.9, linestyle=\"--\")\n\n# Plot forecasts made on test set\nfor name, forecast in forecasts_test.items():\n    if forecast is not None:\n        forecast.plot(label=name, linewidth=0.9, alpha=0.7)\n\nplt.title(\"Sea Ice - Forecast Comparison - Train (last 60 points) and Test Data\")\nplt.xlabel(\"Date\")\nplt.ylabel(\"Extent\")\nplt.legend(loc=\"center left\", bbox_to_anchor=(1.0, 0.5))\nplt.grid(True, alpha=0.4)\nplt.tight_layout()\nplt.show()\n\n               Model      MAE     RMSE  Train Time (s)\n           AutoARIMA 0.325538 0.411305        2.409551\n       LightGBMModel 0.438801 0.531785        0.147598\nExponentialSmoothing 0.577775 0.667614        0.113654\n               Theta 0.605557 0.756212        0.006145\n           NaiveMean 2.937516 3.581656        0.000901",
+    "crumbs": [
+      "Workflows",
+      "Forecasting with ML"
+    ]
+  },
+  {
+    "objectID": "glossary.html",
+    "href": "glossary.html",
+    "title": "DS QuickRef",
+    "section": "",
+    "text": "Oversampling: A technique to balance class distribution in imbalanced datasets by duplicating examples from the minority class.\nOverfitting and Underfitting\n\nOverfitting: the model memorizes training data and fails to generalize.\n\nUnderfitting: the model is too simple to capture patterns in the data.\n\nData leakage: When information from outside the training dataset sneaks into the model, leading to overly optimistic performance.\n\nExample: Imputing missing values before splitting data into train/test sets.\n\nTypes of learning\n\nSupervised learning: learning from labeled data.\n\nUnsupervised learning: finding patterns in unlabeled data.\nSemi-supervised learning: learning from a mix of labeled and unlabeled data.\nDeep learning: a subset of ML using multi-layer neural networks.\n\nReinforcement learning: learning by trial and error to maximize a reward signal.\n\nRegularization: Methods to prevent overfitting by penalizing complexity or limiting model flexibility.\n\nL1 regularization (Lasso): Can shrink some coefficients to zero, effectively removing features. Useful for feature selection.\nL2 regularization (Ridge): Shrinks all coefficients toward zero but doesn’t eliminate any. Helps when many features contribute a little.\n\nBias-variance tradeoff: The balance between underfitting (high bias) and overfitting (high variance). A key concept in model performance tuning.\nModel bias: Systematic error that leads a model to consistently make inaccurate predictions in a specific direction. Often caused by overly simple assumptions or biased data.\n\nBias-variance tradeoff: A fundamental concept in modeling. High bias leads to underfitting (model too simple), while high variance leads to overfitting (model too sensitive to training data). Good models strike a balance.\nModel variance: Error due to the model reacting too strongly to small fluctuations in training data. Leads to poor generalization.\nSources of bias in data:\n\nLabel bias: Training labels are inaccurate or inconsistent.\nSampling bias: The dataset isn’t representative of the real-world population.\nMeasurement bias: Inputs are recorded in a flawed or inconsistent way.\n\n\nBootstrapping: A resampling method that draws repeated samples (with replacement) from the data to estimate uncertainty, confidence intervals, or test statistics.\nConfidence intervals: A range of values, derived from sample data, that likely contains the true population parameter. Often interpreted (loosely) as: “We’re 95% confident the true value lies in this range.”\nPrediction intervals: A range that likely contains a future individual prediction, not just the average. Wider than confidence intervals because they include both model and data uncertainty.",
+    "crumbs": [
+      "Glossary"
+    ]
+  },
+  {
+    "objectID": "glossary.html#glossary",
+    "href": "glossary.html#glossary",
+    "title": "DS QuickRef",
+    "section": "",
+    "text": "Oversampling: A technique to balance class distribution in imbalanced datasets by duplicating examples from the minority class.\nOverfitting and Underfitting\n\nOverfitting: the model memorizes training data and fails to generalize.\n\nUnderfitting: the model is too simple to capture patterns in the data.\n\nData leakage: When information from outside the training dataset sneaks into the model, leading to overly optimistic performance.\n\nExample: Imputing missing values before splitting data into train/test sets.\n\nTypes of learning\n\nSupervised learning: learning from labeled data.\n\nUnsupervised learning: finding patterns in unlabeled data.\nSemi-supervised learning: learning from a mix of labeled and unlabeled data.\nDeep learning: a subset of ML using multi-layer neural networks.\n\nReinforcement learning: learning by trial and error to maximize a reward signal.\n\nRegularization: Methods to prevent overfitting by penalizing complexity or limiting model flexibility.\n\nL1 regularization (Lasso): Can shrink some coefficients to zero, effectively removing features. Useful for feature selection.\nL2 regularization (Ridge): Shrinks all coefficients toward zero but doesn’t eliminate any. Helps when many features contribute a little.\n\nBias-variance tradeoff: The balance between underfitting (high bias) and overfitting (high variance). A key concept in model performance tuning.\nModel bias: Systematic error that leads a model to consistently make inaccurate predictions in a specific direction. Often caused by overly simple assumptions or biased data.\n\nBias-variance tradeoff: A fundamental concept in modeling. High bias leads to underfitting (model too simple), while high variance leads to overfitting (model too sensitive to training data). Good models strike a balance.\nModel variance: Error due to the model reacting too strongly to small fluctuations in training data. Leads to poor generalization.\nSources of bias in data:\n\nLabel bias: Training labels are inaccurate or inconsistent.\nSampling bias: The dataset isn’t representative of the real-world population.\nMeasurement bias: Inputs are recorded in a flawed or inconsistent way.\n\n\nBootstrapping: A resampling method that draws repeated samples (with replacement) from the data to estimate uncertainty, confidence intervals, or test statistics.\nConfidence intervals: A range of values, derived from sample data, that likely contains the true population parameter. Often interpreted (loosely) as: “We’re 95% confident the true value lies in this range.”\nPrediction intervals: A range that likely contains a future individual prediction, not just the average. Wider than confidence intervals because they include both model and data uncertainty.",
+    "crumbs": [
+      "Glossary"
+    ]
+  },
+  {
+    "objectID": "common_problems.html",
+    "href": "common_problems.html",
+    "title": "Common Problems in Data Science",
+    "section": "",
+    "text": "Problem\nSolution\n\n\n\n\nNot enough data\nUse data augmentation or synthetic sampling (e.g. SMOTE, SDV)\n\n\nData not representative of the distribution\nReassess how data was collected; consider stratified sampling\n\n\nImbalanced classes\nTry resampling, adjusting class weights, or adding synthetic data with SDV\n\n\nToo much data (examples)\nSubsample or use mini-batch training; profile before full-scale training\n\n\nToo many features / high dimensionality\nApply feature selection or dimensionality reduction (e.g. PCA)\n\n\nData has extreme values, outliers, or anomalies\nUse robust statistics, or find such values using outlier/anomaly detection methods. Consider removing examples.\n\n\nData may have been faked\nCheck for duplicate rows, unnatural distributions, and value repetition\n\n\nData leakage\nReview data sources and pipeline; make sure target isn’t leaking into features\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem\nSolution\n\n\n\n\nModel performs well on training, terrible on test (overfitting)\nReduce model complexity, add regularization, or get more data\n\n\nModel performs poorly on training AND test data (underfitting)\nUse a more complex model, add better features, reduce regularization.\n\n\nClassification model worse than a random guess or worse than majority class guess\nInvestigate data quality, imbalanced classes.\n\n\nModel performs unusually well on train and test data\nCheck for data leakage; the model may have access to information it shouldn’t.\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem\nSolution\n\n\n\n\nJupyter notebook is too large\nAvoid storing large Plotly outputs; clean outputs or split the notebook\n\n\nModel training takes too long\nUse smaller subsets for tuning; simplify the model or parallelize training",
+    "crumbs": [
+      "Common DS Problems"
+    ]
+  },
+  {
+    "objectID": "common_problems.html#data",
+    "href": "common_problems.html#data",
+    "title": "Common Problems in Data Science",
+    "section": "",
+    "text": "Problem\nSolution\n\n\n\n\nNot enough data\nUse data augmentation or synthetic sampling (e.g. SMOTE, SDV)\n\n\nData not representative of the distribution\nReassess how data was collected; consider stratified sampling\n\n\nImbalanced classes\nTry resampling, adjusting class weights, or adding synthetic data with SDV\n\n\nToo much data (examples)\nSubsample or use mini-batch training; profile before full-scale training\n\n\nToo many features / high dimensionality\nApply feature selection or dimensionality reduction (e.g. PCA)\n\n\nData has extreme values, outliers, or anomalies\nUse robust statistics, or find such values using outlier/anomaly detection methods. Consider removing examples.\n\n\nData may have been faked\nCheck for duplicate rows, unnatural distributions, and value repetition\n\n\nData leakage\nReview data sources and pipeline; make sure target isn’t leaking into features",
+    "crumbs": [
+      "Common DS Problems"
+    ]
+  },
+  {
+    "objectID": "common_problems.html#modeling",
+    "href": "common_problems.html#modeling",
+    "title": "Common Problems in Data Science",
+    "section": "",
+    "text": "Problem\nSolution\n\n\n\n\nModel performs well on training, terrible on test (overfitting)\nReduce model complexity, add regularization, or get more data\n\n\nModel performs poorly on training AND test data (underfitting)\nUse a more complex model, add better features, reduce regularization.\n\n\nClassification model worse than a random guess or worse than majority class guess\nInvestigate data quality, imbalanced classes.\n\n\nModel performs unusually well on train and test data\nCheck for data leakage; the model may have access to information it shouldn’t.",
+    "crumbs": [
+      "Common DS Problems"
+    ]
+  },
+  {
+    "objectID": "common_problems.html#workflow",
+    "href": "common_problems.html#workflow",
+    "title": "Common Problems in Data Science",
+    "section": "",
+    "text": "Problem\nSolution\n\n\n\n\nJupyter notebook is too large\nAvoid storing large Plotly outputs; clean outputs or split the notebook\n\n\nModel training takes too long\nUse smaller subsets for tuning; simplify the model or parallelize training",
+    "crumbs": [
+      "Common DS Problems"
+    ]
+  },
+  {
+    "objectID": "workflows/regression_tabular.html",
+    "href": "workflows/regression_tabular.html",
+    "title": "Regression with Tabular Data",
+    "section": "",
+    "text": "Supervised ML workflow for building a regression model on tabular data with categorical and continuous features.\nUses the tips dataset from seaborn, and trains several models to predict the tip amount. Uses scikit-learn for pre-processing, modeling, and evaluation.\nThis dataset contains no missing values, so imputation is not used.\nThis script does the following:",
+    "crumbs": [
+      "Workflows",
+      "Regression"
+    ]
+  },
+  {
+    "objectID": "workflows/regression_tabular.html#import-and-check-data",
+    "href": "workflows/regression_tabular.html#import-and-check-data",
+    "title": "Regression with Tabular Data",
+    "section": "Import and Check Data",
+    "text": "Import and Check Data\n\nimport seaborn as sns\nimport pandas as pd\nfrom minieda import summarize # pip install git+https://github.com/dbolotov/minieda.git\nimport time\nfrom pprint import pprint\n\nfrom sklearn.linear_model import LinearRegression, Lasso, Ridge\nfrom sklearn.ensemble import RandomForestRegressor\nfrom sklearn.neighbors import KNeighborsRegressor\nfrom xgboost import XGBRegressor\n\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.compose import ColumnTransformer\nfrom sklearn.preprocessing import OneHotEncoder, StandardScaler\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.model_selection import GridSearchCV\nfrom sklearn.metrics import root_mean_squared_error, mean_absolute_error, r2_score\n\nfrom scipy import stats\nimport matplotlib.pyplot as plt\n\nplt.rcParams.update({'font.size': 9}) # set global plot params\npd.set_option(\"display.width\", 220) # set display width for printed tables\n\n# Load dataset and display first few rows\ndf = sns.load_dataset(\"tips\")\n\nprint(\"\\n----- First Few Rows of Data -----\\n\")\nprint(df.head())\n\n# Display summary\nprint(\"\\n----- Data Summary -----\\n\")\nprint(summarize(df))\n\n\n----- First Few Rows of Data -----\n\n   total_bill   tip     sex smoker  day    time  size\n0       16.99  1.01  Female     No  Sun  Dinner     2\n1       10.34  1.66    Male     No  Sun  Dinner     3\n2       21.01  3.50    Male     No  Sun  Dinner     3\n3       23.68  3.31    Male     No  Sun  Dinner     2\n4       24.59  3.61  Female     No  Sun  Dinner     4\n\n----- Data Summary -----\n\n               dtype  count  unique  unique_perc  missing  missing_perc  zero  zero_perc     top freq   mean   std   min   50%    max  skew\ntotal_bill   float64    244     229        93.85        0           0.0     0        0.0               19.79   8.9  3.07  17.8  50.81  1.13\ntip          float64    244     123        50.41        0           0.0     0        0.0                 3.0  1.38   1.0   2.9   10.0  1.47\nsize           int64    244       6         2.46        0           0.0     0        0.0                2.57  0.95   1.0   2.0    6.0  1.45\nsex         category    244       2         0.82        0           0.0     0        0.0    Male  157                                      \nsmoker      category    244       2         0.82        0           0.0     0        0.0      No  151                                      \nday         category    244       4         1.64        0           0.0     0        0.0     Sat   87                                      \ntime        category    244       2         0.82        0           0.0     0        0.0  Dinner  176",
+    "crumbs": [
+      "Workflows",
+      "Regression"
+    ]
+  },
+  {
+    "objectID": "workflows/regression_tabular.html#transform-data",
+    "href": "workflows/regression_tabular.html#transform-data",
+    "title": "Regression with Tabular Data",
+    "section": "Transform Data",
+    "text": "Transform Data\n\n# Define columns\ncat_cols = ['sex', 'smoker', 'day', 'time']\nnum_cols = ['total_bill', 'size']\n\n# Split the data\nX = df[cat_cols + num_cols]\ny = df['tip']\n\n# Split into training and test\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=42\n)\n\n# Define preprocessing for numeric and categorical features\nnumeric_preprocessing = Pipeline([\n    ('scale', StandardScaler())\n])\n\ncategorical_preprocessing = Pipeline([\n    ('encode', OneHotEncoder(drop='first', sparse_output=False))  # one-hot; drop first feature to avoid multicollinearity\n])\n\n# Combine into a column transformer\npreprocessor = ColumnTransformer([\n    ('num', numeric_preprocessing, num_cols),\n    ('cat', categorical_preprocessing, cat_cols)\n])",
+    "crumbs": [
+      "Workflows",
+      "Regression"
+    ]
+  },
+  {
+    "objectID": "workflows/regression_tabular.html#build-models---linear-regression-ridge-lasso-random-forest-k-nn-xgboost",
+    "href": "workflows/regression_tabular.html#build-models---linear-regression-ridge-lasso-random-forest-k-nn-xgboost",
+    "title": "Regression with Tabular Data",
+    "section": "Build Models - Linear Regression, Ridge, Lasso, Random Forest, k-NN, XGBoost",
+    "text": "Build Models - Linear Regression, Ridge, Lasso, Random Forest, k-NN, XGBoost\n\n# Define models and hyperparameters to optimize\nmodels = [\n    {\n        \"name\": \"LinearRegression\",\n        \"estimator\": LinearRegression(),\n        \"param_grid\": None\n    },\n    {\n        \"name\": \"Ridge\",\n        \"estimator\": Ridge(),\n        \"param_grid\": {\n            \"model__alpha\": [0.1, 1.0, 10.0]\n        }\n    },\n    {\n        \"name\": \"Lasso\",\n        \"estimator\": Lasso(),\n        \"param_grid\": {\n            \"model__alpha\": [0.1, 1.0, 10.0]\n        }\n    },\n    {\n        \"name\": \"RandomForest\",\n        \"estimator\": RandomForestRegressor(random_state=42),\n        \"param_grid\": {\n            \"model__n_estimators\": [20,30],\n            \"model__max_depth\": [None, 10],\n            \"model__min_samples_split\": [2, 5]\n        }\n    },\n    {\n        \"name\": \"KNN\",\n        \"estimator\": KNeighborsRegressor(),\n        \"param_grid\": {\n            \"model__n_neighbors\": [3, 5, 7]\n        }\n    },\n    {\n        \"name\": \"XGBoost\",\n        \"estimator\": XGBRegressor(random_state=42, verbosity=0),\n        \"param_grid\": {\n            \"model__n_estimators\": [30, 50],\n            \"model__learning_rate\": [0.1, 0.3],\n            \"model__max_depth\": [3, 6]\n        }\n    }\n]\n\nresults = []\n\nprint(\"\\n----- GRID SEARCH WITH BEST RESULT ON TRAIN AND TEST SETS -----\")\n\nstart_time = time.time()\ntrained_models = {}\nfor m in models:\n    print(f\"\\n--- {m['name']} ---\")\n    \n    pipeline = Pipeline([('pre', preprocessor), ('model', m[\"estimator\"])])\n\n    if m[\"param_grid\"]:\n        search = GridSearchCV(\n            pipeline,\n            m[\"param_grid\"],\n            scoring=\"neg_root_mean_squared_error\",  # RMSE\n            cv=3,\n            n_jobs=-1,\n            verbose=1\n        )\n        search.fit(X_train, y_train)\n        best_model = search.best_estimator_\n        print(\"Best params:\", search.best_params_)\n    else: #if no parameters to optimize\n        pipeline.fit(X_train, y_train)\n        best_model = pipeline\n    \n    trained_models[m[\"name\"]] = best_model\n\n    # Predict and evaluate on both train and test\n    y_train_pred = best_model.predict(X_train)\n    y_test_pred = best_model.predict(X_test)\n    \n    train_rmse = root_mean_squared_error(y_train, y_train_pred)\n    test_rmse = root_mean_squared_error(y_test, y_test_pred)\n    \n    train_mae = mean_absolute_error(y_train, y_train_pred)\n    test_mae = mean_absolute_error(y_test, y_test_pred)\n    \n    train_r2 = r2_score(y_train, y_train_pred)\n    test_r2 = r2_score(y_test, y_test_pred)\n    \n    print(\"\")\n    print(f\"{'Metric':&lt;6} | {'Train':&gt;6} | {'Test':&gt;6}\")\n    # print(\"-\" * 24)\n    print(f\"{'RMSE':&lt;6} | {train_rmse:&gt;6.4f} | {test_rmse:&gt;6.4f}\")\n    print(f\"{'MAE':&lt;6} | {train_mae:&gt;6.4f} | {test_mae:&gt;6.4f}\")\n    print(f\"{'R²':&lt;6} | {train_r2:&gt;6.4f} | {test_r2:&gt;6.4f}\")\n\n    results.append({\n        \"model\": m[\"name\"],\n        \"train_rmse\": train_rmse,\n        \"test_rmse\": test_rmse,\n        \"train_mae\": train_mae,\n        \"test_mae\": test_mae,\n        \"train_r2\": train_r2,\n        \"test_r2\": test_r2\n    })\n\nprint(f\"\\nGrid search completed in {time.time() - start_time:.2f} seconds\")\n\n\n----- GRID SEARCH WITH BEST RESULT ON TRAIN AND TEST SETS -----\n\n--- LinearRegression ---\n\nMetric |  Train |   Test\nRMSE   | 1.0491 | 0.8387\nMAE    | 0.7600 | 0.6671\nR²     | 0.4582 | 0.4373\n\n--- Ridge ---\nFitting 3 folds for each of 3 candidates, totalling 9 fits\nBest params: {'model__alpha': 10.0}\n\nMetric |  Train |   Test\nRMSE   | 1.0507 | 0.8283\nMAE    | 0.7623 | 0.6657\nR²     | 0.4567 | 0.4511\n\n--- Lasso ---\nFitting 3 folds for each of 3 candidates, totalling 9 fits\nBest params: {'model__alpha': 0.1}\n\nMetric |  Train |   Test\nRMSE   | 1.0615 | 0.7824\nMAE    | 0.7777 | 0.6548\nR²     | 0.4454 | 0.5102\n\n--- RandomForest ---\nFitting 3 folds for each of 8 candidates, totalling 24 fits\nBest params: {'model__max_depth': 10, 'model__min_samples_split': 2, 'model__n_estimators': 30}\n\nMetric |  Train |   Test\nRMSE   | 0.4436 | 0.9459\nMAE    | 0.3313 | 0.7394\nR²     | 0.9032 | 0.2842\n\n--- KNN ---\nFitting 3 folds for each of 3 candidates, totalling 9 fits\nBest params: {'model__n_neighbors': 5}\n\nMetric |  Train |   Test\nRMSE   | 0.9195 | 0.9025\nMAE    | 0.6846 | 0.7160\nR²     | 0.5839 | 0.3484\n\n--- XGBoost ---\nFitting 3 folds for each of 8 candidates, totalling 24 fits\nBest params: {'model__learning_rate': 0.1, 'model__max_depth': 3, 'model__n_estimators': 30}\n\nMetric |  Train |   Test\nRMSE   | 0.7910 | 0.8755\nMAE    | 0.5830 | 0.7102\nR²     | 0.6920 | 0.3868\n\nGrid search completed in 2.77 seconds",
+    "crumbs": [
+      "Workflows",
+      "Regression"
+    ]
+  },
+  {
+    "objectID": "workflows/regression_tabular.html#evaluate-models-and-predict-on-sample-data-using-best-model-random-forest",
+    "href": "workflows/regression_tabular.html#evaluate-models-and-predict-on-sample-data-using-best-model-random-forest",
+    "title": "Regression with Tabular Data",
+    "section": "Evaluate Models and Predict on Sample Data Using Best Model (Random Forest)",
+    "text": "Evaluate Models and Predict on Sample Data Using Best Model (Random Forest)\n\nprint(\"\\n----- EVALUATION SUMMARY -----\\n\")\nprint(pd.DataFrame(results).sort_values(\"test_rmse\", ascending=False))\nprint(\"\\n\")\n\ndef plot_residual_diagnostics(y_true, y_pred, model_name=\"Model\"):\n    residuals = y_true - y_pred\n\n    fig, axes = plt.subplots(1, 3, figsize=(10, 3))\n    fig.suptitle(f\"Residual Diagnostics: {model_name}\")\n\n    # 1. Residuals vs Predicted\n    sns.scatterplot(x=y_pred, y=residuals, ax=axes[0])\n    axes[0].axhline(0, color=\"red\", linestyle=\"--\")\n    axes[0].set_xlabel(\"Predicted\")\n    axes[0].set_ylabel(\"Residuals\")\n    axes[0].set_title(\"Residuals vs Predicted\")\n\n    # 2. Histogram of residuals\n    sns.histplot(residuals, kde=True, ax=axes[1])\n    axes[1].set_title(\"Residuals Histogram\")\n    axes[1].set_xlabel(\"Residual\")\n\n    # 3. Q-Q Plot\n    stats.probplot(residuals, dist=\"norm\", plot=axes[2])\n    axes[2].set_title(\"Q-Q Plot\")\n    axes[2].get_lines()[0].set_color(\"tab:blue\")  # points\n    axes[2].get_lines()[1].set_color(\"red\")       # reference line\n\n    plt.tight_layout(rect=[0, 0, 1, 0.95])\n    plt.show()\n\ny_test_pred = trained_models[\"RandomForest\"].predict(X_test)\nplot_residual_diagnostics(y_test, y_test_pred, model_name=\"Random Forest\")\n\n\n# Predict on a new example\nnew_sample = pd.DataFrame([{\n    'sex': 'Female',\n    'smoker': 'No',\n    'day': 'Sun',\n    'time': 'Dinner',\n    'total_bill': 40.0,\n    'size': 2\n}])\n\n# Predict on fictional sample with each model\npredictions = []\n\nfor model_name, model in trained_models.items():\n    pred = model.predict(new_sample)[0]\n    predictions.append({\"model\": model_name, \"predicted_tip\": round(pred, 2)})\n\n# Display predictions\nprint(\"----- PREDICTIONS ON NEW SAMPLE -----\")\nprint(\"\\n----- Sample Input -----\")\nprint(new_sample)\nprint(\"\\n----- Sample Predictions -----\\n\")\nprint(pd.DataFrame(predictions).sort_values(\"predicted_tip\", ascending=False))\n\n\n----- EVALUATION SUMMARY -----\n\n              model  train_rmse  test_rmse  train_mae  test_mae  train_r2   test_r2\n3      RandomForest    0.443583   0.945898   0.331275  0.739375  0.903152  0.284205\n4               KNN    0.919482   0.902499   0.684636  0.716000  0.583873  0.348381\n5           XGBoost    0.791011   0.875502   0.583020  0.710206  0.692033  0.386783\n0  LinearRegression    1.049133   0.838664   0.759965  0.667133  0.458249  0.437302\n1             Ridge    1.050658   0.828321   0.762260  0.665704  0.456673  0.451095\n2             Lasso    1.061543   0.782438   0.777739  0.654809  0.445356  0.510221\n\n\n----- PREDICTIONS ON NEW SAMPLE -----\n\n----- Sample Input -----\n      sex smoker  day    time  total_bill  size\n0  Female     No  Sun  Dinner        40.0     2\n\n----- Sample Predictions -----\n\n              model  predicted_tip\n0  LinearRegression           4.93\n3      RandomForest           4.78\n1             Ridge           4.77\n2             Lasso           4.63\n5           XGBoost           4.39\n4               KNN           3.50",
+    "crumbs": [
+      "Workflows",
+      "Regression"
+    ]
+  },
+  {
+    "objectID": "workflows/clustering_mixed_types.html",
+    "href": "workflows/clustering_mixed_types.html",
+    "title": "Clustering with Mixed-Type Tabular Data",
+    "section": "",
+    "text": "This notebook explores three approaches to clustering datasets with mixed data types.\nUses the penguins dataset from seaborn, and applies different distance strategies and models. Final results are evaluated using Adjusted Rand Index (ARI) and Normalized Mutual Information (NMI) and the known taget variable (penguin species).\nClustering mixed-type data (e.g. numeric + categorical) requires special handling of distance metrics. Standard clustering methods like KMeans assume numeric, Euclidean space. Here we use Gower distance or specialized models like k-prototypes that support categorical features directly.\nWe use feature standardization for the numeric columns before building the k-prototypes model. We don’t use standardization for the data that is used to create the Gower matrix (as that is handled internally).\nThis notebook does the following:",
+    "crumbs": [
+      "Workflows",
+      "Clustering (Mixed Data)"
+    ]
+  },
+  {
+    "objectID": "workflows/clustering_mixed_types.html#import-and-check-data",
+    "href": "workflows/clustering_mixed_types.html#import-and-check-data",
+    "title": "Clustering with Mixed-Type Tabular Data",
+    "section": "Import and Check Data",
+    "text": "Import and Check Data\n\nimport seaborn as sns\nimport pandas as pd\nfrom minieda import summarize # pip install git+https://github.com/dbolotov/minieda.git\nfrom pprint import pprint\n\nfrom kmodes.kprototypes import KPrototypes\nfrom sklearn.preprocessing import StandardScaler, LabelEncoder\nimport gower\nfrom sklearn.cluster import DBSCAN, AgglomerativeClustering\nfrom sklearn.metrics import adjusted_rand_score,  normalized_mutual_info_score\n\npd.set_option(\"display.width\", 220) # set display width for printed tables\n\n# Load dataset and display first few rows\ndf = sns.load_dataset(\"penguins\")\n\nprint(\"----- First Few Rows of Data -----\\n\")\nprint(df.head())\n\n# Display summary\nprint(\"\\n----- Data Summary -----\\n\")\nprint(summarize(df))\n\n----- First Few Rows of Data -----\n\n  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex\n0  Adelie  Torgersen            39.1           18.7              181.0       3750.0    Male\n1  Adelie  Torgersen            39.5           17.4              186.0       3800.0  Female\n2  Adelie  Torgersen            40.3           18.0              195.0       3250.0  Female\n3  Adelie  Torgersen             NaN            NaN                NaN          NaN     NaN\n4  Adelie  Torgersen            36.7           19.3              193.0       3450.0  Female\n\n----- Data Summary -----\n\n                     dtype  count  unique  unique_perc  missing  missing_perc  zero  zero_perc     top freq     mean     std     min     50%     max  skew\nbill_length_mm     float64    342     164        47.67        2          0.58     0        0.0                 43.92    5.46    32.1   44.45    59.6  0.05\nbill_depth_mm      float64    342      80        23.26        2          0.58     0        0.0                 17.15    1.97    13.1    17.3    21.5 -0.14\nflipper_length_mm  float64    342      55        15.99        2          0.58     0        0.0                200.92   14.06   172.0   197.0   231.0  0.35\nbody_mass_g        float64    342      94        27.33        2          0.58     0        0.0               4201.75  801.95  2700.0  4050.0  6300.0  0.47\nspecies             object    344       3         0.87        0          0.00     0        0.0  Adelie  152                                               \nisland              object    344       3         0.87        0          0.00     0        0.0  Biscoe  168                                               \nsex                 object    333       2         0.58       11          3.20     0        0.0    Male  168",
+    "crumbs": [
+      "Workflows",
+      "Clustering (Mixed Data)"
+    ]
+  },
+  {
+    "objectID": "workflows/clustering_mixed_types.html#transform-data",
+    "href": "workflows/clustering_mixed_types.html#transform-data",
+    "title": "Clustering with Mixed-Type Tabular Data",
+    "section": "Transform Data",
+    "text": "Transform Data\n\n# Drop rows with missing values\ndf = df.dropna().reset_index(drop=True)\n\n# Define categorical and numeric columns\ncat_cols = ['island', 'sex']\nnum_cols = ['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']\nfeatures = cat_cols + num_cols\n\n# Make an explicit copy to avoid chained assignment warnings\nX = df[features].copy()\n\n# Ensure categorical columns are strings\nfor col in cat_cols:\n    X[col] = X[col].astype(str)\n\n# For k-prototypes: scale numeric columns\nX_kproto = X.copy()\nscaler = StandardScaler()\nX_kproto[num_cols] = scaler.fit_transform(X_kproto[num_cols])\nX_kproto_matrix = X_kproto.to_numpy()\ncategorical_idx = [X_kproto.columns.get_loc(col) for col in cat_cols]\n\n# For Gower distance: create Gower matrix using raw data\ngower_matrix = gower.gower_matrix(X)",
+    "crumbs": [
+      "Workflows",
+      "Clustering (Mixed Data)"
+    ]
+  },
+  {
+    "objectID": "workflows/clustering_mixed_types.html#build-models---k-prototypes-dbscan-agglomerativeclustering",
+    "href": "workflows/clustering_mixed_types.html#build-models---k-prototypes-dbscan-agglomerativeclustering",
+    "title": "Clustering with Mixed-Type Tabular Data",
+    "section": "Build Models - K-Prototypes, DBSCAN, AgglomerativeClustering",
+    "text": "Build Models - K-Prototypes, DBSCAN, AgglomerativeClustering\n\n# Copy base DataFrame for clustering\ndf_clustered = df.copy()\n\n# Create a results dictionary\nresults = {}\n\n# K-Prototypes\nkproto = KPrototypes(n_clusters=3, init='Huang', verbose=0, random_state=42)\nkproto_labels = kproto.fit_predict(X_kproto_matrix, categorical=categorical_idx)\ndf_clustered['kproto'] = kproto_labels\n\nresults['kproto'] = {\n    'ARI': adjusted_rand_score(df_clustered[\"species\"], kproto_labels),\n    'NMI': normalized_mutual_info_score(df_clustered[\"species\"], kproto_labels)\n}\n\n# DBSCAN with Gower matrix\n\n# Optional: tune eps manually\n# for eps in [0.05, 0.1, 0.15, 0.17]:\n#     model = DBSCAN(eps=eps, min_samples=5, metric='precomputed')\n#     labels = model.fit_predict(gower_matrix)\n#     print(f\"eps={eps:.2f} → clusters: {len(set(labels)) - (1 if -1 in labels else 0)}, noise: {(labels == -1).sum()}\")\n\ndbscan_model = DBSCAN(eps=0.15, min_samples=5, metric='precomputed')\ndbscan_labels = dbscan_model.fit_predict(gower_matrix)\ndf_clustered['gower_dbscan'] = dbscan_labels\n\nresults['gower_dbscan'] = {\n    'ARI': adjusted_rand_score(df_clustered[\"species\"], dbscan_labels),\n    'NMI': normalized_mutual_info_score(df_clustered[\"species\"], dbscan_labels)\n}\n\n# Agglomerative Clustering with Gower\nagglo_model = AgglomerativeClustering(n_clusters=3, metric='precomputed', linkage='average')\nagglo_labels = agglo_model.fit_predict(gower_matrix)\ndf_clustered['gower_aggl'] = agglo_labels\n\nresults['gower_aggl'] = {\n    'ARI': adjusted_rand_score(df_clustered[\"species\"], agglo_labels),\n    'NMI': normalized_mutual_info_score(df_clustered[\"species\"], agglo_labels)\n}",
+    "crumbs": [
+      "Workflows",
+      "Clustering (Mixed Data)"
+    ]
+  },
+  {
+    "objectID": "workflows/clustering_mixed_types.html#evaluate",
+    "href": "workflows/clustering_mixed_types.html#evaluate",
+    "title": "Clustering with Mixed-Type Tabular Data",
+    "section": "Evaluate",
+    "text": "Evaluate\n\n# Evaluation summary table\nevaluation_df = pd.DataFrame(results).T\nprint(\"----- ARI and NMI Summary -----\\n\")\nprint(evaluation_df)\n\n# Label encode true species values for confusion matrices\nle = LabelEncoder()\ntrue_labels = le.fit_transform(df_clustered[\"species\"])\n\n# Print cluster counts and confusion matrices\nprint(\"\\n----- Per-Model Cluster Counts -----\")\nfor model_name in ['kproto', 'gower_dbscan', 'gower_aggl']:\n    print(f\"\\n----- {model_name} -----\\n\")\n    \n    cluster_counts = df_clustered[model_name].value_counts()\n    print(cluster_counts)\n\n----- ARI and NMI Summary -----\n\n                   ARI       NMI\nkproto        0.733731  0.739709\ngower_dbscan  0.212538  0.375291\ngower_aggl    0.542704  0.606129\n\n----- Per-Model Cluster Counts -----\n\n----- kproto -----\n\nkproto\n0    124\n2    119\n1     90\nName: count, dtype: int64\n\n----- gower_dbscan -----\n\ngower_dbscan\n3    83\n2    80\n5    62\n4    61\n1    24\n0    23\nName: count, dtype: int64\n\n----- gower_aggl -----\n\ngower_aggl\n0    119\n1    107\n2    107\nName: count, dtype: int64",
+    "crumbs": [
+      "Workflows",
+      "Clustering (Mixed Data)"
+    ]
+  },
+  {
+    "objectID": "workflows/index.html",
+    "href": "workflows/index.html",
+    "title": "Workflows Index",
+    "section": "",
+    "text": "Workflows Index\nThis section contains end-to-end Jupyter Notebook templates for common data science tasks. Each example uses a built-in dataset and goes through steps like loading and transforming the data, creating models (in scikit-learn, darts, or other packages), and evaluating results.\n\n\n\nWorkflow\nDescription\n\n\n\n\nEnd-to-End Data Science Project\nBasic workflow and tools for developing and sharing data science projects.\n\n\n\n\n\n\nTask\nDescription\n\n\n\n\nClassification with Tabular Data\nTraining a random forest classifier with scikit-learn on the Palmer penguins dataset.\n\n\nClustering with Mixed-Types Data\nClustering using different models for the mixed-datatypese Palmer penguins dataset.\n\n\nForecasting with ML models\nTraining several ML models with the darts package on the univariate sea ice dataset.\n\n\nRegression with Tabular Data\nTraining several regression models with scikit-learn on the tips dataset.",
+    "crumbs": [
+      "Workflows",
+      "Workflows Index"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Data Science Quick Ref",
     "section": "",
-    "text": "This site is a concise, opinionated reference for practical data science and machine learning. It’s built for students and professionals looking for summaries of key ideas, workflows, and tools.\nAll code examples are in Python, using libraries like pandas, matplotlib, scikit-learn, and darts. They are written to be easy to copy and adapt.\nThis is a work in progress, made by a data scientist who got tired of looking this stuff up frequently :)\n\n\n\n\nUse the left sidebar to browse topics\n\nUse the search bar to find specific terms or methods\nThe Concepts section discusses topics around model building and evaluation, and contains links to resources as well as python code\nThe Workflows section contains a variety of starter templates for data science tasks, to be used for structuring a data analysis or model building project\n\n\n\n\n Author: Dmitriy Bolotov | dbolotov.github.io",
+    "text": "This site is a concise, opinionated reference for practical data science and machine learning. It’s built for students and professionals looking for summaries of key ideas, workflows, and tools.\nAll code examples are in Python, using libraries like pandas, matplotlib, scikit-learn, and darts. They are written to be easy to copy and adapt.\nThis is a work in progress, made by a data scientist who got tired of looking this stuff up frequently :)\n\n\n\n\nUse the left sidebar to browse topics\n\nUse the search bar to find specific terms or methods\nThe Concepts section discusses topics around model building and evaluation, and contains links to resources as well as python code\nThe Workflows section contains a variety of starter templates for data science tasks, to be used for structuring a data analysis or model building project\n\n\n\n\nDmitriy Bolotov | dbolotov.github.io",
     "crumbs": [
       "Introduction"
     ]
@@ -279,66 +460,13 @@
     ]
   },
   {
-    "objectID": "index.html#section",
-    "href": "index.html#section",
+    "objectID": "index.html#author",
+    "href": "index.html#author",
     "title": "Data Science Quick Ref",
     "section": "",
-    "text": "Author: Dmitriy Bolotov | dbolotov.github.io",
+    "text": "Dmitriy Bolotov | dbolotov.github.io",
     "crumbs": [
       "Introduction"
-    ]
-  },
-  {
-    "objectID": "glossary.html",
-    "href": "glossary.html",
-    "title": "DS QuickRef",
-    "section": "",
-    "text": "Oversampling: A technique to balance class distribution in imbalanced datasets by duplicating examples from the minority class.\nOverfitting and Underfitting\n\nOverfitting: the model memorizes training data and fails to generalize.\n\nUnderfitting: the model is too simple to capture patterns in the data.\n\nData leakage: When information from outside the training dataset sneaks into the model, leading to overly optimistic performance.\n\nExample: Imputing missing values before splitting data into train/test sets.\n\nTypes of learning\n\nSupervised learning: learning from labeled data.\n\nUnsupervised learning: finding patterns in unlabeled data.\nSemi-supervised learning: learning from a mix of labeled and unlabeled data.\nDeep learning: a subset of ML using multi-layer neural networks.\n\nReinforcement learning: learning by trial and error to maximize a reward signal.\n\nRegularization: Methods to prevent overfitting by penalizing complexity or limiting model flexibility.\n\nL1 regularization (Lasso): Can shrink some coefficients to zero, effectively removing features. Useful for feature selection.\nL2 regularization (Ridge): Shrinks all coefficients toward zero but doesn’t eliminate any. Helps when many features contribute a little.\n\nBias-variance tradeoff: The balance between underfitting (high bias) and overfitting (high variance). A key concept in model performance tuning.\nModel bias: Systematic error that leads a model to consistently make inaccurate predictions in a specific direction. Often caused by overly simple assumptions or biased data.\n\nBias-variance tradeoff: A fundamental concept in modeling. High bias leads to underfitting (model too simple), while high variance leads to overfitting (model too sensitive to training data). Good models strike a balance.\nModel variance: Error due to the model reacting too strongly to small fluctuations in training data. Leads to poor generalization.\nSources of bias in data:\n\nLabel bias: Training labels are inaccurate or inconsistent.\nSampling bias: The dataset isn’t representative of the real-world population.\nMeasurement bias: Inputs are recorded in a flawed or inconsistent way.\n\n\nBootstrapping: A resampling method that draws repeated samples (with replacement) from the data to estimate uncertainty, confidence intervals, or test statistics.\nConfidence intervals: A range of values, derived from sample data, that likely contains the true population parameter. Often interpreted (loosely) as: “We’re 95% confident the true value lies in this range.”\nPrediction intervals: A range that likely contains a future individual prediction, not just the average. Wider than confidence intervals because they include both model and data uncertainty.",
-    "crumbs": [
-      "Glossary"
-    ]
-  },
-  {
-    "objectID": "glossary.html#glossary",
-    "href": "glossary.html#glossary",
-    "title": "DS QuickRef",
-    "section": "",
-    "text": "Oversampling: A technique to balance class distribution in imbalanced datasets by duplicating examples from the minority class.\nOverfitting and Underfitting\n\nOverfitting: the model memorizes training data and fails to generalize.\n\nUnderfitting: the model is too simple to capture patterns in the data.\n\nData leakage: When information from outside the training dataset sneaks into the model, leading to overly optimistic performance.\n\nExample: Imputing missing values before splitting data into train/test sets.\n\nTypes of learning\n\nSupervised learning: learning from labeled data.\n\nUnsupervised learning: finding patterns in unlabeled data.\nSemi-supervised learning: learning from a mix of labeled and unlabeled data.\nDeep learning: a subset of ML using multi-layer neural networks.\n\nReinforcement learning: learning by trial and error to maximize a reward signal.\n\nRegularization: Methods to prevent overfitting by penalizing complexity or limiting model flexibility.\n\nL1 regularization (Lasso): Can shrink some coefficients to zero, effectively removing features. Useful for feature selection.\nL2 regularization (Ridge): Shrinks all coefficients toward zero but doesn’t eliminate any. Helps when many features contribute a little.\n\nBias-variance tradeoff: The balance between underfitting (high bias) and overfitting (high variance). A key concept in model performance tuning.\nModel bias: Systematic error that leads a model to consistently make inaccurate predictions in a specific direction. Often caused by overly simple assumptions or biased data.\n\nBias-variance tradeoff: A fundamental concept in modeling. High bias leads to underfitting (model too simple), while high variance leads to overfitting (model too sensitive to training data). Good models strike a balance.\nModel variance: Error due to the model reacting too strongly to small fluctuations in training data. Leads to poor generalization.\nSources of bias in data:\n\nLabel bias: Training labels are inaccurate or inconsistent.\nSampling bias: The dataset isn’t representative of the real-world population.\nMeasurement bias: Inputs are recorded in a flawed or inconsistent way.\n\n\nBootstrapping: A resampling method that draws repeated samples (with replacement) from the data to estimate uncertainty, confidence intervals, or test statistics.\nConfidence intervals: A range of values, derived from sample data, that likely contains the true population parameter. Often interpreted (loosely) as: “We’re 95% confident the true value lies in this range.”\nPrediction intervals: A range that likely contains a future individual prediction, not just the average. Wider than confidence intervals because they include both model and data uncertainty.",
-    "crumbs": [
-      "Glossary"
-    ]
-  },
-  {
-    "objectID": "concepts/intervals.html",
-    "href": "concepts/intervals.html",
-    "title": "Confidence and Prediction Intervals",
-    "section": "",
-    "text": "Machine learning models typically return point predictions, not uncertainty estimates. However, intervals are useful when presenting results or identifying low-confidence cases. Here we discuss two types of intervals:\nThese intervals are common in statistical modeling and in time series forecasting, but less so in machine learning because many ML models don’t compute them directly. One workaround is bootstrapping, where multiple models are fit on resampled training data, and the spread of predictions is used to estimate uncertainty. In this case, intervals are estimated empirically rather than derived analytically.",
-    "crumbs": [
-      "Concepts",
-      "Confidence & Prediction Intervals"
-    ]
-  },
-  {
-    "objectID": "concepts/intervals.html#example",
-    "href": "concepts/intervals.html#example",
-    "title": "Confidence and Prediction Intervals",
-    "section": "Example",
-    "text": "Example\nSuppose we’re building a model to predict daily rainfall (in millimeters) based only on humidity. Let’s say that for the input of {'humidity': 85}, the model returns:\nPredicted rainfall (mm): 3.8  \n95% confidence interval (mm): [3.5, 4.1]  \n95% prediction interval (mm): [1.2, 6.4]\nIn this case:\n\nThe confidence interval says where the average rainfall would fall across many days with similar humidity.\nThe prediction interval says where the rainfall for a single day with that humidity might fall, accounting for noise in the data and variation not captured by the model.",
-    "crumbs": [
-      "Concepts",
-      "Confidence & Prediction Intervals"
-    ]
-  },
-  {
-    "objectID": "concepts/intervals.html#visualization",
-    "href": "concepts/intervals.html#visualization",
-    "title": "Confidence and Prediction Intervals",
-    "section": "Visualization",
-    "text": "Visualization\nThe example below uses linear regression to show both intervals for a model that predicts rainfall from humidity (from a simulated dataset). The prediction intervals are wider than the confidence intervals.\n\n\nShow code\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport statsmodels.api as sm\n\n# Simulate data: rainfall increases with humidity with some noise\nnp.random.seed(1)\nhumidity = np.random.uniform(40, 100, 100)\nrainfall = 0.1 * humidity + np.random.normal(0, 2, size=100)\n\n# Fit linear model\nX = sm.add_constant(humidity)\nmodel = sm.OLS(rainfall, X).fit()\n\n# Generate prediction range\nhumidity_pred = np.linspace(40, 100, 100)\nX_pred = sm.add_constant(humidity_pred)\npreds = model.get_prediction(X_pred).summary_frame(alpha=0.05)\n\n# Plot\nplt.figure(figsize=(10, 5))\nplt.scatter(humidity, rainfall, alpha=0.5, label=\"Observed data\")\nplt.plot(humidity_pred, preds[\"mean\"], color=\"black\", label=\"Predicted (mean)\")\nplt.fill_between(humidity_pred, preds[\"mean_ci_lower\"], preds[\"mean_ci_upper\"],\n                 color=\"steelblue\", alpha=0.3, label=\"95% Confidence Interval\")\nplt.fill_between(humidity_pred, preds[\"obs_ci_lower\"], preds[\"obs_ci_upper\"],\n                 color=\"orange\", alpha=0.2, label=\"95% Prediction Interval\")\n\nplt.xlabel(\"Humidity (%)\")\nplt.ylabel(\"Rainfall (mm)\")\nplt.title(\"Confidence vs. Prediction Intervals (Predicting Rainfall from Humidity)\")\nplt.grid(True)\nplt.legend()\nplt.tight_layout()\nplt.show()",
-    "crumbs": [
-      "Concepts",
-      "Confidence & Prediction Intervals"
     ]
   },
   {
@@ -441,164 +569,36 @@
     ]
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
+    "objectID": "concepts/intervals.html",
+    "href": "concepts/intervals.html",
+    "title": "Confidence and Prediction Intervals",
     "section": "",
-    "text": "Category\nResource\nDescription\n\n\n\n\nModeling\nAn Introduction to Statistical Learning\nStatistical and machine learning approaches to learning from data. Includes companion website for Python examples.\n\n\nExplainability\nInterpretable Machine Learning\nA practical overview of techniques for making ML models more transparent, including SHAP.\n\n\nVisualization\nUW Interactive Data Lab Curriculum\nBook on statistical visualization using Vega-Lite and Altair.\n\n\nVisualization\nFundamentals of Data Visualization\nPrinciples and examples of clear, effective visual communication.\n\n\nTime Series\nForecasting: Principles and Practice: R, Python\nComprehensive introduction to forecasting methods. Includes like exponential smoothing and ARIMA. Versions for R and Python available.\n\n\nData Imputation\nFlexible Imputation of Missing Data\nMethods to handle missing data, with emphasis on multiple imputation.\n\n\nFraud Detection\nFraud Detection Handbook\nApplied techniques for detecting fraud in highly imbalanced datasets. Includes instructions on using a fraud data simulator.\n\n\n\n\n\n\n\n\nSDV - Python library for creating tabular synthetic data.\npermetrics - Python library for performance metrics of machine learning models. Documentation site includes quick explanations of each metric.\n\n\n\n\n\nQuarto: Extensive publishing system. Supports jupyter notebooks and markdown.\nbootswatch: Collection of free themes for Bootstrap-based sites.",
+    "text": "Machine learning models typically return point predictions, not uncertainty estimates. However, intervals are useful when presenting results or identifying low-confidence cases. Here we discuss two types of intervals:\nThese intervals are common in statistical modeling and in time series forecasting, but less so in machine learning because many ML models don’t compute them directly. One workaround is bootstrapping, where multiple models are fit on resampled training data, and the spread of predictions is used to estimate uncertainty. In this case, intervals are estimated empirically rather than derived analytically.",
     "crumbs": [
-      "References"
+      "Concepts",
+      "Confidence & Prediction Intervals"
     ]
   },
   {
-    "objectID": "references.html#online-books",
-    "href": "references.html#online-books",
-    "title": "References",
-    "section": "",
-    "text": "Category\nResource\nDescription\n\n\n\n\nModeling\nAn Introduction to Statistical Learning\nStatistical and machine learning approaches to learning from data. Includes companion website for Python examples.\n\n\nExplainability\nInterpretable Machine Learning\nA practical overview of techniques for making ML models more transparent, including SHAP.\n\n\nVisualization\nUW Interactive Data Lab Curriculum\nBook on statistical visualization using Vega-Lite and Altair.\n\n\nVisualization\nFundamentals of Data Visualization\nPrinciples and examples of clear, effective visual communication.\n\n\nTime Series\nForecasting: Principles and Practice: R, Python\nComprehensive introduction to forecasting methods. Includes like exponential smoothing and ARIMA. Versions for R and Python available.\n\n\nData Imputation\nFlexible Imputation of Missing Data\nMethods to handle missing data, with emphasis on multiple imputation.\n\n\nFraud Detection\nFraud Detection Handbook\nApplied techniques for detecting fraud in highly imbalanced datasets. Includes instructions on using a fraud data simulator.",
+    "objectID": "concepts/intervals.html#example",
+    "href": "concepts/intervals.html#example",
+    "title": "Confidence and Prediction Intervals",
+    "section": "Example",
+    "text": "Example\nSuppose we’re building a model to predict daily rainfall (in millimeters) based only on humidity. Let’s say that for the input of {'humidity': 85}, the model returns:\nPredicted rainfall (mm): 3.8  \n95% confidence interval (mm): [3.5, 4.1]  \n95% prediction interval (mm): [1.2, 6.4]\nIn this case:\n\nThe confidence interval says where the average rainfall would fall across many days with similar humidity.\nThe prediction interval says where the rainfall for a single day with that humidity might fall, accounting for noise in the data and variation not captured by the model.",
     "crumbs": [
-      "References"
+      "Concepts",
+      "Confidence & Prediction Intervals"
     ]
   },
   {
-    "objectID": "references.html#tools",
-    "href": "references.html#tools",
-    "title": "References",
-    "section": "",
-    "text": "SDV - Python library for creating tabular synthetic data.\npermetrics - Python library for performance metrics of machine learning models. Documentation site includes quick explanations of each metric.",
+    "objectID": "concepts/intervals.html#visualization",
+    "href": "concepts/intervals.html#visualization",
+    "title": "Confidence and Prediction Intervals",
+    "section": "Visualization",
+    "text": "Visualization\nThe example below uses linear regression to show both intervals for a model that predicts rainfall from humidity (from a simulated dataset). The prediction intervals are wider than the confidence intervals.\n\n\nShow code\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport statsmodels.api as sm\n\n# Simulate data: rainfall increases with humidity with some noise\nnp.random.seed(1)\nhumidity = np.random.uniform(40, 100, 100)\nrainfall = 0.1 * humidity + np.random.normal(0, 2, size=100)\n\n# Fit linear model\nX = sm.add_constant(humidity)\nmodel = sm.OLS(rainfall, X).fit()\n\n# Generate prediction range\nhumidity_pred = np.linspace(40, 100, 100)\nX_pred = sm.add_constant(humidity_pred)\npreds = model.get_prediction(X_pred).summary_frame(alpha=0.05)\n\n# Plot\nplt.figure(figsize=(10, 5))\nplt.scatter(humidity, rainfall, alpha=0.5, label=\"Observed data\")\nplt.plot(humidity_pred, preds[\"mean\"], color=\"black\", label=\"Predicted (mean)\")\nplt.fill_between(humidity_pred, preds[\"mean_ci_lower\"], preds[\"mean_ci_upper\"],\n                 color=\"steelblue\", alpha=0.3, label=\"95% Confidence Interval\")\nplt.fill_between(humidity_pred, preds[\"obs_ci_lower\"], preds[\"obs_ci_upper\"],\n                 color=\"orange\", alpha=0.2, label=\"95% Prediction Interval\")\n\nplt.xlabel(\"Humidity (%)\")\nplt.ylabel(\"Rainfall (mm)\")\nplt.title(\"Confidence vs. Prediction Intervals (Predicting Rainfall from Humidity)\")\nplt.grid(True)\nplt.legend()\nplt.tight_layout()\nplt.show()",
     "crumbs": [
-      "References"
-    ]
-  },
-  {
-    "objectID": "references.html#resources-used-to-make-this-guide",
-    "href": "references.html#resources-used-to-make-this-guide",
-    "title": "References",
-    "section": "",
-    "text": "Quarto: Extensive publishing system. Supports jupyter notebooks and markdown.\nbootswatch: Collection of free themes for Bootstrap-based sites.",
-    "crumbs": [
-      "References"
-    ]
-  },
-  {
-    "objectID": "workflows/index.html",
-    "href": "workflows/index.html",
-    "title": "Workflows Index",
-    "section": "",
-    "text": "Workflows Index\nThis section contains end-to-end Jupyter Notebook templates for common data science tasks. Each example uses a built-in dataset and goes through steps like loading and transforming the data, creating models (in scikit-learn, darts, or other packages), and evaluating results.\n\n\n\nWorkflow\nDescription\n\n\n\n\nEnd-to-End Data Science Project\nBasic workflow and tools for developing and sharing data science projects.\n\n\n\n\n\n\nTask\nDescription\n\n\n\n\nClassification with Tabular Data\nTraining a random forest classifier with scikit-learn on the Palmer penguins dataset.\n\n\nClustering with Mixed-Types Data\nClustering using different models for the mixed-datatypese Palmer penguins dataset.\n\n\nForecasting with ML models\nTraining several ML models with the darts package on the univariate sea ice dataset.\n\n\nRegression with Tabular Data\nTraining several regression models with scikit-learn on the tips dataset.",
-    "crumbs": [
-      "Workflows",
-      "Workflows Index"
-    ]
-  },
-  {
-    "objectID": "workflows/classification_tabular.html",
-    "href": "workflows/classification_tabular.html",
-    "title": "Classification with Tabular Data",
-    "section": "",
-    "text": "Supervised ML workflow for building a classification model on tabular data with categorical and continuous features.\nUsing Palmer’s penguins dataset from seaborn, train a random forest to predict the penguin species. Use scikit-learn for pre-processing, modeling, and evaluation.\nThis script does the following:",
-    "crumbs": [
-      "Workflows",
-      "Classification"
-    ]
-  },
-  {
-    "objectID": "workflows/classification_tabular.html#import-and-check-data",
-    "href": "workflows/classification_tabular.html#import-and-check-data",
-    "title": "Classification with Tabular Data",
-    "section": "Import and Check Data",
-    "text": "Import and Check Data\n\nfrom IPython.display import display\nimport seaborn as sns\nimport pandas as pd\nfrom minieda import summarize # pip install git+https://github.com/dbolotov/minieda.git\nimport time\nfrom pprint import pprint\n\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.compose import ColumnTransformer\nfrom sklearn.preprocessing import OneHotEncoder, StandardScaler\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.impute import SimpleImputer\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.model_selection import GridSearchCV\nfrom sklearn.metrics import classification_report, confusion_matrix\n\npd.set_option(\"display.width\", 220) # set display width for printed tables\n\n# Load dataset and display first few rows\ndf = sns.load_dataset(\"penguins\")\n\nprint(\"----- SCRIPT OUTPUT -----\")\nprint(\"\\n----- First Few Rows of Data -----\\n\")\nprint(df.head())\n\n# Display summary\nprint(\"\\n----- Data Summary -----\\n\")\nprint(summarize(df))\n\n# Per-class value count\nprint(\"\\n----- Target class frequencies (normalized) -----\\n\")\nprint(df['species'].value_counts(normalize=True).rename(None).rename_axis(None))\n\n----- SCRIPT OUTPUT -----\n\n----- First Few Rows of Data -----\n\n  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex\n0  Adelie  Torgersen            39.1           18.7              181.0       3750.0    Male\n1  Adelie  Torgersen            39.5           17.4              186.0       3800.0  Female\n2  Adelie  Torgersen            40.3           18.0              195.0       3250.0  Female\n3  Adelie  Torgersen             NaN            NaN                NaN          NaN     NaN\n4  Adelie  Torgersen            36.7           19.3              193.0       3450.0  Female\n\n----- Data Summary -----\n\n                     dtype  count  unique  unique_perc  missing  missing_perc  zero  zero_perc     top freq     mean     std     min     50%     max  skew\nbill_length_mm     float64    342     164        47.67        2          0.58     0        0.0                 43.92    5.46    32.1   44.45    59.6  0.05\nbill_depth_mm      float64    342      80        23.26        2          0.58     0        0.0                 17.15    1.97    13.1    17.3    21.5 -0.14\nflipper_length_mm  float64    342      55        15.99        2          0.58     0        0.0                200.92   14.06   172.0   197.0   231.0  0.35\nbody_mass_g        float64    342      94        27.33        2          0.58     0        0.0               4201.75  801.95  2700.0  4050.0  6300.0  0.47\nspecies             object    344       3         0.87        0          0.00     0        0.0  Adelie  152                                               \nisland              object    344       3         0.87        0          0.00     0        0.0  Biscoe  168                                               \nsex                 object    333       2         0.58       11          3.20     0        0.0    Male  168                                               \n\n----- Target class frequencies (normalized) -----\n\nAdelie       0.441860\nGentoo       0.360465\nChinstrap    0.197674\ndtype: float64",
-    "crumbs": [
-      "Workflows",
-      "Classification"
-    ]
-  },
-  {
-    "objectID": "workflows/classification_tabular.html#transform-data",
-    "href": "workflows/classification_tabular.html#transform-data",
-    "title": "Classification with Tabular Data",
-    "section": "Transform Data",
-    "text": "Transform Data\n\n# Define columns\ncat_cols = ['island', 'sex']\nnum_cols = ['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']\n\n# Drop rows where the target is missing (can't model without target)\ndf = df.dropna(subset=['species'])\n\n# Split the data\nX = df[cat_cols + num_cols]\ny = df['species']\n\n# Split into training and test\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=42, stratify=y\n)\n\n# Define preprocessing for numeric and categorical features\nnumeric_preprocessing = Pipeline([\n    ('impute', SimpleImputer(strategy='mean')),\n    ('scale', StandardScaler())\n])\n\ncategorical_preprocessing = Pipeline([\n    ('impute', SimpleImputer(strategy='most_frequent')),\n    ('encode', OneHotEncoder(drop='first', sparse_output=False))  # one-hot; drop first feature to avoid multicollinearity\n])\n\n# Combine into a column transformer\npreprocessor = ColumnTransformer([\n    ('num', numeric_preprocessing, num_cols),\n    ('cat', categorical_preprocessing, cat_cols)\n])",
-    "crumbs": [
-      "Workflows",
-      "Classification"
-    ]
-  },
-  {
-    "objectID": "workflows/classification_tabular.html#run-grid-search-for-model---random-forest",
-    "href": "workflows/classification_tabular.html#run-grid-search-for-model---random-forest",
-    "title": "Classification with Tabular Data",
-    "section": "Run Grid Search for Model - Random Forest",
-    "text": "Run Grid Search for Model - Random Forest\n\n# Base pipeline\nclf_pipeline = Pipeline([\n    ('pre', preprocessor),\n    ('model', RandomForestClassifier(random_state=42))\n])\n\n# Define hyperparameter grid\nparam_grid = {\n    'model__n_estimators': [20,30,40],\n    'model__max_depth': [None],\n    'model__min_samples_leaf': [1, 3, 5, 7],\n    'model__max_features': ['sqrt']\n}\n\n# Grid search with cross-validation\ngrid_search = GridSearchCV(\n    estimator=clf_pipeline,\n    param_grid=param_grid,\n    cv=5,\n    scoring='accuracy',\n    n_jobs=-1,\n    verbose=2\n)\n\n# Fit grid search on training data\nprint(\"\\n----- GRID SEARCH -----\\n\")\nstart_time = time.time()\ngrid_search.fit(X_train, y_train)\nprint(f\"\\nGrid search completed in {time.time() - start_time:.2f} seconds\")\n\nprint(\"\\n----- Best Grid Search Result -----\")\nprint(f\"Accuracy: {grid_search.best_score_:.4f} ± {grid_search.cv_results_['std_test_score'][grid_search.best_index_]:.4f}\")\nprint(\"Parameters:\")\npprint(grid_search.best_params_)\n\n\n----- GRID SEARCH -----\n\nFitting 5 folds for each of 12 candidates, totalling 60 fits\n\nGrid search completed in 3.09 seconds\n\n----- Best Grid Search Result -----\nAccuracy: 0.9855 ± 0.0073\nParameters:\n{'model__max_depth': None,\n 'model__max_features': 'sqrt',\n 'model__min_samples_leaf': 1,\n 'model__n_estimators': 30}",
-    "crumbs": [
-      "Workflows",
-      "Classification"
-    ]
-  },
-  {
-    "objectID": "workflows/classification_tabular.html#evaluate-and-show-feature-importance",
-    "href": "workflows/classification_tabular.html#evaluate-and-show-feature-importance",
-    "title": "Classification with Tabular Data",
-    "section": "Evaluate and Show Feature Importance",
-    "text": "Evaluate and Show Feature Importance\n\n# Use best model from grid search\nclf_pipeline = grid_search.best_estimator_\n\n# Evaluate\nprint(\"\\n----- EVALUATION -----\")\nprint(\"\\n----- Train/Test Accuracy -----\\n\")\nprint(f\"Train accuracy: {clf_pipeline.score(X_train, y_train):.4f}\")\nprint(f\"Test accuracy:  {clf_pipeline.score(X_test, y_test):.4f}\")\n\ny_test_pred = clf_pipeline.predict(X_test)\nprint(\"\\n----- Classification Report -----\\n\")\nprint(classification_report(y_test, y_test_pred))\nprint(\"\\n----- Confusion Matrix -----\\n\")\ncm = confusion_matrix(y_test, y_test_pred, labels=clf_pipeline.classes_)\nprint(cm)\n\n# Print normalized feature importances\nmodel = clf_pipeline.named_steps['model']\nencoded_feature_names = clf_pipeline.named_steps['pre'].get_feature_names_out()\n\nfeat_importance_df = pd.DataFrame({\n    'feature': encoded_feature_names,\n    'importance': model.feature_importances_\n}).sort_values(by='importance', ascending=False)\n\nprint(\"\\n----- Feature Importance -----\\n\")\nprint(feat_importance_df)\n\n\n----- EVALUATION -----\n\n----- Train/Test Accuracy -----\n\nTrain accuracy: 1.0000\nTest accuracy:  1.0000\n\n----- Classification Report -----\n\n              precision    recall  f1-score   support\n\n      Adelie       1.00      1.00      1.00        30\n   Chinstrap       1.00      1.00      1.00        14\n      Gentoo       1.00      1.00      1.00        25\n\n    accuracy                           1.00        69\n   macro avg       1.00      1.00      1.00        69\nweighted avg       1.00      1.00      1.00        69\n\n\n----- Confusion Matrix -----\n\n[[30  0  0]\n [ 0 14  0]\n [ 0  0 25]]\n\n----- Feature Importance -----\n\n                  feature  importance\n0     num__bill_length_mm    0.312770\n1      num__bill_depth_mm    0.216133\n2  num__flipper_length_mm    0.205913\n4       cat__island_Dream    0.138414\n3        num__body_mass_g    0.096331\n5   cat__island_Torgersen    0.021391\n6           cat__sex_Male    0.009048",
-    "crumbs": [
-      "Workflows",
-      "Classification"
-    ]
-  },
-  {
-    "objectID": "workflows/regression_tabular.html",
-    "href": "workflows/regression_tabular.html",
-    "title": "Regression with Tabular Data",
-    "section": "",
-    "text": "Supervised ML workflow for building a regression model on tabular data with categorical and continuous features.\nUses the tips dataset from seaborn, and trains several models to predict the tip amount. Uses scikit-learn for pre-processing, modeling, and evaluation.\nThis dataset contains no missing values, so imputation is not used.\nThis script does the following:",
-    "crumbs": [
-      "Workflows",
-      "Regression"
-    ]
-  },
-  {
-    "objectID": "workflows/regression_tabular.html#import-and-check-data",
-    "href": "workflows/regression_tabular.html#import-and-check-data",
-    "title": "Regression with Tabular Data",
-    "section": "Import and Check Data",
-    "text": "Import and Check Data\n\nimport seaborn as sns\nimport pandas as pd\nfrom minieda import summarize # pip install git+https://github.com/dbolotov/minieda.git\nimport time\nfrom pprint import pprint\n\nfrom sklearn.linear_model import LinearRegression, Lasso, Ridge\nfrom sklearn.ensemble import RandomForestRegressor\nfrom sklearn.neighbors import KNeighborsRegressor\nfrom xgboost import XGBRegressor\n\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.compose import ColumnTransformer\nfrom sklearn.preprocessing import OneHotEncoder, StandardScaler\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.model_selection import GridSearchCV\nfrom sklearn.metrics import root_mean_squared_error, mean_absolute_error, r2_score\n\nfrom scipy import stats\nimport matplotlib.pyplot as plt\n\nplt.rcParams.update({'font.size': 9}) # set global plot params\npd.set_option(\"display.width\", 220) # set display width for printed tables\n\n# Load dataset and display first few rows\ndf = sns.load_dataset(\"tips\")\n\nprint(\"\\n----- First Few Rows of Data -----\\n\")\nprint(df.head())\n\n# Display summary\nprint(\"\\n----- Data Summary -----\\n\")\nprint(summarize(df))\n\n\n----- First Few Rows of Data -----\n\n   total_bill   tip     sex smoker  day    time  size\n0       16.99  1.01  Female     No  Sun  Dinner     2\n1       10.34  1.66    Male     No  Sun  Dinner     3\n2       21.01  3.50    Male     No  Sun  Dinner     3\n3       23.68  3.31    Male     No  Sun  Dinner     2\n4       24.59  3.61  Female     No  Sun  Dinner     4\n\n----- Data Summary -----\n\n               dtype  count  unique  unique_perc  missing  missing_perc  zero  zero_perc     top freq   mean   std   min   50%    max  skew\ntotal_bill   float64    244     229        93.85        0           0.0     0        0.0               19.79   8.9  3.07  17.8  50.81  1.13\ntip          float64    244     123        50.41        0           0.0     0        0.0                 3.0  1.38   1.0   2.9   10.0  1.47\nsize           int64    244       6         2.46        0           0.0     0        0.0                2.57  0.95   1.0   2.0    6.0  1.45\nsex         category    244       2         0.82        0           0.0     0        0.0    Male  157                                      \nsmoker      category    244       2         0.82        0           0.0     0        0.0      No  151                                      \nday         category    244       4         1.64        0           0.0     0        0.0     Sat   87                                      \ntime        category    244       2         0.82        0           0.0     0        0.0  Dinner  176",
-    "crumbs": [
-      "Workflows",
-      "Regression"
-    ]
-  },
-  {
-    "objectID": "workflows/regression_tabular.html#transform-data",
-    "href": "workflows/regression_tabular.html#transform-data",
-    "title": "Regression with Tabular Data",
-    "section": "Transform Data",
-    "text": "Transform Data\n\n# Define columns\ncat_cols = ['sex', 'smoker', 'day', 'time']\nnum_cols = ['total_bill', 'size']\n\n# Split the data\nX = df[cat_cols + num_cols]\ny = df['tip']\n\n# Split into training and test\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=42\n)\n\n# Define preprocessing for numeric and categorical features\nnumeric_preprocessing = Pipeline([\n    ('scale', StandardScaler())\n])\n\ncategorical_preprocessing = Pipeline([\n    ('encode', OneHotEncoder(drop='first', sparse_output=False))  # one-hot; drop first feature to avoid multicollinearity\n])\n\n# Combine into a column transformer\npreprocessor = ColumnTransformer([\n    ('num', numeric_preprocessing, num_cols),\n    ('cat', categorical_preprocessing, cat_cols)\n])",
-    "crumbs": [
-      "Workflows",
-      "Regression"
-    ]
-  },
-  {
-    "objectID": "workflows/regression_tabular.html#build-models---linear-regression-ridge-lasso-random-forest-k-nn-xgboost",
-    "href": "workflows/regression_tabular.html#build-models---linear-regression-ridge-lasso-random-forest-k-nn-xgboost",
-    "title": "Regression with Tabular Data",
-    "section": "Build Models - Linear Regression, Ridge, Lasso, Random Forest, k-NN, XGBoost",
-    "text": "Build Models - Linear Regression, Ridge, Lasso, Random Forest, k-NN, XGBoost\n\n# Define models and hyperparameters to optimize\nmodels = [\n    {\n        \"name\": \"LinearRegression\",\n        \"estimator\": LinearRegression(),\n        \"param_grid\": None\n    },\n    {\n        \"name\": \"Ridge\",\n        \"estimator\": Ridge(),\n        \"param_grid\": {\n            \"model__alpha\": [0.1, 1.0, 10.0]\n        }\n    },\n    {\n        \"name\": \"Lasso\",\n        \"estimator\": Lasso(),\n        \"param_grid\": {\n            \"model__alpha\": [0.1, 1.0, 10.0]\n        }\n    },\n    {\n        \"name\": \"RandomForest\",\n        \"estimator\": RandomForestRegressor(random_state=42),\n        \"param_grid\": {\n            \"model__n_estimators\": [20,30],\n            \"model__max_depth\": [None, 10],\n            \"model__min_samples_split\": [2, 5]\n        }\n    },\n    {\n        \"name\": \"KNN\",\n        \"estimator\": KNeighborsRegressor(),\n        \"param_grid\": {\n            \"model__n_neighbors\": [3, 5, 7]\n        }\n    },\n    {\n        \"name\": \"XGBoost\",\n        \"estimator\": XGBRegressor(random_state=42, verbosity=0),\n        \"param_grid\": {\n            \"model__n_estimators\": [30, 50],\n            \"model__learning_rate\": [0.1, 0.3],\n            \"model__max_depth\": [3, 6]\n        }\n    }\n]\n\nresults = []\n\nprint(\"\\n----- GRID SEARCH WITH BEST RESULT ON TRAIN AND TEST SETS -----\")\n\nstart_time = time.time()\ntrained_models = {}\nfor m in models:\n    print(f\"\\n--- {m['name']} ---\")\n    \n    pipeline = Pipeline([('pre', preprocessor), ('model', m[\"estimator\"])])\n\n    if m[\"param_grid\"]:\n        search = GridSearchCV(\n            pipeline,\n            m[\"param_grid\"],\n            scoring=\"neg_root_mean_squared_error\",  # RMSE\n            cv=3,\n            n_jobs=-1,\n            verbose=1\n        )\n        search.fit(X_train, y_train)\n        best_model = search.best_estimator_\n        print(\"Best params:\", search.best_params_)\n    else: #if no parameters to optimize\n        pipeline.fit(X_train, y_train)\n        best_model = pipeline\n    \n    trained_models[m[\"name\"]] = best_model\n\n    # Predict and evaluate on both train and test\n    y_train_pred = best_model.predict(X_train)\n    y_test_pred = best_model.predict(X_test)\n    \n    train_rmse = root_mean_squared_error(y_train, y_train_pred)\n    test_rmse = root_mean_squared_error(y_test, y_test_pred)\n    \n    train_mae = mean_absolute_error(y_train, y_train_pred)\n    test_mae = mean_absolute_error(y_test, y_test_pred)\n    \n    train_r2 = r2_score(y_train, y_train_pred)\n    test_r2 = r2_score(y_test, y_test_pred)\n    \n    print(\"\")\n    print(f\"{'Metric':&lt;6} | {'Train':&gt;6} | {'Test':&gt;6}\")\n    # print(\"-\" * 24)\n    print(f\"{'RMSE':&lt;6} | {train_rmse:&gt;6.4f} | {test_rmse:&gt;6.4f}\")\n    print(f\"{'MAE':&lt;6} | {train_mae:&gt;6.4f} | {test_mae:&gt;6.4f}\")\n    print(f\"{'R²':&lt;6} | {train_r2:&gt;6.4f} | {test_r2:&gt;6.4f}\")\n\n    results.append({\n        \"model\": m[\"name\"],\n        \"train_rmse\": train_rmse,\n        \"test_rmse\": test_rmse,\n        \"train_mae\": train_mae,\n        \"test_mae\": test_mae,\n        \"train_r2\": train_r2,\n        \"test_r2\": test_r2\n    })\n\nprint(f\"\\nGrid search completed in {time.time() - start_time:.2f} seconds\")\n\n\n----- GRID SEARCH WITH BEST RESULT ON TRAIN AND TEST SETS -----\n\n--- LinearRegression ---\n\nMetric |  Train |   Test\nRMSE   | 1.0491 | 0.8387\nMAE    | 0.7600 | 0.6671\nR²     | 0.4582 | 0.4373\n\n--- Ridge ---\nFitting 3 folds for each of 3 candidates, totalling 9 fits\nBest params: {'model__alpha': 10.0}\n\nMetric |  Train |   Test\nRMSE   | 1.0507 | 0.8283\nMAE    | 0.7623 | 0.6657\nR²     | 0.4567 | 0.4511\n\n--- Lasso ---\nFitting 3 folds for each of 3 candidates, totalling 9 fits\nBest params: {'model__alpha': 0.1}\n\nMetric |  Train |   Test\nRMSE   | 1.0615 | 0.7824\nMAE    | 0.7777 | 0.6548\nR²     | 0.4454 | 0.5102\n\n--- RandomForest ---\nFitting 3 folds for each of 8 candidates, totalling 24 fits\nBest params: {'model__max_depth': 10, 'model__min_samples_split': 2, 'model__n_estimators': 30}\n\nMetric |  Train |   Test\nRMSE   | 0.4436 | 0.9459\nMAE    | 0.3313 | 0.7394\nR²     | 0.9032 | 0.2842\n\n--- KNN ---\nFitting 3 folds for each of 3 candidates, totalling 9 fits\nBest params: {'model__n_neighbors': 5}\n\nMetric |  Train |   Test\nRMSE   | 0.9195 | 0.9025\nMAE    | 0.6846 | 0.7160\nR²     | 0.5839 | 0.3484\n\n--- XGBoost ---\nFitting 3 folds for each of 8 candidates, totalling 24 fits\nBest params: {'model__learning_rate': 0.1, 'model__max_depth': 3, 'model__n_estimators': 30}\n\nMetric |  Train |   Test\nRMSE   | 0.7910 | 0.8755\nMAE    | 0.5830 | 0.7102\nR²     | 0.6920 | 0.3868\n\nGrid search completed in 2.85 seconds",
-    "crumbs": [
-      "Workflows",
-      "Regression"
-    ]
-  },
-  {
-    "objectID": "workflows/regression_tabular.html#evaluate-models-and-predict-on-sample-data-using-best-model-random-forest",
-    "href": "workflows/regression_tabular.html#evaluate-models-and-predict-on-sample-data-using-best-model-random-forest",
-    "title": "Regression with Tabular Data",
-    "section": "Evaluate Models and Predict on Sample Data Using Best Model (Random Forest)",
-    "text": "Evaluate Models and Predict on Sample Data Using Best Model (Random Forest)\n\nprint(\"\\n----- EVALUATION SUMMARY -----\\n\")\nprint(pd.DataFrame(results).sort_values(\"test_rmse\", ascending=False))\nprint(\"\\n\")\n\ndef plot_residual_diagnostics(y_true, y_pred, model_name=\"Model\"):\n    residuals = y_true - y_pred\n\n    fig, axes = plt.subplots(1, 3, figsize=(10, 3))\n    fig.suptitle(f\"Residual Diagnostics: {model_name}\")\n\n    # 1. Residuals vs Predicted\n    sns.scatterplot(x=y_pred, y=residuals, ax=axes[0])\n    axes[0].axhline(0, color=\"red\", linestyle=\"--\")\n    axes[0].set_xlabel(\"Predicted\")\n    axes[0].set_ylabel(\"Residuals\")\n    axes[0].set_title(\"Residuals vs Predicted\")\n\n    # 2. Histogram of residuals\n    sns.histplot(residuals, kde=True, ax=axes[1])\n    axes[1].set_title(\"Residuals Histogram\")\n    axes[1].set_xlabel(\"Residual\")\n\n    # 3. Q-Q Plot\n    stats.probplot(residuals, dist=\"norm\", plot=axes[2])\n    axes[2].set_title(\"Q-Q Plot\")\n    axes[2].get_lines()[0].set_color(\"tab:blue\")  # points\n    axes[2].get_lines()[1].set_color(\"red\")       # reference line\n\n    plt.tight_layout(rect=[0, 0, 1, 0.95])\n    plt.show()\n\ny_test_pred = trained_models[\"RandomForest\"].predict(X_test)\nplot_residual_diagnostics(y_test, y_test_pred, model_name=\"Random Forest\")\n\n\n# Predict on a new example\nnew_sample = pd.DataFrame([{\n    'sex': 'Female',\n    'smoker': 'No',\n    'day': 'Sun',\n    'time': 'Dinner',\n    'total_bill': 40.0,\n    'size': 2\n}])\n\n# Predict on fictional sample with each model\npredictions = []\n\nfor model_name, model in trained_models.items():\n    pred = model.predict(new_sample)[0]\n    predictions.append({\"model\": model_name, \"predicted_tip\": round(pred, 2)})\n\n# Display predictions\nprint(\"----- PREDICTIONS ON NEW SAMPLE -----\")\nprint(\"\\n----- Sample Input -----\")\nprint(new_sample)\nprint(\"\\n----- Sample Predictions -----\\n\")\nprint(pd.DataFrame(predictions).sort_values(\"predicted_tip\", ascending=False))\n\n\n----- EVALUATION SUMMARY -----\n\n              model  train_rmse  test_rmse  train_mae  test_mae  train_r2   test_r2\n3      RandomForest    0.443583   0.945898   0.331275  0.739375  0.903152  0.284205\n4               KNN    0.919482   0.902499   0.684636  0.716000  0.583873  0.348381\n5           XGBoost    0.791011   0.875502   0.583020  0.710206  0.692033  0.386783\n0  LinearRegression    1.049133   0.838664   0.759965  0.667133  0.458249  0.437302\n1             Ridge    1.050658   0.828321   0.762260  0.665704  0.456673  0.451095\n2             Lasso    1.061543   0.782438   0.777739  0.654809  0.445356  0.510221\n\n\n----- PREDICTIONS ON NEW SAMPLE -----\n\n----- Sample Input -----\n      sex smoker  day    time  total_bill  size\n0  Female     No  Sun  Dinner        40.0     2\n\n----- Sample Predictions -----\n\n              model  predicted_tip\n0  LinearRegression           4.93\n3      RandomForest           4.78\n1             Ridge           4.77\n2             Lasso           4.63\n5           XGBoost           4.39\n4               KNN           3.50",
-    "crumbs": [
-      "Workflows",
-      "Regression"
+      "Concepts",
+      "Confidence & Prediction Intervals"
     ]
   }
 ]
