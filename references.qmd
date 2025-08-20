@@ -1,6 +1,6 @@
 # References {.unnumbered}
 
-## Online Books
+## Online Books & Educational Tools
 
 ::: {.small-table}
 
@@ -14,6 +14,7 @@
 | Data Imputation | [Flexible Imputation of Missing Data](https://stefvanbuuren.name/fimd/) | Methods to handle missing data, with emphasis on multiple imputation. |
 | Fraud Detection | [Fraud Detection Handbook](https://fraud-detection-handbook.github.io/fraud-detection-handbook/Foreword.html) | Applied techniques for detecting fraud in highly imbalanced datasets. Includes instructions on using a fraud data simulator. |
 | Statistics & Probability | [OpenIntro Statistics](https://www.openintro.org/book/os/) | Introduction to statistics and probability. Also includes links to YouTube videos explaining the concepts. |
+| Statistics & Probability | [SeeingTheory](https://seeing-theory.brown.edu/) | Visual introduction to statistics and probability. |
 
 :::
 
