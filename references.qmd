@@ -13,6 +13,7 @@
 | Time Series | Forecasting: Principles and Practice: [R](https://otexts.com/fpp3/), [Python](https://otexts.com/fpppy/) | Comprehensive introduction to forecasting methods. Includes like exponential smoothing and ARIMA. Versions for R and Python available. |
 | Data Imputation | [Flexible Imputation of Missing Data](https://stefvanbuuren.name/fimd/) | Methods to handle missing data, with emphasis on multiple imputation. |
 | Fraud Detection | [Fraud Detection Handbook](https://fraud-detection-handbook.github.io/fraud-detection-handbook/Foreword.html) | Applied techniques for detecting fraud in highly imbalanced datasets. Includes instructions on using a fraud data simulator. |
+| Statistics & Probability | [OpenIntro Statistics](https://www.openintro.org/book/os/) | Introduction to statistics and probability. Also includes links to YouTube videos explaining the concepts. |
 
 :::
 
